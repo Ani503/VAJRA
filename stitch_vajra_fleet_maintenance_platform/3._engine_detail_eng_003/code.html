@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#690005",
+          "inverse-primary": "#516536",
+          "on-secondary-fixed-variant": "#004c6e",
+          "error": "#ffb4ab",
+          "surface-container-high": "#262a2f",
+          "error-container": "#93000a",
+          "tertiary": "#ebb7dc",
+          "inverse-surface": "#e0e3e8",
+          "surface-container-lowest": "#0b0f12",
+          "on-error-container": "#ffdad6",
+          "on-primary-container": "#1e2e06",
+          "secondary-fixed": "#c9e6ff",
+          "inverse-on-surface": "#2d3135",
+          "on-secondary": "#00344d",
+          "surface-variant": "#31353a",
+          "secondary-container": "#025a83",
+          "outline-variant": "#45483e",
+          "surface-dim": "#101418",
+          "background": "#101418",
+          "secondary-fixed-dim": "#8ecdfc",
+          "tertiary-container": "#b282a4",
+          "surface-container-highest": "#31353a",
+          "on-tertiary": "#482441",
+          "primary": "#b8ce96",
+          "primary-container": "#839864",
+          "on-surface": "#e0e3e8",
+          "surface": "#101418",
+          "on-primary-fixed": "#111f00",
+          "on-background": "#e0e3e8",
+          "surface-tint": "#b8ce96",
+          "surface-container-low": "#181c20",
+          "surface-bright": "#363a3e",
+          "on-tertiary-container": "#401d39",
+          "on-primary": "#25350c",
+          "outline": "#8f9285",
+          "on-secondary-container": "#92d1ff",
+          "on-secondary-fixed": "#001e2f",
+          "on-surface-variant": "#c5c8ba",
+          "on-tertiary-fixed": "#300e2b",
+          "surface-container": "#1c2024",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "on-tertiary-fixed-variant": "#613a58",
+          "on-primary-fixed-variant": "#3a4c21",
+          "primary-fixed": "#d4ebb0",
+          "secondary": "#8ecdfc",
+          "primary-fixed-dim": "#b8ce96",
+          "tertiary-fixed": "#ffd7f1"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-xl": "1.5rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1rem",
+          "space-xs": "0.25rem",
+          "space-md": "0.75rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "label-default": [
+            "IBM Plex Sans"
+          ],
+          "headline-md": [
+            "IBM Plex Sans"
+          ],
+          "headline-xl": [
+            "IBM Plex Sans"
+          ],
+          "label-muted": [
+            "IBM Plex Sans"
+          ],
+          "headline-lg": [
+            "IBM Plex Sans"
+          ],
+          "body-default": [
+            "IBM Plex Sans"
+          ],
+          "mono-code": [
+            "IBM Plex Mono"
+          ],
+          "mono-metric": [
+            "IBM Plex Mono"
+          ],
+          "body-strong": [
+            "IBM Plex Sans"
+          ]
+        },
+        "fontSize": {
+          "label-default": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-muted": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-default": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "400"
+            }
+          ],
+          "mono-code": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "fontWeight": "400"
+            }
+          ],
+          "mono-metric": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "500"
+            }
+          ],
+          "body-strong": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "fontWeight": "600"
+            }
+          ]
+        }
+      },
+    },
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-headline-md text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-mono-code text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-mono-code text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">speed</span><span class="font-body-default text-body-default truncate">Command Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">mode_fan</span><span class="font-body-default text-body-default truncate">Engines</span></div></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-1.5 rounded-lg transition-colors bg-primary-container text-on-primary-container font-body-strong" data-path="engine-detail" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">troubleshoot</span><span class="font-body-default text-body-default truncate">Engine Detail</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">view_in_ar</span><span class="font-body-default text-body-default truncate">3D Digital Twin</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">event_available</span><span class="font-body-default text-body-default truncate">Maintenance Planner</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">inventory_2</span><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">flight_takeoff</span><span class="font-body-default text-body-default truncate">Fleet Availability</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">lab_profile</span><span class="font-body-default text-body-default truncate">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">tune</span><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></div></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-mono-code text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">settings</span><span class="font-body-default text-body-default truncate">Settings</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">history</span><span class="font-body-default text-body-default truncate">Audit Log</span></div></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-mono-code text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-body-strong text-on-surface">Fleet Commander</span><span class="font-mono-code text-mono-code text-on-surface-variant">(Fleet Commander)</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background"><div class="flex flex-col w-full">
+<!-- Top Command & Breadcrumb Context Bar -->
+<section class="w-full bg-[#14181C] px-6 py-4 border-b border-[#2B323A]">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+<!-- Breadcrumbs & Identity -->
+<div class="flex flex-col gap-1.5 min-w-0">
+<div class="flex items-center gap-2 font-mono-code text-mono-code text-[#9AA4AE]">
+<span class="hover:text-[#E6E9EC] cursor-pointer transition-colors">Engines</span>
+<span class="text-[#45483E]">/</span>
+<span class="text-[#E6E9EC] font-semibold">ENG-003</span>
+<span class="text-[#9AA4AE] font-label-default text-label-default">(Turbofan-TF1 turbofan (Fighter-B))</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 font-body-default text-body-default text-[#9AA4AE]">
+<div>Engine ID: <span class="font-mono-metric text-mono-metric text-[#E6E9EC]">ENG-003</span></div>
+<span class="text-[#2B323A]">|</span>
+<div>Airframe: <span class="font-mono-metric text-mono-metric text-[#E6E9EC]">Fighter-B</span> <span class="font-mono-code text-mono-code text-[#9AA4AE]">(Tail VJ-102)</span></div>
+<span class="text-[#2B323A]">|</span>
+<div>Stationed: <span class="text-[#E6E9EC]">Base 01 (Forward Hangar)</span></div>
+<span class="text-[#2B323A]">|</span>
+<div>Last telemetry sync: <span class="font-mono-code text-mono-code text-[#E6E9EC]">14:12 IST</span></div>
+<div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] bg-[#3B1C1C] border border-[#D64545]/40 ml-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D64545] animate-pulse"></span>
+<span class="font-mono-code text-mono-code font-semibold text-[#ffb4ab] tracking-wider uppercase">Critical</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Controls -->
+<div class="flex items-center gap-2.5 shrink-0">
+<button class="h-8 px-3 rounded-[4px] bg-transparent border border-[#2B323A] hover:bg-[#1C2127] text-[#9AA4AE] hover:text-[#E6E9EC] font-body-default text-body-default flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Download Telemetry CSV</span>
+</button>
+<button class="h-8 px-3.5 rounded-[4px] bg-[#025a83] border border-[#8ecdfc]/50 hover:bg-[#025a83]/80 text-[#E6E9EC] font-body-strong text-body-strong flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-[#8ecdfc]">assignment_add</span>
+<span>Schedule Maintenance Work Order</span>
+</button>
+</div>
+</div>
+<!-- Quick Telemetry Diagnostic KPI Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+<!-- Radial Gauge KPI -->
+<div class="bg-[#1C2127] p-3 rounded-[4px] border border-[#2B323A] flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-muted text-label-muted text-[#9AA4AE] uppercase tracking-wider">Health Score</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-mono-metric text-[22px] font-semibold text-[#D64545] leading-none">18</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<span class="font-mono-code text-[11px] text-[#ffb4ab] mt-1">Severe Blade &amp; Bearing Wear</span>
+</div>
+<div class="relative w-11 h-11 shrink-0 flex items-center justify-center">
+<svg class="w-11 h-11 -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="15" stroke="#2B323A" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="none" r="15" stroke="#D64545" stroke-dasharray="94.2" stroke-dashoffset="77.2" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute material-symbols-outlined text-[#D64545] text-[16px]">warning</span>
+</div>
+</div>
+<!-- Predicted RUL -->
+<div class="bg-[#1C2127] p-3 rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-muted text-label-muted text-[#9AA4AE] uppercase tracking-wider">Predicted RUL</span>
+<span class="font-mono-code text-[11px] px-1.5 py-0.2 rounded-[4px] bg-[#3B1C1C] text-[#ffb4ab] border border-[#D64545]/40">&lt; Threshold</span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-mono-metric text-[22px] font-semibold text-[#D64545] leading-none">8</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">cycles</span>
+</div>
+<div class="font-mono-code text-[11px] text-[#9AA4AE] flex items-center justify-between mt-1">
+<span>Depot threshold: <span class="text-[#E6E9EC]">25 cycles</span></span>
+<span class="text-[#D64545] font-semibold">-17 gap</span>
+</div>
+</div>
+<!-- Anomaly Score -->
+<div class="bg-[#1C2127] p-3 rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-muted text-label-muted text-[#9AA4AE] uppercase tracking-wider">Anomaly Score</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">XGB + iForest</span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-mono-metric text-[22px] font-semibold text-[#D64545] leading-none">0.91</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 1.00</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden mt-1.5 border border-[#2B323A]">
+<div class="bg-[#D64545] h-full" style="width: 91%"></div>
+</div>
+</div>
+<!-- 7-day Failure Risk -->
+<div class="bg-[#1C2127] p-3 rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-muted text-label-muted text-[#9AA4AE] uppercase tracking-wider">7-Day Failure Risk</span>
+<span class="material-symbols-outlined text-[16px] text-[#D64545]">emergency_home</span>
+</div>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-mono-metric text-[22px] font-semibold text-[#D64545] leading-none">82%</span>
+<span class="font-mono-code text-mono-code text-[#ffb4ab]">Urgent Grounding</span>
+</div>
+<span class="font-mono-code text-[11px] text-[#9AA4AE] mt-1">Depot inspection window: &lt; 24h</span>
+</div>
+</div>
+</section>
+<!-- Upper Main Split Grid: 3D Twin & Telemetry Matrix -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-[#2B323A] bg-[#14181C]">
+<!-- Left Column: 3D Digital Twin Inspection Panel (7 cols) -->
+<div class="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-[#2B323A] flex flex-col bg-[#1C2127]/60">
+<!-- Panel Header & Controls Toolbar -->
+<div class="px-4 py-2.5 bg-[#1C2127] border-b border-[#2B323A] flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#8ecdfc]">view_in_ar</span>
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">3D Digital Twin · Turbofan-TF1 Turbofan</span>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded-[4px] bg-[#14181C] text-[#9AA4AE] border border-[#2B323A]">ID: CAD-TF1-V4</span>
+</div>
+<div class="flex items-center gap-1.5">
+<!-- View Modes -->
+<div class="flex bg-[#14181C] p-0.5 rounded-[4px] border border-[#2B323A] text-mono-code font-mono-code">
+<button class="px-2 py-0.5 rounded-[2px] bg-[#2B323A] text-[#E6E9EC] font-semibold">Normal</button>
+<button class="px-2 py-0.5 rounded-[2px] text-[#9AA4AE] hover:text-[#E6E9EC] transition-colors">X-Ray</button>
+<button class="px-2 py-0.5 rounded-[2px] text-[#9AA4AE] hover:text-[#E6E9EC] transition-colors">Exploded</button>
+</div>
+<button class="p-1 text-[#9AA4AE] hover:text-[#E6E9EC] hover:bg-[#242B33] rounded-[4px] border border-[#2B323A] transition-colors" title="Reset camera">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+</button>
+<a href="../4._3d_digital_twin_expansive_view/code.html?engine=ENG-003" class="px-2.5 py-1 rounded-[4px] bg-[#242B33] hover:bg-[#2B323A] border border-[#4C8DB8] text-[#8ecdfc] text-mono-code font-mono-code flex items-center gap-1 transition-colors text-[11px]" title="Launch Expansive 3D Viewport">
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+<span>Full 3D Twin</span>
+</a>
+</div>
+</div>
+<!-- Turbofan Cross-Section Schematic Visual Canvas -->
+<div class="relative w-full h-[360px] bg-[#101418] flex items-center justify-center p-4 overflow-hidden select-none">
+<!-- Grid coordinate background marks -->
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#8ecdfc_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<!-- Live Diagnostic Hotspot Badge Overlay -->
+<div class="absolute top-4 left-4 flex flex-col gap-1 z-10">
+<div class="px-2 py-1 rounded-[4px] bg-[#14181C]/90 border border-[#2B323A] flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Selected Component:</span>
+<span class="font-mono-code text-[11px] text-[#ffb4ab] font-semibold">Stage 2 HPT Turbine Disk</span>
+</div>
+<div class="px-2 py-1 rounded-[4px] bg-[#3B1C1C]/90 border border-[#D64545]/40 flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-[#D64545]">thermostat</span>
+<span class="font-mono-code text-[11px] text-[#ffb4ab]">Bearing Overheat: +74°C</span>
+</div>
+</div>
+<!-- Turbofan Schematic SVG (Engineering Cross-Section) -->
+<svg class="w-full max-w-2xl h-auto drop-shadow-none" fill="none" viewbox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<!-- Flow arrows -->
+<g opacity="0.4" stroke="#8ecdfc" stroke-dasharray="4 4" stroke-width="1.5">
+<line x1="20" x2="110" y1="90" y2="90"></line>
+<line x1="20" x2="110" y1="210" y2="210"></line>
+<line x1="20" x2="80" y1="150" y2="150"></line>
+</g>
+<!-- Engine Outer Nacelle & Casing Contour -->
+<path d="M70 70 L220 80 L520 85 L720 100 L740 120 L740 180 L720 200 L520 215 L220 220 L70 230 L50 200 L50 100 Z" fill="#14181C" stroke="#2B323A" stroke-width="2"></path>
+<!-- Center Shaft (Green / Healthy: #3FA34D) -->
+<rect fill="#16301D" height="10" stroke="#3FA34D" stroke-width="1.5" width="530" x="120" y="145"></rect>
+<!-- Fan Stage (Leftmost - Healthy) -->
+<g class="cursor-pointer group" id="fan-stage">
+<polygon fill="#16301D" points="100,50 125,70 120,230 95,250 80,150" stroke="#3FA34D" stroke-width="1.5"></polygon>
+<line opacity="0.8" stroke="#3FA34D" stroke-width="1" x1="102" x2="118" y1="80" y2="220"></line>
+<line opacity="0.8" stroke="#3FA34D" stroke-width="1" x1="92" x2="110" y1="100" y2="200"></line>
+<text fill="#3FA34D" font-family="IBM Plex Mono" font-size="10" font-weight="600" x="85" y="42">FAN [OK]</text>
+</g>
+<!-- Low Pressure Compressor (LPC - Healthy) -->
+<g id="lpc-stage">
+<rect fill="#16301D" height="120" stroke="#3FA34D" stroke-width="1.5" width="18" x="145" y="90"></rect>
+<rect fill="#16301D" height="108" stroke="#3FA34D" stroke-width="1.5" width="16" x="175" y="96"></rect>
+<rect fill="#16301D" height="96" stroke="#3FA34D" stroke-width="1.5" width="14" x="203" y="102"></rect>
+<text fill="#3FA34D" font-family="IBM Plex Mono" font-size="9" x="160" y="78">LPC</text>
+</g>
+<!-- High Pressure Compressor (HPC - Healthy) -->
+<g id="hpc-stage">
+<rect fill="#16301D" height="84" stroke="#3FA34D" stroke-width="1.5" width="13" x="232" y="108"></rect>
+<rect fill="#16301D" height="76" stroke="#3FA34D" stroke-width="1.5" width="12" x="257" y="112"></rect>
+<rect fill="#16301D" height="68" stroke="#3FA34D" stroke-width="1.5" width="12" x="281" y="116"></rect>
+<rect fill="#16301D" height="60" stroke="#3FA34D" stroke-width="1.5" width="11" x="305" y="120"></rect>
+<text fill="#3FA34D" font-family="IBM Plex Mono" font-size="9" x="260" y="96">HPC</text>
+</g>
+<!-- Combustion Chamber (Amber / Watch: #D9A21B) -->
+<g class="cursor-pointer" id="combustion-stage">
+<!-- Upper Burner -->
+<path d="M338 106 L440 110 L435 130 L345 125 Z" fill="#382B13" stroke="#D9A21B" stroke-width="1.5"></path>
+<circle cx="360" cy="118" fill="#D9A21B" r="4"></circle>
+<circle cx="390" cy="119" fill="#D9A21B" r="4"></circle>
+<circle cx="415" cy="120" fill="#D9A21B" r="4"></circle>
+<!-- Lower Burner -->
+<path d="M338 194 L440 190 L435 170 L345 175 Z" fill="#382B13" stroke="#D9A21B" stroke-width="1.5"></path>
+<circle cx="360" cy="182" fill="#D9A21B" r="4"></circle>
+<circle cx="390" cy="181" fill="#D9A21B" r="4"></circle>
+<circle cx="415" cy="180" fill="#D9A21B" r="4"></circle>
+<text fill="#D9A21B" font-family="IBM Plex Mono" font-size="9" font-weight="600" x="360" y="96">COMB [WATCH]</text>
+</g>
+<!-- High Pressure Turbine (CRITICAL RED: #D64545 with Pulsing Aura) -->
+<g class="cursor-pointer" id="hpt-stage">
+<!-- Pulse Glow effect -->
+<rect class="animate-pulse" fill="#D64545" height="104" opacity="0.15" rx="2" width="44" x="465" y="98"></rect>
+<!-- Stator & Blades -->
+<path d="M470 102 L488 106 L488 194 L470 198 Z" fill="#3B1C1C" stroke="#D64545" stroke-width="2"></path>
+<path d="M494 107 L510 111 L510 189 L494 193 Z" fill="#3B1C1C" stroke="#D64545" stroke-width="2"></path>
+<!-- Hotspot pinpoint marker -->
+<circle cx="488" cy="150" fill="#D64545" fill-opacity="0.3" r="8" stroke="#D64545" stroke-width="1.5"></circle>
+<circle cx="488" cy="150" fill="#ffffff" r="2.5"></circle>
+<text fill="#ffb4ab" font-family="IBM Plex Mono" font-size="10" font-weight="700" x="462" y="86">HPT [CRITICAL]</text>
+</g>
+<!-- Low Pressure Turbine (LPT - Critical/Degraded) -->
+<g id="lpt-stage">
+<path d="M526 114 L544 117 L544 183 L526 186 Z" fill="#3B1C1C" stroke="#D64545" stroke-width="1.5"></path>
+<path d="M552 119 L570 122 L570 178 L552 181 Z" fill="#382B13" stroke="#D9A21B" stroke-width="1.5"></path>
+<text fill="#ffb4ab" font-family="IBM Plex Mono" font-size="9" x="532" y="104">LPT</text>
+</g>
+<!-- Afterburner / Exhaust Nozzle Cone -->
+<polygon fill="#1C2127" points="590,130 670,146 670,154 590,170" stroke="#2B323A" stroke-width="1.5"></polygon>
+<path d="M685 106 L730 116 L730 184 L685 194 Z" fill="#1C2127" stroke="#2B323A" stroke-width="1.5"></path>
+<!-- Center Bearing Markers -->
+<circle cx="130" cy="150" fill="#3FA34D" r="4" stroke="#101418" stroke-width="1"></circle>
+<circle cx="325" cy="150" fill="#3FA34D" r="4" stroke="#101418" stroke-width="1"></circle>
+<circle cx="488" cy="150" fill="#D64545" r="4" stroke="#ffffff" stroke-width="1"></circle>
+<circle cx="580" cy="150" fill="#D9A21B" r="4" stroke="#101418" stroke-width="1"></circle>
+</svg>
+<!-- Bottom interactive legend -->
+<div class="absolute bottom-2.5 left-4 right-4 flex flex-wrap items-center justify-between text-mono-code font-mono-code text-[11px] text-[#9AA4AE] border-t border-[#2B323A]/50 pt-2">
+<span>Click components to isolate sensor telemetry</span>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#3FA34D]"></span> Normal</span>
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#D9A21B]"></span> Watch</span>
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#D64545]"></span> Critical Fault</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Multi-tab Live Parameter Matrix & Explanations (5 cols) -->
+<div class="lg:col-span-5 flex flex-col bg-[#1C2127]">
+<!-- Tab Header Bar -->
+<div class="h-10 border-b border-[#2B323A] px-2 flex items-center justify-between bg-[#181C20]">
+<div class="flex items-center gap-1 h-full">
+<button class="h-full px-3.5 border-b-2 border-[#8ecdfc] text-[#E6E9EC] font-body-strong text-body-strong flex items-center gap-1.5 bg-[#1C2127]">
+<span class="material-symbols-outlined text-[16px] text-[#8ecdfc]">sensors</span>
+<span>Sensors (Live)</span>
+</button>
+<button class="h-full px-3 border-b-2 border-transparent text-[#9AA4AE] hover:text-[#E6E9EC] font-body-default text-body-default flex items-center gap-1.5 hover:bg-[#1C2127]/50 transition-colors">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>SHAP Attribution</span>
+</button>
+<button class="h-full px-3 border-b-2 border-transparent text-[#9AA4AE] hover:text-[#E6E9EC] font-body-default text-body-default flex items-center gap-1.5 hover:bg-[#1C2127]/50 transition-colors">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span>Log (14)</span>
+</button>
+</div>
+<span class="font-mono-code text-mono-code text-[#8ecdfc] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#8ecdfc] animate-ping"></span>
+          20 Hz
+        </span>
+</div>
+<!-- Live Parameter Matrix Table -->
+<div class="flex-1 p-3 flex flex-col justify-between overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#2B323A] font-mono-code text-[11px] text-[#9AA4AE] uppercase tracking-wider">
+<th class="pb-2 font-normal">Parameter Name</th>
+<th class="pb-2 font-normal text-right">Value</th>
+<th class="pb-2 font-normal text-right">Threshold</th>
+<th class="pb-2 font-normal text-right">State</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#2B323A]/60 font-body-default text-body-default">
+<!-- Row 1: T48 Critical -->
+<tr class="hover:bg-[#242B33] transition-colors group">
+<td class="py-2.5">
+<div class="flex flex-col">
+<span class="font-semibold text-[#E6E9EC] group-hover:text-[#8ecdfc]">T48 Turbine Exit Temp</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Sensor S-108 · HPT Exhaust</span>
+</div>
+</td>
+<td class="py-2.5 text-right font-mono-metric text-mono-metric font-semibold text-[#D64545]">
+                894 °C
+              </td>
+<td class="py-2.5 text-right font-mono-code text-mono-code text-[#9AA4AE]">
+                820 °C Max
+              </td>
+<td class="py-2.5 text-right">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#3B1C1C] border border-[#D64545]/40 text-[#ffb4ab] font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D64545]"></span>
+                  +74°C
+                </span>
+</td>
+</tr>
+<!-- Row 2: Vibration RMS Critical -->
+<tr class="hover:bg-[#242B33] transition-colors group">
+<td class="py-2.5">
+<div class="flex flex-col">
+<span class="font-semibold text-[#E6E9EC] group-hover:text-[#8ecdfc]">Core Vibration RMS</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Sensor S-204 · Center Bearing #3</span>
+</div>
+</td>
+<td class="py-2.5 text-right font-mono-metric text-mono-metric font-semibold text-[#D64545]">
+                3.42 mm/s
+              </td>
+<td class="py-2.5 text-right font-mono-code text-mono-code text-[#9AA4AE]">
+                2.20 mm/s
+              </td>
+<td class="py-2.5 text-right">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#3B1C1C] border border-[#D64545]/40 text-[#ffb4ab] font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D64545]"></span>
+                  Spike
+                </span>
+</td>
+</tr>
+<!-- Row 3: P3 Compressor Watch -->
+<tr class="hover:bg-[#242B33] transition-colors group">
+<td class="py-2.5">
+<div class="flex flex-col">
+<span class="font-semibold text-[#E6E9EC] group-hover:text-[#8ecdfc]">P3 Discharge Pressure</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Sensor S-310 · HPC Output</span>
+</div>
+</td>
+<td class="py-2.5 text-right font-mono-metric text-mono-metric text-[#D9A21B]">
+                29.8 bar
+              </td>
+<td class="py-2.5 text-right font-mono-code text-mono-code text-[#9AA4AE]">
+                31.2 bar Nom
+              </td>
+<td class="py-2.5 text-right">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#382B13] border border-[#D9A21B]/40 text-[#D9A21B] font-mono-code text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D9A21B]"></span>
+                  -1.4 bar
+                </span>
+</td>
+</tr>
+<!-- Row 4: Oil Scavenge Temp Watch -->
+<tr class="hover:bg-[#242B33] transition-colors group">
+<td class="py-2.5">
+<div class="flex flex-col">
+<span class="font-semibold text-[#E6E9EC] group-hover:text-[#8ecdfc]">Oil Scavenge Temp</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Sensor S-402 · Sump Tank A</span>
+</div>
+</td>
+<td class="py-2.5 text-right font-mono-metric text-mono-metric text-[#D9A21B]">
+                112 °C
+              </td>
+<td class="py-2.5 text-right font-mono-code text-mono-code text-[#9AA4AE]">
+                115 °C Max
+              </td>
+<td class="py-2.5 text-right">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#382B13] border border-[#D9A21B]/40 text-[#D9A21B] font-mono-code text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D9A21B]"></span>
+                  Elevated
+                </span>
+</td>
+</tr>
+<!-- Row 5: Fuel Flow Nominal -->
+<tr class="hover:bg-[#242B33] transition-colors group">
+<td class="py-2.5">
+<div class="flex flex-col">
+<span class="font-semibold text-[#E6E9EC] group-hover:text-[#8ecdfc]">Fuel Mass Flow (Wf)</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Sensor S-518 · Manifold Flow</span>
+</div>
+</td>
+<td class="py-2.5 text-right font-mono-metric text-mono-metric text-[#E6E9EC]">
+                1,840 kg/h
+              </td>
+<td class="py-2.5 text-right font-mono-code text-mono-code text-[#9AA4AE]">
+                1,850 kg/h Nom
+              </td>
+<td class="py-2.5 text-right">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#16301D] border border-[#3FA34D]/40 text-[#3FA34D] font-mono-code text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3FA34D]"></span>
+                  Nominal
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Rule Diagnostic Fallback Callout -->
+<div class="mt-3 p-2.5 rounded-[4px] bg-[#14181C] border border-[#2B323A] flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[16px] text-[#D9A21B] mt-0.5 shrink-0">rule</span>
+<div class="flex flex-col">
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">Rule Engine Fallback Active</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE] leading-relaxed">
+              Condition triggered: Turbine Bearing Wear exceeded allowable safety deviation at <span class="text-[#E6E9EC] font-semibold">10:24 IST</span>. Scheduled ground turnaround mandatory.
+            </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Lower Section: Telemetry Charts & SHAP Attribution (3-card Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-b border-[#2B323A] bg-[#14181C]">
+<!-- Card 1: 60-Minute Telemetry Trend Chart -->
+<div class="p-4 border-b lg:border-b-0 border-r border-[#2B323A] bg-[#1C2127]/40 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-[#2B323A]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#8ecdfc]">show_chart</span>
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">60-Min Vibration &amp; Temp Trend</span>
+</div>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">T-60m to Now</span>
+</div>
+<p class="font-body-default text-body-default text-[#9AA4AE] text-[13px] mt-2 mb-3">
+          Sharp vibration spike detected in final 15 minutes, breaching critical threshold.
+        </p>
+<!-- SVG Line Chart Visual -->
+<div class="w-full h-40 bg-[#101418] rounded-[4px] border border-[#2B323A] p-2 relative flex flex-col justify-between">
+<!-- Threshold Legend inside chart -->
+<div class="flex items-center justify-between font-mono-code text-[10px] text-[#9AA4AE] z-10">
+<span class="flex items-center gap-1 text-[#D64545]"><span class="w-2 h-0.5 bg-[#D64545] border-dashed"></span> Limit 2.2 mm/s</span>
+<span class="flex items-center gap-1 text-[#8ecdfc]"><span class="w-2 h-0.5 bg-[#8ecdfc]"></span> RMS Vibration</span>
+<span class="flex items-center gap-1 text-[#D9A21B]"><span class="w-2 h-0.5 bg-[#D9A21B]"></span> T48 / 100</span>
+</div>
+<svg class="w-full h-28 overflow-visible mt-2" fill="none" viewbox="0 0 300 100">
+<!-- Grid Lines -->
+<line stroke="#2B323A" stroke-dasharray="2 2" stroke-width="0.75" x1="0" x2="300" y1="20" y2="20"></line>
+<line stroke="#2B323A" stroke-dasharray="2 2" stroke-width="0.75" x1="0" x2="300" y1="50" y2="50"></line>
+<line stroke="#2B323A" stroke-dasharray="2 2" stroke-width="0.75" x1="0" x2="300" y1="80" y2="80"></line>
+<!-- Critical Threshold Line (at y=45 corresponds to 2.2 mm/s) -->
+<line stroke="#D64545" stroke-dasharray="4 3" stroke-width="1.2" x1="0" x2="300" y1="45" y2="45"></line>
+<!-- T48 Trend Curve (Amber) -->
+<path d="M0,72 Q40,70 80,68 T160,65 T220,50 T260,35 T300,24" fill="none" stroke="#D9A21B" stroke-width="1.8"></path>
+<!-- Vibration RMS Curve (Secondary / Blue with spike to Red) -->
+<path d="M0,82 Q30,80 60,83 T120,80 T180,78 T220,72 T245,50 T270,30 T300,12" fill="none" stroke="#8ecdfc" stroke-width="2"></path>
+<!-- Breach Spike Indicator Circle -->
+<circle cx="270" cy="30" fill="#D64545" r="3"></circle>
+<circle cx="300" cy="12" fill="#D64545" r="3.5" stroke="#ffffff" stroke-width="1"></circle>
+</svg>
+<div class="flex justify-between font-mono-code text-[9px] text-[#9AA4AE] border-t border-[#2B323A]/40 pt-1">
+<span>13:12</span>
+<span>13:30</span>
+<span>13:50</span>
+<span class="text-[#D64545] font-semibold">14:12 (Spike)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-[#9AA4AE] mt-3">
+<span>Peak Acceleration: <span class="text-[#ffb4ab] font-semibold">4.18 G</span></span>
+<span>Sampling: <span class="text-[#E6E9EC]">10 Hz Real-Time</span></span>
+</div>
+</div>
+<!-- Card 2: RUL Degradation Trend vs Maintenance Threshold -->
+<div class="p-4 border-b md:border-b-0 border-r border-[#2B323A] bg-[#1C2127]/40 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-[#2B323A]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#D64545]">trending_down</span>
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">RUL Runway vs Depot Threshold</span>
+</div>
+<span class="font-mono-code text-[11px] text-[#D64545] font-semibold">Grounding &lt; 48h</span>
+</div>
+<p class="font-body-default text-body-default text-[#9AA4AE] text-[13px] mt-2 mb-3">
+          Degradation rate accelerated 4.2x faster than nominal baseline after Cycle 42.
+        </p>
+<!-- RUL Projection SVG -->
+<div class="w-full h-40 bg-[#101418] rounded-[4px] border border-[#2B323A] p-2 relative flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono-code text-[10px] text-[#9AA4AE]">
+<span class="text-[#D64545]">Threshold: 25 Cycles</span>
+<span class="text-[#ffb4ab] font-semibold">Current RUL: 8 Cycles</span>
+</div>
+<svg class="w-full h-28 overflow-visible mt-2" fill="none" viewbox="0 0 300 100">
+<!-- Shaded Risk Horizon -->
+<rect fill="#D64545" fill-opacity="0.08" height="45" width="300" x="0" y="55"></rect>
+<!-- Depot Ground Threshold Line (y=55) -->
+<line stroke="#D64545" stroke-dasharray="3 3" stroke-width="1.2" x1="0" x2="300" y1="55" y2="55"></line>
+<!-- Nominal Path (Grayed) -->
+<path d="M0,15 L100,25 L200,38 L300,50" stroke="#45483E" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<!-- Actual Accelerated Decay Curve (Blue transitioning to Red) -->
+<path d="M0,15 L70,22 L140,32 L200,52 L250,75 L285,88" stroke="#D64545" stroke-width="2.2"></path>
+<circle cx="285" cy="88" fill="#D64545" r="4" stroke="#ffffff" stroke-width="1.2"></circle>
+</svg>
+<div class="flex justify-between font-mono-code text-[9px] text-[#9AA4AE] border-t border-[#2B323A]/40 pt-1">
+<span>Cycle 0 (Fresh)</span>
+<span>Cycle 30</span>
+<span>Threshold (25)</span>
+<span class="text-[#D64545] font-semibold">Cycle 48 (Current: 8)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-[#9AA4AE] mt-3">
+<span>Baseline MTBF: <span class="text-[#E6E9EC]">480h</span></span>
+<span>Est. Replacement: <span class="text-[#ffb4ab]">Stage 2 Blades</span></span>
+</div>
+</div>
+<!-- Card 3: SHAP Feature Importance (Attribution Bars) -->
+<div class="p-4 bg-[#1C2127]/40 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 border-b border-[#2B323A]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#8ecdfc]">bar_chart</span>
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">SHAP Feature Contribution</span>
+</div>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">Impact on Score 0.91</span>
+</div>
+<p class="font-body-default text-body-default text-[#9AA4AE] text-[13px] mt-2 mb-2">
+          Top sensor drivers elevating failure probability model inference:
+        </p>
+<!-- Horizontal Bar Rankings -->
+<div class="space-y-2 font-mono-code text-mono-code mt-1">
+<!-- Feature 1 -->
+<div>
+<div class="flex justify-between text-[11px] text-[#E6E9EC] mb-0.5">
+<span>1. Turbine Bearing Vibration</span>
+<span class="text-[#D64545] font-semibold">+0.38</span>
+</div>
+<div class="w-full bg-[#14181C] h-2 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#D64545] h-full" style="width: 76%"></div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div>
+<div class="flex justify-between text-[11px] text-[#E6E9EC] mb-0.5">
+<span>2. EGT Delta T48</span>
+<span class="text-[#D64545] font-semibold">+0.29</span>
+</div>
+<div class="w-full bg-[#14181C] h-2 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#D64545]/80 h-full" style="width: 58%"></div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div>
+<div class="flex justify-between text-[11px] text-[#E6E9EC] mb-0.5">
+<span>3. Oil Pressure Jitter</span>
+<span class="text-[#D9A21B] font-semibold">+0.14</span>
+</div>
+<div class="w-full bg-[#14181C] h-2 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#D9A21B] h-full" style="width: 28%"></div>
+</div>
+</div>
+<!-- Feature 4 -->
+<div>
+<div class="flex justify-between text-[11px] text-[#E6E9EC] mb-0.5">
+<span>4. HPC Pressure Drop</span>
+<span class="text-[#8ecdfc] font-semibold">+0.07</span>
+</div>
+<div class="w-full bg-[#14181C] h-2 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#8ecdfc] h-full" style="width: 14%"></div>
+</div>
+</div>
+<!-- Feature 5 -->
+<div>
+<div class="flex justify-between text-[11px] text-[#E6E9EC] mb-0.5">
+<span>5. Fuel Nozzle Ratio</span>
+<span class="text-[#9AA4AE]">+0.03</span>
+</div>
+<div class="w-full bg-[#14181C] h-2 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#9AA4AE] h-full" style="width: 6%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-[#9AA4AE] pt-2 border-t border-[#2B323A] mt-2">
+<span>Model Version: <span class="text-[#E6E9EC]">V-PROD-2.8</span></span>
+<span>Sample Rate: <span class="text-[#E6E9EC]">100% Raw</span></span>
+</div>
+</div>
+</section>
+<!-- Bottom Panel: Component Health Breakdown (5 Core Engine Stages) -->
+<section class="w-full bg-[#14181C] p-6">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#8ecdfc]">view_week</span>
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">Component Stage Health Matrix</span>
+<span class="font-mono-code text-[11px] text-[#9AA4AE]">(5 Major Subsystems · Turbofan-TF1 Core)</span>
+</div>
+<div class="flex items-center gap-2 font-mono-code text-[11px] text-[#9AA4AE]">
+<span>Health Scale:</span>
+<span class="text-[#3FA34D]">70–100 Healthy</span>
+<span>·</span>
+<span class="text-[#D9A21B]">40–69 Watch</span>
+<span>·</span>
+<span class="text-[#D64545]">0–39 Critical</span>
+</div>
+</div>
+<!-- 5-Stage Dense Bento Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+<!-- Stage 1: Fan Stage -->
+<div class="p-3 bg-[#1C2127] rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">1. Fan Stage</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#16301D] text-[#3FA34D] border border-[#3FA34D]/40 font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3FA34D]"></span>
+            Healthy
+          </span>
+</div>
+<div class="my-2.5">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-mono-metric text-[20px] font-semibold text-[#3FA34D]">92</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#3FA34D] h-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="font-mono-code text-[11px] text-[#9AA4AE] flex flex-col gap-0.5 border-t border-[#2B323A]/50 pt-2">
+<span>Wear: <span class="text-[#E6E9EC]">Nominal (0.12mm)</span></span>
+<span>Alerts: <span class="text-[#3FA34D]">0 Active</span></span>
+</div>
+</div>
+<!-- Stage 2: Compressor LPC/HPC -->
+<div class="p-3 bg-[#1C2127] rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">2. Compressor</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#16301D] text-[#3FA34D] border border-[#3FA34D]/40 font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3FA34D]"></span>
+            Healthy
+          </span>
+</div>
+<div class="my-2.5">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-mono-metric text-[20px] font-semibold text-[#3FA34D]">76</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#3FA34D] h-full" style="width: 76%"></div>
+</div>
+</div>
+<div class="font-mono-code text-[11px] text-[#9AA4AE] flex flex-col gap-0.5 border-t border-[#2B323A]/50 pt-2">
+<span>Blades: <span class="text-[#E6E9EC]">Stage 4 Nom.</span></span>
+<span>Diff. Press: <span class="text-[#E6E9EC]">1.02 Ratio</span></span>
+</div>
+</div>
+<!-- Stage 3: Combustion Chamber -->
+<div class="p-3 bg-[#1C2127] rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">3. Combustion</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#382B13] text-[#D9A21B] border border-[#D9A21B]/40 font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D9A21B]"></span>
+            Watch
+          </span>
+</div>
+<div class="my-2.5">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-mono-metric text-[20px] font-semibold text-[#D9A21B]">54</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#D9A21B] h-full" style="width: 54%"></div>
+</div>
+</div>
+<div class="font-mono-code text-[11px] text-[#9AA4AE] flex flex-col gap-0.5 border-t border-[#2B323A]/50 pt-2">
+<span>Liner: <span class="text-[#D9A21B]">Thermal Hotspot</span></span>
+<span>Pattern factor: <span class="text-[#E6E9EC]">0.22</span></span>
+</div>
+</div>
+<!-- Stage 4: Turbine HPT/LPT (CRITICAL) -->
+<div class="p-3 bg-[#1C2127] rounded-[4px] border border-[#D64545]/60 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-8 h-8 bg-[#D64545]/10 rounded-bl-[12px] flex items-top justify-end pr-1 pt-1">
+<span class="material-symbols-outlined text-[14px] text-[#D64545]">error</span>
+</div>
+<div class="flex items-start justify-between">
+<span class="font-body-strong text-body-strong text-[#ffb4ab]">4. Turbine (HPT)</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#3B1C1C] text-[#ffb4ab] border border-[#D64545] font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D64545]"></span>
+            Critical
+          </span>
+</div>
+<div class="my-2.5">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-mono-metric text-[20px] font-semibold text-[#D64545]">18</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#D64545] h-full" style="width: 18%"></div>
+</div>
+</div>
+<div class="font-mono-code text-[11px] text-[#ffb4ab] flex flex-col gap-0.5 border-t border-[#2B323A]/50 pt-2">
+<span>Fault: <span class="text-[#ffffff] font-semibold">High Bearing Wear</span></span>
+<span>Aero thermal: <span class="text-[#ffb4ab]">Severe creep</span></span>
+</div>
+</div>
+<!-- Stage 5: Main Shaft & Bearings -->
+<div class="p-3 bg-[#1C2127] rounded-[4px] border border-[#2B323A] flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-body-strong text-body-strong text-[#E6E9EC]">5. Shaft &amp; Brg</span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-[4px] bg-[#16301D] text-[#3FA34D] border border-[#3FA34D]/40 font-mono-code text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#3FA34D]"></span>
+            Healthy
+          </span>
+</div>
+<div class="my-2.5">
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-mono-metric text-[20px] font-semibold text-[#3FA34D]">84</span>
+<span class="font-mono-code text-mono-code text-[#9AA4AE]">/ 100</span>
+</div>
+<div class="w-full bg-[#14181C] h-1.5 rounded-[2px] overflow-hidden border border-[#2B323A]">
+<div class="bg-[#3FA34D] h-full" style="width: 84%"></div>
+</div>
+</div>
+<div class="font-mono-code text-[11px] text-[#9AA4AE] flex flex-col gap-0.5 border-t border-[#2B323A]/50 pt-2">
+<span>Shaft Runout: <span class="text-[#E6E9EC]">0.03 mm</span></span>
+<span>Alignment: <span class="text-[#3FA34D]">Verified OK</span></span>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-mono-code">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-mono-code">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

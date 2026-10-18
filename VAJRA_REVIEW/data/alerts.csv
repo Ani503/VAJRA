@@ -1,0 +1,24 @@
+alert_id,timestamp,engine_id,aircraft_id,severity,trigger,anomaly_score,rul_cycles,status
+ALT-0010,2026-10-10 21:12,ENG-017,VJ-110,Medium,Low RUL,0.555,80,Unacknowledged
+ALT-0005,2026-10-10 20:58,ENG-012,VJ-107,Medium,EGT margin low,0.596,83,Resolved
+ALT-0001,2026-10-10 19:51,ENG-004,VJ-102,Medium,EGT margin low,0.37,70,In Progress
+ALT-0019,2026-10-10 19:11,ENG-027,VJ-116,Medium,Vibration > limit,0.529,74,In Progress
+ALT-0009,2026-10-10 19:01,ENG-016,VJ-109,High,Pressure deviation,0.696,7,Resolved
+ALT-0017,2026-10-10 18:44,ENG-027,VJ-116,Medium,Pressure deviation,0.551,74,Acknowledged
+ALT-0012,2026-10-10 15:35,ENG-020,VJ-112,Medium,Vibration > limit,0.527,50,Resolved
+ALT-0004,2026-10-10 15:10,ENG-010,VJ-106,Medium,Pressure deviation,0.47,82,Resolved
+ALT-0022,2026-10-10 14:53,ENG-041,VJ-124,Medium,Pressure deviation,0.542,65,In Progress
+ALT-0015,2026-10-10 13:08,ENG-022,VJ-113,Medium,Oil pressure drop,0.589,82,In Progress
+ALT-0002,2026-10-10 12:15,ENG-008,VJ-105,High,Pressure deviation,0.712,6,In Progress
+ALT-0011,2026-10-10 11:23,ENG-017,VJ-110,Medium,EGT margin low,0.608,80,In Progress
+ALT-0007,2026-10-10 10:38,ENG-013,VJ-108,High,Anomaly score high,0.832,7,Unacknowledged
+ALT-0018,2026-10-10 08:39,ENG-027,VJ-116,Medium,Pressure deviation,0.557,74,In Progress
+ALT-0003,2026-10-10 06:27,ENG-008,VJ-105,High,EGT margin low,0.727,6,In Progress
+ALT-0014,2026-10-10 06:21,ENG-022,VJ-113,Medium,Oil pressure drop,0.622,82,Unacknowledged
+ALT-0006,2026-10-10 05:28,ENG-012,VJ-107,Medium,Pressure deviation,0.57,83,Unacknowledged
+ALT-0023,2026-10-10 05:12,ENG-042,VJ-124,Medium,Vibration > limit,0.455,84,Acknowledged
+ALT-0016,2026-10-10 04:10,ENG-024,VJ-114,Medium,Vibration > limit,0.462,46,In Progress
+ALT-0008,2026-10-10 03:15,ENG-013,VJ-108,High,EGT margin low,0.723,7,In Progress
+ALT-0013,2026-10-10 02:57,ENG-022,VJ-113,Medium,Pressure deviation,0.662,82,In Progress
+ALT-0020,2026-10-10 01:55,ENG-028,VJ-116,Medium,Pressure deviation,0.507,35,In Progress
+ALT-0021,2026-10-10 01:32,ENG-032,VJ-118,Medium,Low RUL,0.69,73,Resolved

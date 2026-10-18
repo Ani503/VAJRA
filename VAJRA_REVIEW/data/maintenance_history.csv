@@ -1,0 +1,451 @@
+record_id,engine_id,aircraft_id,date,maintenance_type,category,downtime_hours,technician_id,base_id,fault_found,cost_inr_lakh
+MR-00182,ENG-035,VJ-120,2024-04-25,Sensor Replacement,Unscheduled,7,TECH-004,BASE03,None,3.93
+MR-00324,ENG-017,VJ-110,2024-04-25,Scheduled Inspection,Routine,10,TECH-018,BASE04,None,0.42
+MR-00087,ENG-033,VJ-119,2024-05-01,Fan Blade Replacement,Unscheduled,40,TECH-028,BASE02,Wear,19.61
+MR-00445,ENG-011,VJ-106,2024-05-03,Bearing Replacement,Unscheduled,77,TECH-022,BASE05,Foreign object damage,23.81
+MR-00071,ENG-001,VJ-101,2024-05-04,Fan Blade Replacement,Unscheduled,48,TECH-028,BASE01,Foreign object damage,6.73
+MR-00356,ENG-007,VJ-104,2024-05-06,Borescope Inspection,Routine,16,TECH-004,BASE05,None,4.38
+MR-00018,ENG-021,VJ-112,2024-05-06,Major Overhaul,Scheduled,414,TECH-037,BASE01,Sensor drift,73.0
+MR-00432,ENG-034,VJ-120,2024-05-18,Oil System Service,Routine,7,TECH-039,BASE03,None,0.43
+MR-00311,ENG-036,VJ-121,2024-05-24,Fan Blade Replacement,Unscheduled,48,TECH-038,BASE03,Foreign object damage,20.07
+MR-00405,ENG-025,VJ-114,2024-05-24,Compressor Wash,Routine,14,TECH-020,BASE04,Wear,1.15
+MR-00025,ENG-018,VJ-110,2024-05-25,Major Overhaul,Scheduled,366,TECH-029,BASE04,Sensor drift,48.22
+MR-00416,ENG-016,VJ-109,2024-05-26,Major Overhaul,Scheduled,369,TECH-007,BASE04,Foreign object damage,31.81
+MR-00107,ENG-037,VJ-121,2024-05-30,Major Overhaul,Scheduled,254,TECH-003,BASE03,Crack,54.14
+MR-00164,ENG-038,VJ-122,2024-05-30,Turbine Blade Repair,Unscheduled,98,TECH-002,BASE01,Leak,13.42
+MR-00263,ENG-012,VJ-107,2024-05-31,Fan Blade Replacement,Unscheduled,51,TECH-033,BASE01,Wear,12.35
+MR-00151,ENG-024,VJ-114,2024-05-31,Turbine Blade Repair,Unscheduled,102,TECH-020,BASE04,Foreign object damage,14.47
+MR-00177,ENG-025,VJ-114,2024-06-01,Major Overhaul,Scheduled,364,TECH-009,BASE04,Foreign object damage,122.38
+MR-00067,ENG-007,VJ-104,2024-06-04,Bearing Replacement,Unscheduled,83,TECH-022,BASE05,Wear,26.27
+MR-00083,ENG-039,VJ-122,2024-06-04,Oil System Service,Routine,5,TECH-035,BASE01,None,1.87
+MR-00284,ENG-027,VJ-116,2024-06-06,Oil System Service,Routine,7,TECH-019,BASE02,Wear,0.65
+MR-00285,ENG-001,VJ-101,2024-06-14,Fan Blade Replacement,Unscheduled,37,TECH-039,BASE01,None,17.02
+MR-00179,ENG-027,VJ-116,2024-06-16,Compressor Wash,Routine,11,TECH-018,BASE02,None,1.02
+MR-00134,ENG-030,VJ-117,2024-06-20,Compressor Wash,Routine,8,TECH-028,BASE05,None,6.14
+MR-00223,ENG-006,VJ-104,2024-06-22,Turbine Blade Repair,Unscheduled,106,TECH-007,BASE05,Leak,4.22
+MR-00123,ENG-036,VJ-121,2024-06-24,Sensor Replacement,Unscheduled,5,TECH-016,BASE03,Foreign object damage,2.26
+MR-00328,ENG-030,VJ-117,2024-06-25,Major Overhaul,Scheduled,213,TECH-036,BASE05,Wear,44.94
+MR-00273,ENG-028,VJ-116,2024-06-26,Scheduled Inspection,Routine,9,TECH-022,BASE02,None,3.56
+MR-00173,ENG-026,VJ-115,2024-06-27,Compressor Wash,Routine,13,TECH-019,BASE03,None,6.68
+MR-00367,ENG-026,VJ-115,2024-06-27,Major Overhaul,Scheduled,261,TECH-025,BASE03,Wear,84.11
+MR-00415,ENG-005,VJ-103,2024-06-27,Oil System Service,Routine,8,TECH-029,BASE03,None,4.09
+MR-00313,ENG-035,VJ-120,2024-06-29,Oil System Service,Routine,7,TECH-009,BASE03,None,0.73
+MR-00069,ENG-026,VJ-115,2024-06-30,Sensor Replacement,Unscheduled,4,TECH-007,BASE03,Sensor drift,5.87
+MR-00444,ENG-012,VJ-107,2024-07-07,Oil System Service,Routine,5,TECH-029,BASE01,None,1.06
+MR-00028,ENG-002,VJ-101,2024-07-11,Scheduled Inspection,Routine,9,TECH-038,BASE01,None,4.68
+MR-00147,ENG-031,VJ-118,2024-07-11,Fan Blade Replacement,Unscheduled,55,TECH-010,BASE03,Wear,16.32
+MR-00374,ENG-041,VJ-124,2024-07-14,Bearing Replacement,Unscheduled,59,TECH-015,BASE04,Leak,19.52
+MR-00319,ENG-031,VJ-118,2024-07-15,Bearing Replacement,Unscheduled,89,TECH-002,BASE03,Sensor drift,21.04
+MR-00204,ENG-009,VJ-105,2024-07-25,Oil System Service,Routine,8,TECH-038,BASE05,None,5.26
+MR-00427,ENG-037,VJ-121,2024-07-27,Turbine Blade Repair,Unscheduled,94,TECH-014,BASE03,Leak,9.04
+MR-00043,ENG-011,VJ-106,2024-07-30,Sensor Replacement,Unscheduled,4,TECH-035,BASE05,None,2.32
+MR-00323,ENG-017,VJ-110,2024-08-02,Compressor Wash,Routine,8,TECH-017,BASE04,Wear,5.33
+MR-00315,ENG-004,VJ-102,2024-08-03,Fan Blade Replacement,Unscheduled,69,TECH-035,BASE03,Leak,3.25
+MR-00158,ENG-036,VJ-121,2024-08-04,Sensor Replacement,Unscheduled,5,TECH-021,BASE03,Sensor drift,5.5
+MR-00084,ENG-037,VJ-121,2024-08-05,Fan Blade Replacement,Unscheduled,49,TECH-005,BASE03,Leak,19.23
+MR-00408,ENG-005,VJ-103,2024-08-13,Fan Blade Replacement,Unscheduled,44,TECH-008,BASE03,Leak,15.55
+MR-00214,ENG-013,VJ-108,2024-08-13,Fan Blade Replacement,Unscheduled,52,TECH-028,BASE03,Foreign object damage,11.49
+MR-00417,ENG-010,VJ-106,2024-08-15,Scheduled Inspection,Routine,7,TECH-032,BASE05,None,2.71
+MR-00150,ENG-009,VJ-105,2024-08-15,Sensor Replacement,Unscheduled,5,TECH-011,BASE05,Wear,4.87
+MR-00330,ENG-004,VJ-102,2024-08-19,Bearing Replacement,Unscheduled,45,TECH-030,BASE03,Leak,22.5
+MR-00331,ENG-020,VJ-112,2024-08-20,Compressor Wash,Routine,10,TECH-024,BASE01,None,5.94
+MR-00333,ENG-015,VJ-109,2024-08-21,Sensor Replacement,Unscheduled,6,TECH-013,BASE04,Leak,3.42
+MR-00031,ENG-026,VJ-115,2024-08-21,Major Overhaul,Scheduled,246,TECH-027,BASE03,Foreign object damage,108.53
+MR-00241,ENG-014,VJ-108,2024-08-22,Borescope Inspection,Routine,17,TECH-009,BASE03,None,3.92
+MR-00398,ENG-041,VJ-124,2024-08-22,Oil System Service,Routine,7,TECH-028,BASE04,Wear,2.47
+MR-00181,ENG-009,VJ-105,2024-09-02,Oil System Service,Routine,6,TECH-020,BASE05,None,3.6
+MR-00239,ENG-026,VJ-115,2024-09-02,Scheduled Inspection,Routine,11,TECH-038,BASE03,Wear,4.16
+MR-00316,ENG-034,VJ-120,2024-09-03,Borescope Inspection,Routine,14,TECH-039,BASE03,Wear,0.45
+MR-00428,ENG-036,VJ-121,2024-09-05,Major Overhaul,Scheduled,284,TECH-038,BASE03,Leak,112.11
+MR-00274,ENG-001,VJ-101,2024-09-05,Borescope Inspection,Routine,11,TECH-023,BASE01,None,2.05
+MR-00440,ENG-014,VJ-108,2024-09-07,Compressor Wash,Routine,12,TECH-002,BASE03,Wear,3.33
+MR-00229,ENG-040,VJ-123,2024-09-09,Borescope Inspection,Routine,10,TECH-028,BASE02,None,7.73
+MR-00051,ENG-028,VJ-116,2024-09-10,Fan Blade Replacement,Unscheduled,59,TECH-036,BASE02,Foreign object damage,13.93
+MR-00129,ENG-015,VJ-109,2024-09-13,Compressor Wash,Routine,12,TECH-037,BASE04,None,7.93
+MR-00088,ENG-023,VJ-113,2024-09-13,Major Overhaul,Scheduled,395,TECH-022,BASE04,Crack,117.25
+MR-00168,ENG-024,VJ-114,2024-09-15,Bearing Replacement,Unscheduled,57,TECH-013,BASE04,Leak,25.28
+MR-00447,ENG-017,VJ-110,2024-09-15,Fan Blade Replacement,Unscheduled,48,TECH-030,BASE04,Wear,8.89
+MR-00081,ENG-021,VJ-112,2024-09-15,Major Overhaul,Scheduled,212,TECH-012,BASE01,Sensor drift,46.95
+MR-00242,ENG-019,VJ-111,2024-09-16,Borescope Inspection,Routine,12,TECH-004,BASE05,Wear,4.6
+MR-00389,ENG-023,VJ-113,2024-09-19,Sensor Replacement,Unscheduled,6,TECH-004,BASE04,Foreign object damage,4.04
+MR-00011,ENG-012,VJ-107,2024-09-19,Turbine Blade Repair,Unscheduled,100,TECH-019,BASE01,Crack,23.39
+MR-00058,ENG-002,VJ-101,2024-09-19,Turbine Blade Repair,Unscheduled,83,TECH-020,BASE01,None,20.93
+MR-00066,ENG-021,VJ-112,2024-09-22,Oil System Service,Routine,4,TECH-034,BASE01,Wear,2.2
+MR-00283,ENG-009,VJ-105,2024-09-24,Scheduled Inspection,Routine,8,TECH-002,BASE05,None,2.36
+MR-00391,ENG-002,VJ-101,2024-09-24,Major Overhaul,Scheduled,236,TECH-021,BASE01,Leak,18.9
+MR-00240,ENG-032,VJ-118,2024-09-25,Sensor Replacement,Unscheduled,6,TECH-006,BASE03,Leak,4.99
+MR-00425,ENG-007,VJ-104,2024-10-01,Sensor Replacement,Unscheduled,5,TECH-001,BASE05,Crack,3.29
+MR-00048,ENG-015,VJ-109,2024-10-06,Fan Blade Replacement,Unscheduled,70,TECH-012,BASE04,Leak,9.73
+MR-00433,ENG-001,VJ-101,2024-10-08,Fan Blade Replacement,Unscheduled,65,TECH-036,BASE01,None,5.17
+MR-00446,ENG-034,VJ-120,2024-10-08,Fan Blade Replacement,Unscheduled,52,TECH-004,BASE03,Wear,10.06
+MR-00200,ENG-040,VJ-123,2024-10-10,Fan Blade Replacement,Unscheduled,62,TECH-018,BASE02,Sensor drift,14.64
+MR-00161,ENG-002,VJ-101,2024-10-10,Sensor Replacement,Unscheduled,5,TECH-011,BASE01,Foreign object damage,5.96
+MR-00293,ENG-013,VJ-108,2024-10-14,Bearing Replacement,Unscheduled,55,TECH-016,BASE03,Wear,14.43
+MR-00201,ENG-003,VJ-102,2024-10-14,Scheduled Inspection,Routine,6,TECH-030,BASE03,None,3.77
+MR-00070,ENG-015,VJ-109,2024-10-18,Borescope Inspection,Routine,17,TECH-023,BASE04,None,3.73
+MR-00260,ENG-018,VJ-110,2024-10-18,Fan Blade Replacement,Unscheduled,41,TECH-027,BASE04,Crack,21.89
+MR-00314,ENG-011,VJ-106,2024-10-19,Sensor Replacement,Unscheduled,5,TECH-029,BASE05,Leak,2.58
+MR-00302,ENG-021,VJ-112,2024-10-20,Bearing Replacement,Unscheduled,46,TECH-021,BASE01,Foreign object damage,19.76
+MR-00099,ENG-001,VJ-101,2024-10-21,Scheduled Inspection,Routine,11,TECH-017,BASE01,None,3.79
+MR-00282,ENG-029,VJ-117,2024-10-22,Fan Blade Replacement,Unscheduled,41,TECH-012,BASE05,Leak,21.33
+MR-00386,ENG-036,VJ-121,2024-10-22,Bearing Replacement,Unscheduled,51,TECH-023,BASE03,None,2.65
+MR-00287,ENG-004,VJ-102,2024-10-23,Fan Blade Replacement,Unscheduled,40,TECH-002,BASE03,None,3.88
+MR-00410,ENG-032,VJ-118,2024-10-23,Fan Blade Replacement,Unscheduled,66,TECH-019,BASE03,Crack,1.65
+MR-00059,ENG-007,VJ-104,2024-10-24,Fan Blade Replacement,Unscheduled,34,TECH-001,BASE05,None,5.29
+MR-00337,ENG-029,VJ-117,2024-10-27,Sensor Replacement,Unscheduled,5,TECH-028,BASE05,Sensor drift,3.67
+MR-00176,ENG-024,VJ-114,2024-10-28,Major Overhaul,Scheduled,225,TECH-032,BASE04,Foreign object damage,88.84
+MR-00094,ENG-009,VJ-105,2024-10-28,Compressor Wash,Routine,9,TECH-036,BASE05,Wear,4.48
+MR-00090,ENG-036,VJ-121,2024-10-29,Bearing Replacement,Unscheduled,82,TECH-011,BASE03,Sensor drift,24.24
+MR-00218,ENG-016,VJ-109,2024-10-30,Oil System Service,Routine,8,TECH-035,BASE04,Wear,2.94
+MR-00075,ENG-027,VJ-116,2024-10-30,Bearing Replacement,Unscheduled,88,TECH-020,BASE02,Foreign object damage,13.83
+MR-00005,ENG-039,VJ-122,2024-11-03,Compressor Wash,Routine,14,TECH-014,BASE01,None,6.69
+MR-00097,ENG-021,VJ-112,2024-11-08,Compressor Wash,Routine,8,TECH-036,BASE01,Wear,4.75
+MR-00249,ENG-006,VJ-104,2024-11-12,Turbine Blade Repair,Unscheduled,75,TECH-006,BASE05,Leak,23.23
+MR-00244,ENG-034,VJ-120,2024-11-13,Borescope Inspection,Routine,17,TECH-003,BASE03,None,8.13
+MR-00139,ENG-035,VJ-120,2024-11-14,Compressor Wash,Routine,9,TECH-035,BASE03,Wear,6.16
+MR-00418,ENG-009,VJ-105,2024-11-14,Oil System Service,Routine,6,TECH-027,BASE05,Wear,6.32
+MR-00001,ENG-007,VJ-104,2024-11-17,Sensor Replacement,Unscheduled,4,TECH-029,BASE05,Foreign object damage,3.18
+MR-00431,ENG-004,VJ-102,2024-11-20,Borescope Inspection,Routine,15,TECH-011,BASE03,Wear,3.14
+MR-00368,ENG-017,VJ-110,2024-11-25,Major Overhaul,Scheduled,349,TECH-016,BASE04,None,12.08
+MR-00063,ENG-022,VJ-113,2024-11-26,Borescope Inspection,Routine,13,TECH-035,BASE04,None,2.92
+MR-00068,ENG-017,VJ-110,2024-11-29,Major Overhaul,Scheduled,410,TECH-032,BASE04,Foreign object damage,67.79
+MR-00060,ENG-030,VJ-117,2024-12-01,Major Overhaul,Scheduled,425,TECH-021,BASE05,Foreign object damage,33.03
+MR-00192,ENG-024,VJ-114,2024-12-03,Major Overhaul,Scheduled,427,TECH-018,BASE04,Sensor drift,20.31
+MR-00050,ENG-034,VJ-120,2024-12-06,Compressor Wash,Routine,10,TECH-005,BASE03,Wear,2.07
+MR-00261,ENG-025,VJ-114,2024-12-09,Oil System Service,Routine,7,TECH-007,BASE04,None,1.02
+MR-00291,ENG-017,VJ-110,2024-12-10,Bearing Replacement,Unscheduled,62,TECH-026,BASE04,Sensor drift,10.07
+MR-00072,ENG-004,VJ-102,2024-12-13,Bearing Replacement,Unscheduled,51,TECH-018,BASE03,Foreign object damage,4.82
+MR-00230,ENG-029,VJ-117,2024-12-14,Bearing Replacement,Unscheduled,64,TECH-037,BASE05,Foreign object damage,22.34
+MR-00172,ENG-042,VJ-124,2024-12-15,Oil System Service,Routine,5,TECH-021,BASE04,Wear,2.99
+MR-00076,ENG-021,VJ-112,2024-12-16,Major Overhaul,Scheduled,326,TECH-010,BASE01,None,19.36
+MR-00054,ENG-008,VJ-105,2024-12-19,Bearing Replacement,Unscheduled,89,TECH-024,BASE05,Wear,5.69
+MR-00292,ENG-015,VJ-109,2024-12-25,Scheduled Inspection,Routine,10,TECH-018,BASE04,None,0.98
+MR-00297,ENG-032,VJ-118,2024-12-25,Fan Blade Replacement,Unscheduled,54,TECH-023,BASE03,None,16.23
+MR-00363,ENG-010,VJ-106,2024-12-25,Fan Blade Replacement,Unscheduled,61,TECH-029,BASE05,Sensor drift,4.39
+MR-00156,ENG-028,VJ-116,2024-12-26,Turbine Blade Repair,Unscheduled,55,TECH-033,BASE02,Leak,3.55
+MR-00401,ENG-007,VJ-104,2024-12-28,Major Overhaul,Scheduled,332,TECH-010,BASE05,Leak,33.66
+MR-00296,ENG-019,VJ-111,2024-12-30,Bearing Replacement,Unscheduled,57,TECH-027,BASE05,Wear,6.21
+MR-00375,ENG-025,VJ-114,2024-12-31,Bearing Replacement,Unscheduled,58,TECH-018,BASE04,None,24.22
+MR-00357,ENG-035,VJ-120,2025-01-03,Turbine Blade Repair,Unscheduled,73,TECH-034,BASE03,Crack,8.99
+MR-00235,ENG-002,VJ-101,2025-01-03,Major Overhaul,Scheduled,441,TECH-020,BASE01,Foreign object damage,36.62
+MR-00384,ENG-020,VJ-112,2025-01-03,Sensor Replacement,Unscheduled,7,TECH-001,BASE01,Wear,5.09
+MR-00290,ENG-035,VJ-120,2025-01-06,Turbine Blade Repair,Unscheduled,95,TECH-024,BASE03,Crack,31.5
+MR-00190,ENG-018,VJ-110,2025-01-07,Major Overhaul,Scheduled,216,TECH-018,BASE04,Wear,99.47
+MR-00145,ENG-015,VJ-109,2025-01-09,Major Overhaul,Scheduled,346,TECH-037,BASE04,Leak,46.51
+MR-00320,ENG-034,VJ-120,2025-01-15,Borescope Inspection,Routine,10,TECH-029,BASE03,None,0.72
+MR-00004,ENG-010,VJ-106,2025-01-16,Borescope Inspection,Routine,13,TECH-006,BASE05,None,4.49
+MR-00121,ENG-030,VJ-117,2025-01-20,Sensor Replacement,Unscheduled,4,TECH-006,BASE05,None,4.18
+MR-00035,ENG-020,VJ-112,2025-01-20,Major Overhaul,Scheduled,425,TECH-005,BASE01,None,115.63
+MR-00232,ENG-008,VJ-105,2025-01-21,Sensor Replacement,Unscheduled,3,TECH-037,BASE05,None,2.67
+MR-00352,ENG-038,VJ-122,2025-01-23,Turbine Blade Repair,Unscheduled,78,TECH-014,BASE01,Crack,23.24
+MR-00236,ENG-037,VJ-121,2025-01-25,Compressor Wash,Routine,14,TECH-010,BASE03,None,5.84
+MR-00248,ENG-030,VJ-117,2025-01-28,Compressor Wash,Routine,8,TECH-010,BASE05,Wear,1.55
+MR-00365,ENG-004,VJ-102,2025-01-31,Sensor Replacement,Unscheduled,6,TECH-006,BASE03,None,4.49
+MR-00219,ENG-011,VJ-106,2025-02-02,Bearing Replacement,Unscheduled,50,TECH-005,BASE05,Crack,20.59
+MR-00388,ENG-030,VJ-117,2025-02-04,Oil System Service,Routine,5,TECH-032,BASE05,None,5.93
+MR-00253,ENG-027,VJ-116,2025-02-07,Fan Blade Replacement,Unscheduled,40,TECH-023,BASE02,Wear,7.96
+MR-00231,ENG-017,VJ-110,2025-02-10,Scheduled Inspection,Routine,11,TECH-016,BASE04,None,3.58
+MR-00256,ENG-026,VJ-115,2025-02-11,Bearing Replacement,Unscheduled,67,TECH-029,BASE03,Crack,7.27
+MR-00042,ENG-040,VJ-123,2025-02-13,Major Overhaul,Scheduled,336,TECH-030,BASE02,Wear,52.9
+MR-00288,ENG-005,VJ-103,2025-02-15,Oil System Service,Routine,6,TECH-030,BASE03,None,2.82
+MR-00247,ENG-005,VJ-103,2025-02-16,Oil System Service,Routine,6,TECH-017,BASE03,None,3.25
+MR-00089,ENG-028,VJ-116,2025-02-17,Borescope Inspection,Routine,11,TECH-012,BASE02,Wear,7.57
+MR-00394,ENG-041,VJ-124,2025-02-22,Major Overhaul,Scheduled,243,TECH-019,BASE04,Leak,82.24
+MR-00082,ENG-009,VJ-105,2025-02-23,Fan Blade Replacement,Unscheduled,41,TECH-031,BASE05,None,2.78
+MR-00304,ENG-012,VJ-107,2025-02-25,Turbine Blade Repair,Unscheduled,51,TECH-028,BASE01,None,29.85
+MR-00106,ENG-033,VJ-119,2025-03-01,Fan Blade Replacement,Unscheduled,66,TECH-007,BASE02,Sensor drift,5.36
+MR-00414,ENG-033,VJ-119,2025-03-03,Bearing Replacement,Unscheduled,86,TECH-025,BASE02,Leak,18.68
+MR-00033,ENG-026,VJ-115,2025-03-04,Turbine Blade Repair,Unscheduled,52,TECH-003,BASE03,Leak,18.25
+MR-00142,ENG-024,VJ-114,2025-03-05,Sensor Replacement,Unscheduled,6,TECH-004,BASE04,Wear,4.02
+MR-00421,ENG-032,VJ-118,2025-03-11,Major Overhaul,Scheduled,373,TECH-005,BASE03,None,54.83
+MR-00289,ENG-030,VJ-117,2025-03-11,Fan Blade Replacement,Unscheduled,48,TECH-022,BASE05,Crack,15.87
+MR-00307,ENG-033,VJ-119,2025-03-11,Sensor Replacement,Unscheduled,5,TECH-015,BASE02,Leak,1.92
+MR-00443,ENG-019,VJ-111,2025-03-11,Sensor Replacement,Unscheduled,6,TECH-007,BASE05,None,3.22
+MR-00045,ENG-012,VJ-107,2025-03-12,Compressor Wash,Routine,11,TECH-023,BASE01,Wear,3.78
+MR-00188,ENG-034,VJ-120,2025-03-13,Scheduled Inspection,Routine,6,TECH-012,BASE03,None,4.01
+MR-00395,ENG-008,VJ-105,2025-03-14,Fan Blade Replacement,Unscheduled,50,TECH-030,BASE05,Sensor drift,5.72
+MR-00183,ENG-017,VJ-110,2025-03-14,Compressor Wash,Routine,7,TECH-037,BASE04,None,1.9
+MR-00358,ENG-033,VJ-119,2025-03-16,Bearing Replacement,Unscheduled,52,TECH-037,BASE02,Foreign object damage,5.44
+MR-00294,ENG-034,VJ-120,2025-03-16,Turbine Blade Repair,Unscheduled,91,TECH-025,BASE03,Leak,2.39
+MR-00124,ENG-041,VJ-124,2025-03-17,Oil System Service,Routine,5,TECH-031,BASE04,None,2.77
+MR-00359,ENG-030,VJ-117,2025-03-18,Oil System Service,Routine,8,TECH-015,BASE05,Wear,2.47
+MR-00206,ENG-019,VJ-111,2025-03-21,Major Overhaul,Scheduled,428,TECH-003,BASE05,Foreign object damage,10.71
+MR-00441,ENG-025,VJ-114,2025-03-23,Oil System Service,Routine,7,TECH-013,BASE04,None,6.39
+MR-00437,ENG-006,VJ-104,2025-03-26,Turbine Blade Repair,Unscheduled,79,TECH-007,BASE05,Foreign object damage,2.83
+MR-00198,ENG-001,VJ-101,2025-03-28,Oil System Service,Routine,4,TECH-005,BASE01,Wear,4.05
+MR-00383,ENG-034,VJ-120,2025-03-28,Compressor Wash,Routine,13,TECH-017,BASE03,Wear,3.97
+MR-00193,ENG-020,VJ-112,2025-04-01,Borescope Inspection,Routine,9,TECH-009,BASE01,None,8.47
+MR-00073,ENG-014,VJ-108,2025-04-02,Oil System Service,Routine,8,TECH-037,BASE03,Wear,0.44
+MR-00029,ENG-003,VJ-102,2025-04-03,Compressor Wash,Routine,13,TECH-020,BASE03,Wear,4.11
+MR-00266,ENG-005,VJ-103,2025-04-04,Compressor Wash,Routine,10,TECH-033,BASE03,Wear,1.06
+MR-00184,ENG-027,VJ-116,2025-04-08,Compressor Wash,Routine,7,TECH-010,BASE02,None,0.88
+MR-00133,ENG-003,VJ-102,2025-04-09,Major Overhaul,Scheduled,315,TECH-023,BASE03,None,22.51
+MR-00354,ENG-035,VJ-120,2025-04-11,Oil System Service,Routine,6,TECH-032,BASE03,None,6.08
+MR-00153,ENG-027,VJ-116,2025-04-15,Fan Blade Replacement,Unscheduled,66,TECH-026,BASE02,Leak,17.6
+MR-00281,ENG-024,VJ-114,2025-04-17,Sensor Replacement,Unscheduled,4,TECH-017,BASE04,None,5.09
+MR-00278,ENG-014,VJ-108,2025-04-17,Bearing Replacement,Unscheduled,79,TECH-035,BASE03,Crack,27.98
+MR-00197,ENG-034,VJ-120,2025-04-17,Sensor Replacement,Unscheduled,5,TECH-029,BASE03,Wear,2.51
+MR-00108,ENG-041,VJ-124,2025-04-19,Fan Blade Replacement,Unscheduled,59,TECH-009,BASE04,None,14.26
+MR-00450,ENG-020,VJ-112,2025-04-20,Scheduled Inspection,Routine,6,TECH-009,BASE01,None,0.93
+MR-00014,ENG-023,VJ-113,2025-04-20,Sensor Replacement,Unscheduled,6,TECH-034,BASE04,Crack,1.16
+MR-00225,ENG-041,VJ-124,2025-04-23,Turbine Blade Repair,Unscheduled,57,TECH-009,BASE04,Leak,20.65
+MR-00036,ENG-021,VJ-112,2025-04-24,Compressor Wash,Routine,12,TECH-026,BASE01,None,1.03
+MR-00116,ENG-011,VJ-106,2025-04-29,Major Overhaul,Scheduled,293,TECH-003,BASE05,Foreign object damage,12.54
+MR-00111,ENG-020,VJ-112,2025-05-01,Major Overhaul,Scheduled,434,TECH-036,BASE01,None,77.0
+MR-00406,ENG-008,VJ-105,2025-05-04,Bearing Replacement,Unscheduled,75,TECH-031,BASE05,Leak,4.31
+MR-00339,ENG-035,VJ-120,2025-05-04,Bearing Replacement,Unscheduled,53,TECH-032,BASE03,Sensor drift,25.8
+MR-00057,ENG-032,VJ-118,2025-05-08,Scheduled Inspection,Routine,10,TECH-011,BASE03,None,2.63
+MR-00221,ENG-038,VJ-122,2025-05-09,Turbine Blade Repair,Unscheduled,72,TECH-014,BASE01,None,22.73
+MR-00169,ENG-022,VJ-113,2025-05-09,Bearing Replacement,Unscheduled,84,TECH-018,BASE04,Foreign object damage,12.05
+MR-00215,ENG-011,VJ-106,2025-05-17,Borescope Inspection,Routine,15,TECH-027,BASE05,None,2.75
+MR-00030,ENG-030,VJ-117,2025-05-21,Turbine Blade Repair,Unscheduled,98,TECH-035,BASE05,Leak,21.65
+MR-00064,ENG-028,VJ-116,2025-05-21,Compressor Wash,Routine,13,TECH-010,BASE02,None,6.46
+MR-00196,ENG-019,VJ-111,2025-05-24,Bearing Replacement,Unscheduled,81,TECH-007,BASE05,Foreign object damage,9.08
+MR-00329,ENG-035,VJ-120,2025-05-25,Sensor Replacement,Unscheduled,7,TECH-021,BASE03,Sensor drift,5.4
+MR-00155,ENG-038,VJ-122,2025-05-25,Scheduled Inspection,Routine,8,TECH-005,BASE01,None,1.55
+MR-00332,ENG-014,VJ-108,2025-05-26,Fan Blade Replacement,Unscheduled,49,TECH-017,BASE03,Foreign object damage,12.05
+MR-00091,ENG-016,VJ-109,2025-05-26,Bearing Replacement,Unscheduled,87,TECH-018,BASE04,Leak,14.79
+MR-00390,ENG-016,VJ-109,2025-05-26,Bearing Replacement,Unscheduled,87,TECH-026,BASE04,Foreign object damage,11.73
+MR-00023,ENG-007,VJ-104,2025-05-28,Scheduled Inspection,Routine,10,TECH-016,BASE05,None,6.01
+MR-00382,ENG-038,VJ-122,2025-05-29,Bearing Replacement,Unscheduled,65,TECH-002,BASE01,Foreign object damage,14.85
+MR-00202,ENG-022,VJ-113,2025-06-02,Fan Blade Replacement,Unscheduled,42,TECH-036,BASE04,Leak,4.44
+MR-00102,ENG-024,VJ-114,2025-06-10,Bearing Replacement,Unscheduled,80,TECH-033,BASE04,Sensor drift,6.02
+MR-00392,ENG-040,VJ-123,2025-06-10,Borescope Inspection,Routine,8,TECH-035,BASE02,None,4.29
+MR-00325,ENG-032,VJ-118,2025-06-11,Major Overhaul,Scheduled,402,TECH-004,BASE03,Foreign object damage,59.97
+MR-00336,ENG-013,VJ-108,2025-06-14,Sensor Replacement,Unscheduled,7,TECH-024,BASE03,Sensor drift,4.37
+MR-00194,ENG-015,VJ-109,2025-06-14,Borescope Inspection,Routine,11,TECH-008,BASE04,Wear,8.02
+MR-00255,ENG-029,VJ-117,2025-06-18,Bearing Replacement,Unscheduled,50,TECH-002,BASE05,Crack,23.96
+MR-00449,ENG-038,VJ-122,2025-06-21,Compressor Wash,Routine,9,TECH-018,BASE01,None,6.15
+MR-00008,ENG-011,VJ-106,2025-06-23,Fan Blade Replacement,Unscheduled,58,TECH-028,BASE05,Crack,9.89
+MR-00275,ENG-007,VJ-104,2025-06-24,Scheduled Inspection,Routine,10,TECH-020,BASE05,None,0.88
+MR-00243,ENG-019,VJ-111,2025-06-24,Turbine Blade Repair,Unscheduled,101,TECH-024,BASE05,Wear,7.45
+MR-00334,ENG-038,VJ-122,2025-06-28,Bearing Replacement,Unscheduled,79,TECH-016,BASE01,Crack,5.74
+MR-00353,ENG-040,VJ-123,2025-06-30,Compressor Wash,Routine,12,TECH-014,BASE02,None,7.01
+MR-00407,ENG-004,VJ-102,2025-07-03,Scheduled Inspection,Routine,9,TECH-003,BASE03,None,2.61
+MR-00074,ENG-008,VJ-105,2025-07-04,Oil System Service,Routine,7,TECH-002,BASE05,Wear,0.43
+MR-00258,ENG-025,VJ-114,2025-07-05,Sensor Replacement,Unscheduled,3,TECH-013,BASE04,None,3.18
+MR-00209,ENG-028,VJ-116,2025-07-07,Scheduled Inspection,Routine,8,TECH-034,BASE02,Wear,3.3
+MR-00217,ENG-026,VJ-115,2025-07-13,Compressor Wash,Routine,7,TECH-016,BASE03,None,0.95
+MR-00366,ENG-020,VJ-112,2025-07-14,Fan Blade Replacement,Unscheduled,61,TECH-020,BASE01,Leak,20.06
+MR-00326,ENG-009,VJ-105,2025-07-16,Compressor Wash,Routine,9,TECH-009,BASE05,None,7.04
+MR-00032,ENG-015,VJ-109,2025-07-19,Borescope Inspection,Routine,9,TECH-003,BASE04,None,2.82
+MR-00080,ENG-026,VJ-115,2025-07-22,Oil System Service,Routine,8,TECH-008,BASE03,None,5.31
+MR-00170,ENG-008,VJ-105,2025-07-29,Bearing Replacement,Unscheduled,89,TECH-038,BASE05,Sensor drift,19.68
+MR-00422,ENG-017,VJ-110,2025-07-30,Scheduled Inspection,Routine,6,TECH-018,BASE04,Wear,2.59
+MR-00246,ENG-003,VJ-102,2025-07-31,Scheduled Inspection,Routine,5,TECH-038,BASE03,Wear,2.14
+MR-00044,ENG-009,VJ-105,2025-08-03,Bearing Replacement,Unscheduled,45,TECH-032,BASE05,Wear,13.57
+MR-00113,ENG-012,VJ-107,2025-08-05,Turbine Blade Repair,Unscheduled,68,TECH-010,BASE01,Wear,12.37
+MR-00277,ENG-012,VJ-107,2025-08-06,Compressor Wash,Routine,10,TECH-034,BASE01,Wear,5.01
+MR-00126,ENG-004,VJ-102,2025-08-06,Sensor Replacement,Unscheduled,5,TECH-023,BASE03,Leak,0.66
+MR-00318,ENG-032,VJ-118,2025-08-08,Turbine Blade Repair,Unscheduled,63,TECH-028,BASE03,Crack,24.89
+MR-00103,ENG-019,VJ-111,2025-08-10,Borescope Inspection,Routine,13,TECH-021,BASE05,None,3.49
+MR-00343,ENG-006,VJ-104,2025-08-10,Fan Blade Replacement,Unscheduled,62,TECH-035,BASE05,Crack,9.27
+MR-00355,ENG-002,VJ-101,2025-08-13,Major Overhaul,Scheduled,282,TECH-001,BASE01,Leak,97.24
+MR-00203,ENG-012,VJ-107,2025-08-15,Compressor Wash,Routine,10,TECH-037,BASE01,None,3.22
+MR-00322,ENG-013,VJ-108,2025-08-17,Compressor Wash,Routine,7,TECH-015,BASE03,None,4.24
+MR-00021,ENG-010,VJ-106,2025-08-20,Sensor Replacement,Unscheduled,6,TECH-024,BASE05,Wear,1.06
+MR-00442,ENG-016,VJ-109,2025-08-24,Sensor Replacement,Unscheduled,6,TECH-021,BASE04,Sensor drift,4.81
+MR-00047,ENG-028,VJ-116,2025-08-27,Major Overhaul,Scheduled,377,TECH-004,BASE02,Leak,10.15
+MR-00143,ENG-010,VJ-106,2025-09-05,Fan Blade Replacement,Unscheduled,70,TECH-037,BASE05,Leak,14.42
+MR-00120,ENG-005,VJ-103,2025-09-06,Compressor Wash,Routine,9,TECH-011,BASE03,Wear,6.48
+MR-00002,ENG-011,VJ-106,2025-09-07,Major Overhaul,Scheduled,435,TECH-002,BASE05,Wear,91.13
+MR-00448,ENG-041,VJ-124,2025-09-07,Turbine Blade Repair,Unscheduled,74,TECH-011,BASE04,Leak,20.29
+MR-00220,ENG-003,VJ-102,2025-09-07,Compressor Wash,Routine,11,TECH-024,BASE03,None,3.79
+MR-00052,ENG-022,VJ-113,2025-09-11,Borescope Inspection,Routine,13,TECH-027,BASE04,Wear,0.56
+MR-00015,ENG-025,VJ-114,2025-09-11,Bearing Replacement,Unscheduled,54,TECH-032,BASE04,Wear,21.3
+MR-00404,ENG-006,VJ-104,2025-09-19,Sensor Replacement,Unscheduled,6,TECH-015,BASE05,Crack,5.75
+MR-00189,ENG-042,VJ-124,2025-09-20,Borescope Inspection,Routine,14,TECH-030,BASE04,None,4.67
+MR-00210,ENG-037,VJ-121,2025-09-20,Sensor Replacement,Unscheduled,5,TECH-021,BASE03,None,2.82
+MR-00411,ENG-002,VJ-101,2025-09-21,Turbine Blade Repair,Unscheduled,94,TECH-035,BASE01,Crack,24.26
+MR-00309,ENG-038,VJ-122,2025-09-21,Sensor Replacement,Unscheduled,7,TECH-001,BASE01,Leak,1.9
+MR-00271,ENG-026,VJ-115,2025-09-21,Bearing Replacement,Unscheduled,72,TECH-001,BASE03,Crack,14.15
+MR-00109,ENG-042,VJ-124,2025-09-22,Major Overhaul,Scheduled,436,TECH-002,BASE04,Wear,15.56
+MR-00380,ENG-005,VJ-103,2025-09-22,Oil System Service,Routine,5,TECH-001,BASE03,None,0.55
+MR-00412,ENG-009,VJ-105,2025-09-27,Borescope Inspection,Routine,15,TECH-002,BASE05,None,5.32
+MR-00399,ENG-002,VJ-101,2025-09-28,Sensor Replacement,Unscheduled,6,TECH-036,BASE01,Wear,1.63
+MR-00396,ENG-004,VJ-102,2025-09-30,Borescope Inspection,Routine,9,TECH-030,BASE03,None,2.79
+MR-00349,ENG-029,VJ-117,2025-10-01,Compressor Wash,Routine,11,TECH-029,BASE05,None,4.09
+MR-00369,ENG-002,VJ-101,2025-10-02,Fan Blade Replacement,Unscheduled,64,TECH-029,BASE01,Crack,5.17
+MR-00199,ENG-024,VJ-114,2025-10-06,Compressor Wash,Routine,12,TECH-013,BASE04,None,0.44
+MR-00175,ENG-012,VJ-107,2025-10-07,Sensor Replacement,Unscheduled,5,TECH-027,BASE01,None,3.75
+MR-00254,ENG-006,VJ-104,2025-10-07,Sensor Replacement,Unscheduled,6,TECH-016,BASE05,Sensor drift,5.2
+MR-00262,ENG-041,VJ-124,2025-10-08,Scheduled Inspection,Routine,8,TECH-037,BASE04,None,2.37
+MR-00237,ENG-001,VJ-101,2025-10-11,Scheduled Inspection,Routine,10,TECH-024,BASE01,Wear,4.66
+MR-00295,ENG-009,VJ-105,2025-10-22,Sensor Replacement,Unscheduled,4,TECH-010,BASE05,Sensor drift,1.52
+MR-00013,ENG-016,VJ-109,2025-10-22,Turbine Blade Repair,Unscheduled,68,TECH-029,BASE04,Crack,26.21
+MR-00166,ENG-040,VJ-123,2025-10-25,Compressor Wash,Routine,8,TECH-013,BASE02,None,1.16
+MR-00105,ENG-003,VJ-102,2025-10-28,Fan Blade Replacement,Unscheduled,46,TECH-012,BASE03,Leak,3.07
+MR-00439,ENG-021,VJ-112,2025-10-29,Major Overhaul,Scheduled,410,TECH-028,BASE01,Foreign object damage,8.34
+MR-00039,ENG-017,VJ-110,2025-10-29,Oil System Service,Routine,8,TECH-027,BASE04,None,4.35
+MR-00300,ENG-002,VJ-101,2025-10-30,Turbine Blade Repair,Unscheduled,91,TECH-035,BASE01,Leak,20.99
+MR-00379,ENG-015,VJ-109,2025-10-30,Fan Blade Replacement,Unscheduled,71,TECH-007,BASE04,Sensor drift,15.21
+MR-00100,ENG-024,VJ-114,2025-11-03,Scheduled Inspection,Routine,10,TECH-013,BASE04,None,2.8
+MR-00306,ENG-032,VJ-118,2025-11-04,Borescope Inspection,Routine,10,TECH-008,BASE03,None,4.7
+MR-00364,ENG-029,VJ-117,2025-11-04,Borescope Inspection,Routine,12,TECH-015,BASE05,None,3.0
+MR-00224,ENG-008,VJ-105,2025-11-07,Turbine Blade Repair,Unscheduled,75,TECH-010,BASE05,Crack,13.07
+MR-00174,ENG-006,VJ-104,2025-11-09,Major Overhaul,Scheduled,361,TECH-021,BASE05,Wear,111.4
+MR-00117,ENG-017,VJ-110,2025-11-14,Oil System Service,Routine,6,TECH-011,BASE04,None,3.3
+MR-00387,ENG-014,VJ-108,2025-11-15,Major Overhaul,Scheduled,334,TECH-036,BASE03,Leak,22.58
+MR-00373,ENG-038,VJ-122,2025-11-18,Turbine Blade Repair,Unscheduled,101,TECH-004,BASE01,Sensor drift,9.61
+MR-00128,ENG-026,VJ-115,2025-11-19,Borescope Inspection,Routine,14,TECH-025,BASE03,Wear,7.57
+MR-00178,ENG-029,VJ-117,2025-11-21,Fan Blade Replacement,Unscheduled,58,TECH-022,BASE05,Leak,17.66
+MR-00250,ENG-006,VJ-104,2025-11-23,Bearing Replacement,Unscheduled,75,TECH-034,BASE05,Foreign object damage,10.1
+MR-00317,ENG-037,VJ-121,2025-11-27,Sensor Replacement,Unscheduled,6,TECH-039,BASE03,Leak,3.52
+MR-00361,ENG-009,VJ-105,2025-11-28,Scheduled Inspection,Routine,7,TECH-026,BASE05,None,1.85
+MR-00086,ENG-021,VJ-112,2025-12-01,Sensor Replacement,Unscheduled,6,TECH-035,BASE01,None,4.01
+MR-00347,ENG-021,VJ-112,2025-12-02,Compressor Wash,Routine,10,TECH-027,BASE01,None,5.59
+MR-00269,ENG-030,VJ-117,2025-12-04,Scheduled Inspection,Routine,6,TECH-021,BASE05,Wear,1.88
+MR-00370,ENG-005,VJ-103,2025-12-05,Sensor Replacement,Unscheduled,6,TECH-035,BASE03,Sensor drift,2.41
+MR-00340,ENG-006,VJ-104,2025-12-09,Sensor Replacement,Unscheduled,3,TECH-033,BASE05,Wear,5.33
+MR-00136,ENG-031,VJ-118,2025-12-11,Oil System Service,Routine,5,TECH-009,BASE03,None,2.7
+MR-00419,ENG-042,VJ-124,2025-12-11,Fan Blade Replacement,Unscheduled,56,TECH-009,BASE04,Crack,22.89
+MR-00360,ENG-035,VJ-120,2025-12-12,Bearing Replacement,Unscheduled,52,TECH-032,BASE03,Crack,18.57
+MR-00104,ENG-030,VJ-117,2025-12-14,Major Overhaul,Scheduled,248,TECH-034,BASE05,Sensor drift,11.68
+MR-00119,ENG-028,VJ-116,2025-12-14,Bearing Replacement,Unscheduled,81,TECH-005,BASE02,Wear,12.44
+MR-00162,ENG-028,VJ-116,2025-12-15,Fan Blade Replacement,Unscheduled,62,TECH-014,BASE02,Foreign object damage,14.96
+MR-00152,ENG-041,VJ-124,2025-12-16,Borescope Inspection,Routine,10,TECH-019,BASE04,Wear,8.49
+MR-00429,ENG-025,VJ-114,2025-12-17,Sensor Replacement,Unscheduled,7,TECH-019,BASE04,Sensor drift,1.18
+MR-00114,ENG-007,VJ-104,2025-12-19,Turbine Blade Repair,Unscheduled,78,TECH-012,BASE05,Wear,8.65
+MR-00146,ENG-030,VJ-117,2025-12-19,Borescope Inspection,Routine,13,TECH-023,BASE05,None,2.97
+MR-00212,ENG-032,VJ-118,2025-12-19,Bearing Replacement,Unscheduled,65,TECH-025,BASE03,Foreign object damage,8.54
+MR-00434,ENG-006,VJ-104,2025-12-20,Turbine Blade Repair,Unscheduled,61,TECH-007,BASE05,Wear,20.41
+MR-00272,ENG-003,VJ-102,2025-12-21,Major Overhaul,Scheduled,393,TECH-029,BASE03,Sensor drift,89.39
+MR-00234,ENG-014,VJ-108,2025-12-25,Bearing Replacement,Unscheduled,59,TECH-034,BASE03,Wear,6.31
+MR-00122,ENG-041,VJ-124,2025-12-26,Borescope Inspection,Routine,12,TECH-018,BASE04,None,4.52
+MR-00093,ENG-021,VJ-112,2025-12-27,Major Overhaul,Scheduled,291,TECH-016,BASE01,Leak,96.6
+MR-00413,ENG-028,VJ-116,2025-12-27,Borescope Inspection,Routine,11,TECH-001,BASE02,Wear,0.49
+MR-00310,ENG-007,VJ-104,2026-01-05,Turbine Blade Repair,Unscheduled,69,TECH-030,BASE05,Sensor drift,3.28
+MR-00327,ENG-009,VJ-105,2026-01-06,Fan Blade Replacement,Unscheduled,66,TECH-035,BASE05,Sensor drift,14.47
+MR-00016,ENG-014,VJ-108,2026-01-07,Borescope Inspection,Routine,13,TECH-001,BASE03,Wear,6.1
+MR-00227,ENG-029,VJ-117,2026-01-07,Sensor Replacement,Unscheduled,5,TECH-014,BASE05,Wear,3.22
+MR-00435,ENG-004,VJ-102,2026-01-07,Compressor Wash,Routine,13,TECH-024,BASE03,None,1.6
+MR-00381,ENG-012,VJ-107,2026-01-10,Sensor Replacement,Unscheduled,5,TECH-023,BASE01,Leak,3.19
+MR-00308,ENG-028,VJ-116,2026-01-10,Bearing Replacement,Unscheduled,89,TECH-022,BASE02,Leak,26.91
+MR-00233,ENG-010,VJ-106,2026-01-12,Turbine Blade Repair,Unscheduled,105,TECH-014,BASE05,Crack,24.64
+MR-00362,ENG-042,VJ-124,2026-01-14,Turbine Blade Repair,Unscheduled,89,TECH-036,BASE04,None,30.42
+MR-00160,ENG-004,VJ-102,2026-01-14,Fan Blade Replacement,Unscheduled,53,TECH-012,BASE03,Leak,1.19
+MR-00132,ENG-039,VJ-122,2026-01-15,Borescope Inspection,Routine,12,TECH-032,BASE01,None,6.56
+MR-00149,ENG-014,VJ-108,2026-01-16,Sensor Replacement,Unscheduled,5,TECH-009,BASE03,None,2.37
+MR-00423,ENG-039,VJ-122,2026-01-16,Oil System Service,Routine,7,TECH-007,BASE01,None,3.6
+MR-00346,ENG-022,VJ-113,2026-01-17,Scheduled Inspection,Routine,7,TECH-025,BASE04,Wear,1.57
+MR-00348,ENG-021,VJ-112,2026-01-22,Compressor Wash,Routine,7,TECH-038,BASE01,None,0.9
+MR-00003,ENG-029,VJ-117,2026-01-23,Sensor Replacement,Unscheduled,4,TECH-027,BASE05,None,4.63
+MR-00351,ENG-025,VJ-114,2026-01-24,Bearing Replacement,Unscheduled,56,TECH-029,BASE04,Wear,13.46
+MR-00037,ENG-023,VJ-113,2026-01-25,Major Overhaul,Scheduled,436,TECH-001,BASE04,Foreign object damage,72.73
+MR-00185,ENG-002,VJ-101,2026-01-27,Turbine Blade Repair,Unscheduled,60,TECH-002,BASE01,None,11.32
+MR-00006,ENG-042,VJ-124,2026-01-27,Sensor Replacement,Unscheduled,4,TECH-004,BASE04,Wear,4.99
+MR-00222,ENG-018,VJ-110,2026-01-28,Borescope Inspection,Routine,14,TECH-038,BASE04,None,4.93
+MR-00144,ENG-036,VJ-121,2026-01-30,Major Overhaul,Scheduled,418,TECH-025,BASE03,Foreign object damage,106.27
+MR-00019,ENG-035,VJ-120,2026-02-03,Turbine Blade Repair,Unscheduled,59,TECH-029,BASE03,Sensor drift,15.21
+MR-00131,ENG-016,VJ-109,2026-02-05,Borescope Inspection,Routine,16,TECH-037,BASE04,None,0.59
+MR-00372,ENG-021,VJ-112,2026-02-06,Scheduled Inspection,Routine,8,TECH-039,BASE01,Wear,4.92
+MR-00438,ENG-007,VJ-104,2026-02-06,Bearing Replacement,Unscheduled,75,TECH-010,BASE05,Crack,14.5
+MR-00397,ENG-035,VJ-120,2026-02-08,Scheduled Inspection,Routine,9,TECH-030,BASE03,None,1.61
+MR-00409,ENG-041,VJ-124,2026-02-10,Compressor Wash,Routine,9,TECH-007,BASE04,None,3.35
+MR-00135,ENG-006,VJ-104,2026-02-16,Bearing Replacement,Unscheduled,65,TECH-010,BASE05,None,9.49
+MR-00228,ENG-041,VJ-124,2026-02-17,Oil System Service,Routine,7,TECH-008,BASE04,Wear,1.51
+MR-00010,ENG-012,VJ-107,2026-02-19,Bearing Replacement,Unscheduled,57,TECH-016,BASE01,Wear,27.73
+MR-00085,ENG-030,VJ-117,2026-02-22,Bearing Replacement,Unscheduled,55,TECH-036,BASE05,None,8.41
+MR-00026,ENG-041,VJ-124,2026-02-25,Compressor Wash,Routine,8,TECH-014,BASE04,None,5.65
+MR-00079,ENG-034,VJ-120,2026-02-26,Fan Blade Replacement,Unscheduled,68,TECH-027,BASE03,Foreign object damage,1.44
+MR-00012,ENG-001,VJ-101,2026-02-26,Borescope Inspection,Routine,13,TECH-029,BASE01,None,1.83
+MR-00280,ENG-012,VJ-107,2026-02-28,Oil System Service,Routine,6,TECH-019,BASE01,Wear,2.83
+MR-00270,ENG-036,VJ-121,2026-03-01,Borescope Inspection,Routine,8,TECH-031,BASE03,Wear,7.51
+MR-00022,ENG-041,VJ-124,2026-03-01,Bearing Replacement,Unscheduled,58,TECH-004,BASE04,Foreign object damage,9.44
+MR-00118,ENG-035,VJ-120,2026-03-09,Oil System Service,Routine,4,TECH-024,BASE03,None,3.19
+MR-00154,ENG-002,VJ-101,2026-03-10,Major Overhaul,Scheduled,389,TECH-005,BASE01,Sensor drift,116.51
+MR-00112,ENG-015,VJ-109,2026-03-12,Compressor Wash,Routine,9,TECH-013,BASE04,None,5.8
+MR-00341,ENG-007,VJ-104,2026-03-12,Borescope Inspection,Routine,13,TECH-031,BASE05,None,3.52
+MR-00038,ENG-036,VJ-121,2026-03-16,Scheduled Inspection,Routine,9,TECH-016,BASE03,Wear,6.2
+MR-00298,ENG-002,VJ-101,2026-03-17,Sensor Replacement,Unscheduled,6,TECH-005,BASE01,Foreign object damage,0.94
+MR-00371,ENG-013,VJ-108,2026-03-18,Borescope Inspection,Routine,14,TECH-034,BASE03,Wear,6.18
+MR-00211,ENG-010,VJ-106,2026-03-22,Bearing Replacement,Unscheduled,74,TECH-007,BASE05,None,25.3
+MR-00251,ENG-027,VJ-116,2026-03-23,Borescope Inspection,Routine,8,TECH-023,BASE02,Wear,4.04
+MR-00034,ENG-038,VJ-122,2026-03-28,Scheduled Inspection,Routine,9,TECH-013,BASE01,Wear,0.64
+MR-00007,ENG-002,VJ-101,2026-03-30,Scheduled Inspection,Routine,11,TECH-034,BASE01,None,1.56
+MR-00257,ENG-021,VJ-112,2026-03-31,Turbine Blade Repair,Unscheduled,84,TECH-008,BASE01,Crack,11.29
+MR-00321,ENG-025,VJ-114,2026-04-06,Scheduled Inspection,Routine,7,TECH-006,BASE04,Wear,6.48
+MR-00078,ENG-025,VJ-114,2026-04-06,Turbine Blade Repair,Unscheduled,79,TECH-010,BASE04,Crack,31.4
+MR-00024,ENG-014,VJ-108,2026-04-07,Major Overhaul,Scheduled,245,TECH-034,BASE03,Foreign object damage,10.98
+MR-00159,ENG-032,VJ-118,2026-04-10,Major Overhaul,Scheduled,255,TECH-034,BASE03,Crack,14.58
+MR-00400,ENG-009,VJ-105,2026-04-10,Compressor Wash,Routine,13,TECH-015,BASE05,Wear,6.46
+MR-00125,ENG-020,VJ-112,2026-04-12,Scheduled Inspection,Routine,11,TECH-027,BASE01,Wear,6.09
+MR-00046,ENG-003,VJ-102,2026-04-12,Sensor Replacement,Unscheduled,3,TECH-008,BASE03,None,1.44
+MR-00299,ENG-030,VJ-117,2026-04-12,Fan Blade Replacement,Unscheduled,46,TECH-038,BASE05,Leak,11.08
+MR-00279,ENG-014,VJ-108,2026-04-13,Turbine Blade Repair,Unscheduled,59,TECH-007,BASE03,None,30.31
+MR-00062,ENG-030,VJ-117,2026-04-15,Borescope Inspection,Routine,15,TECH-036,BASE05,Wear,6.39
+MR-00259,ENG-011,VJ-106,2026-04-22,Sensor Replacement,Unscheduled,6,TECH-003,BASE05,Sensor drift,3.52
+MR-00385,ENG-030,VJ-117,2026-04-23,Borescope Inspection,Routine,15,TECH-007,BASE05,None,6.06
+MR-00157,ENG-006,VJ-104,2026-04-27,Compressor Wash,Routine,12,TECH-028,BASE05,None,1.71
+MR-00402,ENG-040,VJ-123,2026-04-27,Compressor Wash,Routine,14,TECH-018,BASE02,None,0.77
+MR-00141,ENG-034,VJ-120,2026-05-01,Major Overhaul,Scheduled,422,TECH-023,BASE03,Crack,100.45
+MR-00207,ENG-030,VJ-117,2026-05-01,Sensor Replacement,Unscheduled,3,TECH-002,BASE05,Crack,2.88
+MR-00338,ENG-004,VJ-102,2026-05-02,Scheduled Inspection,Routine,8,TECH-008,BASE03,Wear,6.74
+MR-00303,ENG-023,VJ-113,2026-05-04,Borescope Inspection,Routine,14,TECH-034,BASE04,Wear,4.37
+MR-00342,ENG-020,VJ-112,2026-05-06,Borescope Inspection,Routine,14,TECH-006,BASE01,Wear,5.36
+MR-00127,ENG-022,VJ-113,2026-05-10,Major Overhaul,Scheduled,305,TECH-014,BASE04,None,12.74
+MR-00430,ENG-033,VJ-119,2026-05-16,Scheduled Inspection,Routine,8,TECH-011,BASE02,None,4.26
+MR-00095,ENG-017,VJ-110,2026-05-19,Scheduled Inspection,Routine,7,TECH-035,BASE04,None,2.57
+MR-00138,ENG-006,VJ-104,2026-05-24,Sensor Replacement,Unscheduled,3,TECH-026,BASE05,Wear,0.42
+MR-00208,ENG-013,VJ-108,2026-05-26,Turbine Blade Repair,Unscheduled,81,TECH-004,BASE03,None,28.16
+MR-00265,ENG-038,VJ-122,2026-05-28,Oil System Service,Routine,6,TECH-028,BASE01,Wear,2.58
+MR-00171,ENG-003,VJ-102,2026-05-29,Turbine Blade Repair,Unscheduled,99,TECH-007,BASE03,Sensor drift,15.02
+MR-00191,ENG-026,VJ-115,2026-05-30,Turbine Blade Repair,Unscheduled,87,TECH-008,BASE03,Sensor drift,5.46
+MR-00041,ENG-036,VJ-121,2026-05-30,Oil System Service,Routine,8,TECH-038,BASE03,Wear,4.27
+MR-00115,ENG-017,VJ-110,2026-05-30,Sensor Replacement,Unscheduled,7,TECH-023,BASE04,Sensor drift,3.04
+MR-00017,ENG-013,VJ-108,2026-05-30,Borescope Inspection,Routine,12,TECH-039,BASE03,None,7.26
+MR-00065,ENG-012,VJ-107,2026-06-06,Sensor Replacement,Unscheduled,5,TECH-039,BASE01,Crack,1.11
+MR-00053,ENG-033,VJ-119,2026-06-07,Borescope Inspection,Routine,13,TECH-012,BASE02,None,0.66
+MR-00268,ENG-020,VJ-112,2026-06-11,Sensor Replacement,Unscheduled,4,TECH-025,BASE01,Leak,2.41
+MR-00377,ENG-013,VJ-108,2026-06-17,Scheduled Inspection,Routine,9,TECH-036,BASE03,None,0.61
+MR-00286,ENG-007,VJ-104,2026-06-20,Compressor Wash,Routine,7,TECH-001,BASE05,None,4.65
+MR-00195,ENG-004,VJ-102,2026-06-21,Scheduled Inspection,Routine,5,TECH-013,BASE03,None,5.29
+MR-00077,ENG-026,VJ-115,2026-06-22,Major Overhaul,Scheduled,261,TECH-035,BASE03,None,23.59
+MR-00252,ENG-035,VJ-120,2026-06-23,Borescope Inspection,Routine,9,TECH-020,BASE03,None,4.27
+MR-00040,ENG-028,VJ-116,2026-06-26,Compressor Wash,Routine,13,TECH-015,BASE02,None,2.88
+MR-00056,ENG-028,VJ-116,2026-06-29,Fan Blade Replacement,Unscheduled,45,TECH-014,BASE02,Sensor drift,8.89
+MR-00226,ENG-023,VJ-113,2026-06-30,Compressor Wash,Routine,9,TECH-006,BASE04,Wear,4.51
+MR-00187,ENG-012,VJ-107,2026-07-03,Sensor Replacement,Unscheduled,7,TECH-018,BASE01,Leak,3.56
+MR-00305,ENG-020,VJ-112,2026-07-07,Scheduled Inspection,Routine,5,TECH-015,BASE01,None,0.41
+MR-00061,ENG-014,VJ-108,2026-07-14,Fan Blade Replacement,Unscheduled,38,TECH-036,BASE03,Crack,18.48
+MR-00420,ENG-042,VJ-124,2026-07-15,Major Overhaul,Scheduled,267,TECH-025,BASE04,Wear,14.23
+MR-00009,ENG-026,VJ-115,2026-07-16,Bearing Replacement,Unscheduled,80,TECH-015,BASE03,Sensor drift,5.67
+MR-00205,ENG-038,VJ-122,2026-07-20,Major Overhaul,Scheduled,392,TECH-023,BASE01,None,88.2
+MR-00148,ENG-029,VJ-117,2026-07-24,Bearing Replacement,Unscheduled,54,TECH-012,BASE05,Leak,21.5
+MR-00264,ENG-033,VJ-119,2026-07-25,Major Overhaul,Scheduled,403,TECH-004,BASE02,Sensor drift,22.47
+MR-00426,ENG-019,VJ-111,2026-07-26,Scheduled Inspection,Routine,8,TECH-018,BASE05,None,2.94
+MR-00378,ENG-022,VJ-113,2026-07-27,Fan Blade Replacement,Unscheduled,69,TECH-016,BASE04,Sensor drift,21.45
+MR-00213,ENG-005,VJ-103,2026-07-28,Major Overhaul,Scheduled,314,TECH-030,BASE03,Wear,72.02
+MR-00101,ENG-031,VJ-118,2026-07-28,Borescope Inspection,Routine,15,TECH-026,BASE03,None,7.52
+MR-00020,ENG-004,VJ-102,2026-07-30,Oil System Service,Routine,4,TECH-002,BASE03,None,2.23
+MR-00216,ENG-033,VJ-119,2026-07-31,Oil System Service,Routine,7,TECH-008,BASE02,Wear,2.19
+MR-00238,ENG-032,VJ-118,2026-08-03,Sensor Replacement,Unscheduled,7,TECH-009,BASE03,None,5.96
+MR-00344,ENG-038,VJ-122,2026-08-04,Scheduled Inspection,Routine,11,TECH-033,BASE01,Wear,0.68
+MR-00345,ENG-029,VJ-117,2026-08-05,Compressor Wash,Routine,12,TECH-011,BASE05,Wear,3.42
+MR-00403,ENG-027,VJ-116,2026-08-10,Compressor Wash,Routine,11,TECH-027,BASE02,None,6.32
+MR-00180,ENG-027,VJ-116,2026-08-11,Major Overhaul,Scheduled,245,TECH-037,BASE02,Sensor drift,12.66
+MR-00163,ENG-022,VJ-113,2026-08-13,Fan Blade Replacement,Unscheduled,69,TECH-014,BASE04,Leak,17.77
+MR-00301,ENG-025,VJ-114,2026-08-17,Major Overhaul,Scheduled,402,TECH-017,BASE04,Wear,56.13
+MR-00267,ENG-029,VJ-117,2026-08-19,Sensor Replacement,Unscheduled,6,TECH-013,BASE05,Sensor drift,5.46
+MR-00027,ENG-013,VJ-108,2026-08-20,Major Overhaul,Scheduled,281,TECH-007,BASE03,Wear,53.21
+MR-00092,ENG-005,VJ-103,2026-08-21,Scheduled Inspection,Routine,7,TECH-023,BASE03,None,1.79
+MR-00335,ENG-042,VJ-124,2026-08-25,Major Overhaul,Scheduled,428,TECH-039,BASE04,Sensor drift,14.58
+MR-00350,ENG-028,VJ-116,2026-08-28,Bearing Replacement,Unscheduled,80,TECH-010,BASE02,None,22.07
+MR-00055,ENG-012,VJ-107,2026-08-29,Oil System Service,Routine,8,TECH-037,BASE01,Wear,1.06
+MR-00393,ENG-034,VJ-120,2026-08-31,Fan Blade Replacement,Unscheduled,55,TECH-025,BASE03,Wear,16.79
+MR-00096,ENG-018,VJ-110,2026-08-31,Oil System Service,Routine,5,TECH-015,BASE04,None,5.71
+MR-00186,ENG-010,VJ-106,2026-09-01,Oil System Service,Routine,6,TECH-004,BASE05,None,5.07
+MR-00130,ENG-011,VJ-106,2026-09-03,Bearing Replacement,Unscheduled,49,TECH-005,BASE05,None,1.5
+MR-00245,ENG-001,VJ-101,2026-09-07,Sensor Replacement,Unscheduled,3,TECH-015,BASE01,Leak,1.29
+MR-00276,ENG-021,VJ-112,2026-09-08,Sensor Replacement,Unscheduled,5,TECH-008,BASE01,Wear,2.01
+MR-00165,ENG-004,VJ-102,2026-09-12,Borescope Inspection,Routine,15,TECH-039,BASE03,Wear,5.08
+MR-00312,ENG-031,VJ-118,2026-09-14,Oil System Service,Routine,6,TECH-014,BASE03,Wear,5.74
+MR-00424,ENG-029,VJ-117,2026-09-22,Turbine Blade Repair,Unscheduled,80,TECH-006,BASE05,Wear,32.72
+MR-00110,ENG-014,VJ-108,2026-09-23,Oil System Service,Routine,7,TECH-023,BASE03,None,1.56
+MR-00049,ENG-033,VJ-119,2026-09-25,Fan Blade Replacement,Unscheduled,65,TECH-038,BASE02,None,19.98
+MR-00376,ENG-031,VJ-118,2026-09-30,Bearing Replacement,Unscheduled,89,TECH-017,BASE03,Crack,6.0
+MR-00098,ENG-034,VJ-120,2026-10-01,Major Overhaul,Scheduled,377,TECH-010,BASE03,None,59.76
+MR-00137,ENG-037,VJ-121,2026-10-02,Major Overhaul,Scheduled,301,TECH-036,BASE03,Wear,103.93
+MR-00436,ENG-008,VJ-105,2026-10-04,Compressor Wash,Routine,12,TECH-004,BASE05,None,2.49
+MR-00140,ENG-017,VJ-110,2026-10-05,Bearing Replacement,Unscheduled,69,TECH-017,BASE04,Crack,7.5
+MR-00167,ENG-017,VJ-110,2026-10-06,Fan Blade Replacement,Unscheduled,44,TECH-013,BASE04,Crack,11.63

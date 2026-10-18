@@ -1,0 +1,51 @@
+part_id,part_name,component,base_id,qty_in_stock,reorder_level,lead_time_days,unit_cost_inr_lakh,supplier
+PRT-001,Fan Blade Set,Fan,BASE01,5,2,44,6.5,GTRE
+PRT-002,Compressor Rotor,Compressor,BASE01,5,2,90,18.0,GTRE
+PRT-003,Combustor Liner,Combustion Chamber,BASE01,3,2,66,9.0,GTRE
+PRT-004,Turbine Blade Set,Turbine,BASE01,1,2,64,14.0,Imported OEM
+PRT-005,Main Shaft Bearing,Shaft,BASE01,2,2,29,4.2,Imported OEM
+PRT-006,Vibration Sensor,Sensors,BASE01,3,2,13,0.3,Imported OEM
+PRT-007,Temp Sensor (EGT),Sensors,BASE01,2,2,13,0.25,HAL
+PRT-008,Fuel Nozzle,Combustion Chamber,BASE01,2,2,25,1.1,Imported OEM
+PRT-009,Oil Pump,Lubrication,BASE01,5,2,30,2.4,BEL
+PRT-010,Seal Kit,General,BASE01,0,2,8,0.4,GTRE
+PRT-001,Fan Blade Set,Fan,BASE02,5,2,37,6.5,HAL
+PRT-002,Compressor Rotor,Compressor,BASE02,4,2,107,18.0,Imported OEM
+PRT-003,Combustor Liner,Combustion Chamber,BASE02,0,2,58,9.0,GTRE
+PRT-004,Turbine Blade Set,Turbine,BASE02,4,2,97,14.0,HAL
+PRT-005,Main Shaft Bearing,Shaft,BASE02,1,2,24,4.2,HAL
+PRT-006,Vibration Sensor,Sensors,BASE02,3,2,12,0.3,BEL
+PRT-007,Temp Sensor (EGT),Sensors,BASE02,5,2,11,0.25,HAL
+PRT-008,Fuel Nozzle,Combustion Chamber,BASE02,1,2,27,1.1,GTRE
+PRT-009,Oil Pump,Lubrication,BASE02,5,2,34,2.4,HAL
+PRT-010,Seal Kit,General,BASE02,1,2,7,0.4,Imported OEM
+PRT-001,Fan Blade Set,Fan,BASE03,1,2,54,6.5,BEL
+PRT-002,Compressor Rotor,Compressor,BASE03,3,2,90,18.0,BEL
+PRT-003,Combustor Liner,Combustion Chamber,BASE03,4,2,61,9.0,Imported OEM
+PRT-004,Turbine Blade Set,Turbine,BASE03,4,2,63,14.0,GTRE
+PRT-005,Main Shaft Bearing,Shaft,BASE03,5,2,40,4.2,BEL
+PRT-006,Vibration Sensor,Sensors,BASE03,5,2,12,0.3,BEL
+PRT-007,Temp Sensor (EGT),Sensors,BASE03,5,2,8,0.25,GTRE
+PRT-008,Fuel Nozzle,Combustion Chamber,BASE03,2,2,16,1.1,Imported OEM
+PRT-009,Oil Pump,Lubrication,BASE03,2,2,34,2.4,GTRE
+PRT-010,Seal Kit,General,BASE03,2,2,8,0.4,GTRE
+PRT-001,Fan Blade Set,Fan,BASE04,2,2,38,6.5,GTRE
+PRT-002,Compressor Rotor,Compressor,BASE04,4,2,89,18.0,Imported OEM
+PRT-003,Combustor Liner,Combustion Chamber,BASE04,5,2,56,9.0,HAL
+PRT-004,Turbine Blade Set,Turbine,BASE04,4,2,98,14.0,BEL
+PRT-005,Main Shaft Bearing,Shaft,BASE04,5,2,31,4.2,HAL
+PRT-006,Vibration Sensor,Sensors,BASE04,5,2,8,0.3,BEL
+PRT-007,Temp Sensor (EGT),Sensors,BASE04,1,2,8,0.25,GTRE
+PRT-008,Fuel Nozzle,Combustion Chamber,BASE04,1,2,27,1.1,Imported OEM
+PRT-009,Oil Pump,Lubrication,BASE04,5,2,21,2.4,Imported OEM
+PRT-010,Seal Kit,General,BASE04,4,2,5,0.4,BEL
+PRT-001,Fan Blade Set,Fan,BASE05,4,2,57,6.5,Imported OEM
+PRT-002,Compressor Rotor,Compressor,BASE05,4,2,121,18.0,GTRE
+PRT-003,Combustor Liner,Combustion Chamber,BASE05,4,2,61,9.0,GTRE
+PRT-004,Turbine Blade Set,Turbine,BASE05,3,2,85,14.0,HAL
+PRT-005,Main Shaft Bearing,Shaft,BASE05,3,2,39,4.2,HAL
+PRT-006,Vibration Sensor,Sensors,BASE05,3,2,10,0.3,BEL
+PRT-007,Temp Sensor (EGT),Sensors,BASE05,3,2,11,0.25,HAL
+PRT-008,Fuel Nozzle,Combustion Chamber,BASE05,3,2,23,1.1,GTRE
+PRT-009,Oil Pump,Lubrication,BASE05,4,2,32,2.4,BEL
+PRT-010,Seal Kit,General,BASE05,4,2,9,0.4,GTRE

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_dashboard" name="shell-type"/>
+  <title>VAJRA — Operational Alerts & Incident Lifecycle</title>
+  <link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/>
+  <link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-thumb { background: #45483e; border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+  </style>
+  <script src="../assets/vendor/tailwindcss.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-primary": "#25350c",
+            "surface-variant": "#31353a",
+            "surface-container-low": "#181c20",
+            "on-background": "#e0e3e8",
+            "surface-container-lowest": "#0b0f12",
+            "outline": "#8f9285",
+            "secondary": "#8ecdfc",
+            "surface-container-highest": "#31353a",
+            "error": "#ffb4ab",
+            "surface-container": "#1c2024",
+            "primary": "#b8ce96",
+            "surface-container-high": "#262a2f",
+            "surface": "#101418",
+            "background": "#101418",
+            "outline-variant": "#45483e",
+            "on-surface": "#e0e3e8",
+            "on-surface-variant": "#c5c8ba",
+            "error-container": "#93000a",
+            "primary-container": "#839864"
+          },
+          fontFamily: {
+            "headline-lg": ["IBM Plex Sans", "sans-serif"],
+            "headline-md": ["IBM Plex Sans", "sans-serif"],
+            "body-default": ["IBM Plex Sans", "sans-serif"],
+            "body-strong": ["IBM Plex Sans", "sans-serif"],
+            "mono-code": ["IBM Plex Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden">
+  <!-- Shared Global Navigation Sidebar -->
+  <aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none">
+    <div class="flex flex-col flex-1 min-h-0">
+      <!-- Platform Branding Header -->
+      <div class="h-12 px-4 border-b border-outline-variant/30 flex items-center gap-2 bg-surface-container-low cursor-pointer" onclick="window.location.href='../command_dashboard/code.html'">
+        <img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"/>
+        <div class="flex flex-col justify-center min-w-0 leading-none">
+          <span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span>
+          <span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links Container -->
+      <div class="flex-1 overflow-y-auto px-2 py-3 space-y-4">
+        <div class="px-2">
+          <span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span>
+        </div>
+        <nav class="space-y-0.5">
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="../command_dashboard/code.html">
+            <span class="truncate">Command Dashboard</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="../engines_list/code.html">
+            <span class="truncate">Engines</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="../3._engine_detail_eng_003/code.html">
+            <span class="truncate">Engine Detail</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="../4._3d_digital_twin_expansive_view/code.html">
+            <span class="truncate">3D Digital Twin</span>
+          </a>
+          <!-- Active Screen: Alerts -->
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded bg-primary-container text-on-primary font-body-strong transition-colors" data-path="alerts" href="../alerts/code.html">
+            <span class="truncate flex items-center gap-1.5">
+              Alerts
+              <span class="w-1.5 h-1.5 rounded-full bg-error inline-block"></span>
+            </span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="../6._maintenance_planner_refined_alignment/code.html">
+            <span class="truncate">Maintenance Planner</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="../7._spares_logistics/code.html">
+            <span class="truncate">Spares &amp; Logistics</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="../8._fleet_availability/code.html">
+            <span class="truncate">Fleet Availability</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="../8._reports/code.html">
+            <span class="truncate">Reports</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="../10._data_simulator/code.html">
+            <span class="truncate">Data &amp; Simulator</span>
+          </a>
+        </nav>
+
+        <div class="pt-2 border-t border-outline-variant/30 px-2">
+          <span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span>
+        </div>
+        <nav class="space-y-0.5">
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="../settings/code.html">
+            <span class="truncate">Settings</span>
+          </a>
+          <a class="flex items-center justify-between px-2.5 py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="../audit_log/code.html">
+            <span class="truncate">Audit Log</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main View Container -->
+  <div class="pl-64 flex flex-col min-h-screen bg-background">
+    <!-- Context Top Bar -->
+    <header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-6 select-none">
+      <div class="flex items-center gap-4 flex-1 max-w-2xl">
+        <div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[12px]">
+          <span>Operations</span>
+          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span class="text-on-surface font-semibold">Active Fleet Alerts</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 shrink-0">
+        <div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded">
+          <span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+          <span class="font-mono-code text-[11px] text-on-surface-variant">Live telemetry sync</span>
+        </div>
+        <div class="flex items-center gap-2 pl-3 border-l border-outline-variant/30">
+          <div class="flex flex-col text-right leading-none">
+            <span class="font-body-strong text-[13px] text-on-surface" id="current-user-name">Fleet Commander</span>
+            <span class="font-mono-code text-[11px] text-on-surface-variant" id="current-user-role">(Fleet Commander)</span>
+          </div>
+          <img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="w-full pt-12 flex-1 bg-background flex flex-col p-6 space-y-5">
+      <!-- Title & Metric Cards -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 class="font-headline-lg text-[22px] font-semibold text-on-surface flex items-center gap-2.5">
+            <span>Fleet Anomaly &amp; Safety Alerts</span>
+            <span class="px-2 py-0.5 rounded bg-error-container/40 text-error border border-error/30 font-mono-code text-[11px] font-semibold tracking-wide" id="badge-total-active">3 CRITICAL</span>
+          </h1>
+          <p class="font-body-default text-[13px] text-on-surface-variant mt-0.5">
+            Operational alerts generated by safety threshold rules and ML anomaly telemetry models. Real-time lifecycle triage and work-order dispatch.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button id="btn-refresh-alerts" class="h-8 px-3 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant flex items-center gap-1.5 transition-colors text-[13px] font-body-strong cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">refresh</span>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-3.5 bg-surface-container rounded border border-outline-variant/40 flex flex-col justify-between">
+          <span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Total Active Alerts</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="font-mono-code text-[22px] font-semibold text-on-surface" id="stat-total-alerts">--</span>
+            <span class="font-mono-code text-[11px] text-outline">in scope</span>
+          </div>
+        </div>
+        <div class="p-3.5 bg-surface-container rounded border border-outline-variant/40 flex flex-col justify-between">
+          <span class="font-mono-code text-[11px] text-error uppercase">Critical Severity</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="font-mono-code text-[22px] font-semibold text-error" id="stat-critical-alerts">--</span>
+            <span class="font-mono-code text-[11px] text-error/80">Immediate grounding</span>
+          </div>
+        </div>
+        <div class="p-3.5 bg-surface-container rounded border border-outline-variant/40 flex flex-col justify-between">
+          <span class="font-mono-code text-[11px] text-secondary uppercase">In Progress / Assigned</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="font-mono-code text-[22px] font-semibold text-secondary" id="stat-progress-alerts">--</span>
+            <span class="font-mono-code text-[11px] text-secondary/80">Hangar allocated</span>
+          </div>
+        </div>
+        <div class="p-3.5 bg-surface-container rounded border border-outline-variant/40 flex flex-col justify-between">
+          <span class="font-mono-code text-[11px] text-primary uppercase">Resolved &amp; Cleared</span>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="font-mono-code text-[22px] font-semibold text-primary" id="stat-resolved-alerts">--</span>
+            <span class="font-mono-code text-[11px] text-outline">Post-inspection</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Controls Bar -->
+      <div class="p-3 bg-surface-container rounded border border-outline-variant/40 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Search Input -->
+          <div class="relative w-64">
+            <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[15px] text-on-surface-variant">search</span>
+            <input id="alert-search-input" class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/50 rounded text-[13px] text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary" placeholder="Search alert, engine, or trigger..." type="search"/>
+          </div>
+
+          <!-- Severity Filter -->
+          <div class="flex items-center gap-1.5 text-[13px]">
+            <span class="font-mono-code text-[11px] text-on-surface-variant">Severity:</span>
+            <select id="filter-severity" class="h-8 px-2 bg-surface-container-low border border-outline-variant/50 rounded text-on-surface font-body-default text-[12px] focus:outline-none focus:border-secondary">
+              <option value="all">All Severities</option>
+              <option value="Critical">Critical</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+
+          <!-- Status Filter -->
+          <div class="flex items-center gap-1.5 text-[13px]">
+            <span class="font-mono-code text-[11px] text-on-surface-variant">Status:</span>
+            <select id="filter-status" class="h-8 px-2 bg-surface-container-low border border-outline-variant/50 rounded text-on-surface font-body-default text-[12px] focus:outline-none focus:border-secondary">
+              <option value="all">All Statuses</option>
+              <option value="Unacknowledged">Unacknowledged</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="font-mono-code text-[12px] text-on-surface-variant" id="filtered-count-label">
+          Showing active alerts
+        </div>
+      </div>
+
+      <!-- Alerts Data Table Container -->
+      <div class="bg-surface-container rounded border border-outline-variant/40 overflow-hidden shadow-sm flex-1">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-[13px]">
+            <thead>
+              <tr class="border-b border-outline-variant/50 bg-surface-container-lowest text-outline font-mono-code text-[11px] uppercase tracking-wider">
+                <th class="py-2.5 px-3 font-normal">Alert ID</th>
+                <th class="py-2.5 px-3 font-normal">Engine / Aircraft</th>
+                <th class="py-2.5 px-3 font-normal">Severity</th>
+                <th class="py-2.5 px-3 font-normal">Trigger Condition</th>
+                <th class="py-2.5 px-3 font-normal">Status</th>
+                <th class="py-2.5 px-3 font-normal">Assignee</th>
+                <th class="py-2.5 px-3 font-normal">Timestamp</th>
+                <th class="py-2.5 px-3 text-right font-normal">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="alerts-table-body" class="divide-y divide-outline-variant/30 text-on-surface">
+              <tr>
+                <td colspan="8" class="p-8 text-center text-on-surface-variant font-mono-code">
+                  <span class="material-symbols-outlined text-[24px] animate-spin mb-1">refresh</span>
+                  <div>Loading live alerts from API...</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-64 right-0 h-7 bg-surface-container-low border-t border-outline-variant/40 z-30 flex items-center justify-between px-6">
+      <span class="font-mono-code text-[11px] text-on-surface-variant">VAJRA SYS-NODE 4.2 · Air-Gapped Console</span>
+      <span class="font-mono-code text-[11px] text-primary" id="footer-last-sync">Live sync: Active</span>
+    </footer>
+  </div>
+
+  <!-- Work Order Creation / Assign Modal -->
+  <div id="alert-action-modal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-surface-container border border-outline-variant/70 rounded-lg max-w-md w-full p-5 shadow-2xl flex flex-col gap-4">
+      <div class="flex items-center justify-between border-b border-outline-variant/40 pb-3">
+        <h3 class="font-headline-md text-[15px] font-semibold text-on-surface" id="modal-title">Action</h3>
+        <button onclick="document.getElementById('alert-action-modal').classList.add('hidden')" class="text-on-surface-variant hover:text-on-surface">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+      <div id="modal-body" class="text-[13px] text-on-surface space-y-3">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="flex justify-end gap-2 pt-2 border-t border-outline-variant/40">
+        <button onclick="document.getElementById('alert-action-modal').classList.add('hidden')" class="px-3 py-1.5 rounded bg-surface-container-high text-on-surface font-body-strong text-[12px] hover:bg-surface-variant">Cancel</button>
+        <button id="modal-confirm-btn" class="px-3 py-1.5 rounded bg-primary text-on-primary font-body-strong text-[12px] hover:bg-primary/90">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../vajra-bridge.js"></script>
+  <script>
+    // Live Alerts Screen Controller
+    let alertsData = [];
+    let activeFilterSeverity = 'all';
+    let activeFilterStatus = 'all';
+    let activeSearchQuery = '';
+
+    async function loadAlerts() {
+      const tbody = document.getElementById('alerts-table-body');
+      try {
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+        const res = await fetch('/api/alerts?page=1&page_size=100', { headers });
+        if (!res.ok) throw new Error('API failed');
+        const data = await res.json();
+        alertsData = data.alerts || [];
+        updateSummaryStats();
+        renderAlertsTable();
+      } catch (err) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="p-8 text-center text-error font-mono-code">
+              <span class="material-symbols-outlined text-[24px]">error</span>
+              <div>Failed to load alerts from backend API.</div>
+            </td>
+          </tr>
+        `;
+      }
+    }
+
+    function updateSummaryStats() {
+      const total = alertsData.length;
+      const critical = alertsData.filter(a => a.severity === 'Critical' || a.severity === 'High').length;
+      const inProgress = alertsData.filter(a => a.status === 'In Progress').length;
+      const resolved = alertsData.filter(a => a.status === 'Resolved').length;
+
+      document.getElementById('stat-total-alerts').innerText = total;
+      document.getElementById('stat-critical-alerts').innerText = critical;
+      document.getElementById('stat-progress-alerts').innerText = inProgress;
+      document.getElementById('stat-resolved-alerts').innerText = resolved;
+      document.getElementById('badge-total-active').innerText = `${critical} CRITICAL / HIGH`;
+    }
+
+    function renderAlertsTable() {
+      const tbody = document.getElementById('alerts-table-body');
+      const filtered = alertsData.filter(a => {
+        if (activeFilterSeverity !== 'all' && a.severity !== activeFilterSeverity) return false;
+        if (activeFilterStatus !== 'all' && a.status !== activeFilterStatus) return false;
+        if (activeSearchQuery) {
+          const q = activeSearchQuery.toLowerCase();
+          const match = `${a.alert_id} ${a.engine_id} ${a.aircraft_id} ${a.trigger} ${a.assigned_to || ''}`.toLowerCase();
+          if (!match.includes(q)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('filtered-count-label').innerText = `Showing ${filtered.length} of ${alertsData.length} alerts`;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="p-8 text-center text-on-surface-variant font-mono-code text-[12px]">
+              <span class="material-symbols-outlined text-[28px] text-outline mb-1">check_circle</span>
+              <div>No alerts matching the selected filter criteria.</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(a => {
+        const isCrit = a.severity === 'Critical';
+        const isHigh = a.severity === 'High';
+        const isWarn = a.severity === 'Medium' || a.severity === 'Warning';
+        
+        let sevBadge = 'bg-[#3FA34D]/15 text-[#3FA34D] border-[#3FA34D]/30';
+        if (isCrit) sevBadge = 'bg-[#D64545]/15 text-[#D64545] border-[#D64545]/40 font-semibold';
+        else if (isHigh) sevBadge = 'bg-[#ffb4ab]/15 text-[#ffb4ab] border-[#ffb4ab]/30';
+        else if (isWarn) sevBadge = 'bg-[#D9A21B]/15 text-[#D9A21B] border-[#D9A21B]/30';
+
+        let statusBadge = 'bg-surface-container-high text-on-surface-variant';
+        if (a.status === 'Resolved') statusBadge = 'bg-primary/10 text-primary border border-primary/30';
+        else if (a.status === 'In Progress') statusBadge = 'bg-secondary/15 text-secondary border border-secondary/30';
+        else if (a.status === 'Acknowledged') statusBadge = 'bg-[#D9A21B]/15 text-[#D9A21B] border border-[#D9A21B]/30';
+
+        const canAck = a.status === 'Unacknowledged';
+        const canAssign = a.status !== 'Resolved';
+        const canWO = a.status !== 'Resolved';
+        const canResolve = a.status !== 'Resolved';
+
+        return `
+          <tr class="hover:bg-surface-container-high/60 transition-colors">
+            <td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold">${a.alert_id}</td>
+            <td class="py-2.5 px-3">
+              <div class="font-mono-code font-semibold text-on-surface">${a.engine_id}</div>
+              <div class="text-[11px] text-on-surface-variant">${a.aircraft_id || 'Fleet pool'}</div>
+            </td>
+            <td class="py-2.5 px-3">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] border ${sevBadge}">
+                ${a.severity}
+              </span>
+            </td>
+            <td class="py-2.5 px-3">
+              <div class="text-on-surface font-medium">${a.trigger}</div>
+              <div class="text-[11px] text-outline truncate max-w-xs">${a.recommended_action || 'Inspect component telemetry'}</div>
+            </td>
+            <td class="py-2.5 px-3">
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] ${statusBadge}">
+                ${a.status}
+              </span>
+            </td>
+            <td class="py-2.5 px-3 font-mono-code text-[12px] text-on-surface-variant">
+              ${a.assigned_to || '<span class="text-outline">Unassigned</span>'}
+            </td>
+            <td class="py-2.5 px-3 font-mono-code text-[11px] text-outline">
+              ${a.timestamp || 'Live'}
+            </td>
+            <td class="py-2.5 px-3 text-right">
+              <div class="inline-flex items-center gap-1">
+                ${canAck ? `
+                  <button onclick="handleAcknowledge('${a.alert_id}')" class="px-2 py-1 rounded bg-surface-container border border-outline-variant hover:border-secondary text-[11px] font-body-strong transition-colors cursor-pointer" title="Acknowledge Alert">
+                    Ack
+                  </button>
+                ` : ''}
+                ${canAssign ? `
+                  <button onclick="handleOpenAssignModal('${a.alert_id}', '${a.assigned_to || ''}')" class="px-2 py-1 rounded bg-surface-container border border-outline-variant hover:border-secondary text-[11px] font-body-strong transition-colors cursor-pointer" title="Assign Technician">
+                    Assign
+                  </button>
+                ` : ''}
+                ${canWO ? `
+                  <button onclick="handleCreateWorkOrder('${a.alert_id}', '${a.engine_id}', '${a.trigger}')" class="px-2 py-1 rounded bg-secondary/15 border border-secondary/40 text-secondary hover:bg-secondary hover:text-on-secondary text-[11px] font-body-strong transition-colors cursor-pointer" title="Create Work Order">
+                    Work Order
+                  </button>
+                ` : ''}
+                ${canResolve ? `
+                  <button onclick="handleResolveAlert('${a.alert_id}')" class="px-2 py-1 rounded bg-primary/15 border border-primary/40 text-primary hover:bg-primary hover:text-on-primary text-[11px] font-body-strong transition-colors cursor-pointer" title="Resolve Alert">
+                    Resolve
+                  </button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function handleAcknowledge(alertId) {
+      try {
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch(`/api/alerts/${encodeURIComponent(alertId)}`, {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify({ status: 'Acknowledged' })
+        });
+        if (res.ok) {
+          if (window.showToast) window.showToast('Alert Acknowledged', `${alertId} marked as Acknowledged.`, 'Low');
+          await loadAlerts();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function handleOpenAssignModal(alertId, currentAssignee) {
+      const modal = document.getElementById('alert-action-modal');
+      const title = document.getElementById('modal-title');
+      const body = document.getElementById('modal-body');
+      const confirmBtn = document.getElementById('modal-confirm-btn');
+
+      title.innerText = `Assign Alert ${alertId}`;
+      body.innerHTML = `
+        <label class="block font-mono-code text-[11px] text-on-surface-variant mb-1">Select Technician / Officer:</label>
+        <select id="modal-assignee-select" class="w-full h-9 px-2 bg-surface-container-low border border-outline-variant/60 rounded text-[13px] text-on-surface focus:outline-none focus:border-secondary">
+          <option value="TECH-014 (Engine Propulsion Specialist)">TECH-014 (Engine Propulsion Specialist)</option>
+          <option value="TECH-022 (Turbine Blade Inspection Lead)">TECH-022 (Turbine Blade Inspection Lead)</option>
+          <option value="TECH-008 (Vibration & Acoustics Lead)">TECH-008 (Vibration & Acoustics Lead)</option>
+          <option value="OFF-002 (Maintenance Officer)">OFF-002 (Maintenance Officer)</option>
+        </select>
+      `;
+
+      confirmBtn.onclick = async () => {
+        const assignee = document.getElementById('modal-assignee-select').value;
+        modal.classList.add('hidden');
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch(`/api/alerts/${encodeURIComponent(alertId)}`, {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify({ assigned_to: assignee, status: 'In Progress' })
+        });
+        if (res.ok) {
+          if (window.showToast) window.showToast('Alert Assigned', `${alertId} assigned to ${assignee}.`, 'Low');
+          await loadAlerts();
+        }
+      };
+
+      modal.classList.remove('hidden');
+    }
+
+    async function handleCreateWorkOrder(alertId, engineId, trigger) {
+      try {
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch(`/api/alerts/${encodeURIComponent(alertId)}/work-order`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            priority: 'High',
+            description: `Scheduled maintenance inspection for ${engineId}: ${trigger}`,
+            component: 'Turbine',
+            assigned_team: 'Propulsion Bay 01'
+          })
+        });
+        if (res.ok) {
+          const wo = await res.json();
+          if (window.showToast) window.showToast('Work Order Created', `Created Work Order ${wo.work_order_id || 'WO-NEW'} for ${engineId}.`, 'Low');
+          await loadAlerts();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function handleResolveAlert(alertId) {
+      try {
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch(`/api/alerts/${encodeURIComponent(alertId)}`, {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify({ status: 'Resolved' })
+        });
+        if (res.ok) {
+          if (window.showToast) window.showToast('Alert Resolved', `${alertId} successfully marked as Resolved.`, 'Low');
+          await loadAlerts();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // Attach search and filter events
+    document.getElementById('alert-search-input').oninput = (e) => {
+      activeSearchQuery = e.target.value.trim();
+      renderAlertsTable();
+    };
+
+    document.getElementById('filter-severity').onchange = (e) => {
+      activeFilterSeverity = e.target.value;
+      renderAlertsTable();
+    };
+
+    document.getElementById('filter-status').onchange = (e) => {
+      activeFilterStatus = e.target.value;
+      renderAlertsTable();
+    };
+
+    document.getElementById('btn-refresh-alerts').onclick = () => {
+      loadAlerts();
+    };
+
+    // Load initial alerts on page ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadAlerts);
+    } else {
+      loadAlerts();
+    }
+  </script>
+</body>
+</html>

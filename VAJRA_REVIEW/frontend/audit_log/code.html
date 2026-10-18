@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:#45483e;border-radius:2px;}::-webkit-scrollbar-track{background:transparent;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-primary": "#25350c",
+          "surface-variant": "#31353a",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "on-secondary-fixed": "#001e2f",
+          "tertiary-fixed": "#ffd7f1",
+          "surface-container-low": "#181c20",
+          "on-background": "#e0e3e8",
+          "inverse-primary": "#516536",
+          "surface-container-lowest": "#0b0f12",
+          "outline": "#8f9285",
+          "secondary": "#8ecdfc",
+          "on-tertiary-container": "#401d39",
+          "surface-container-highest": "#31353a",
+          "error": "#ffb4ab",
+          "surface-container": "#1c2024",
+          "primary": "#b8ce96",
+          "on-tertiary-fixed": "#300e2b",
+          "tertiary": "#ebb7dc",
+          "on-primary-fixed": "#111f00",
+          "primary-fixed-dim": "#b8ce96",
+          "on-error": "#690005",
+          "on-secondary-fixed-variant": "#004c6e",
+          "on-secondary": "#00344d",
+          "on-tertiary-fixed-variant": "#613a58",
+          "secondary-container": "#025a83",
+          "surface-tint": "#b8ce96",
+          "inverse-surface": "#e0e3e8",
+          "tertiary-container": "#b282a4",
+          "primary-container": "#839864",
+          "on-error-container": "#ffdad6",
+          "surface-bright": "#363a3e",
+          "secondary-fixed": "#c9e6ff",
+          "on-secondary-container": "#92d1ff",
+          "on-surface-variant": "#c5c8ba",
+          "on-primary-fixed-variant": "#3a4c21",
+          "error-container": "#93000a",
+          "on-surface": "#e0e3e8",
+          "secondary-fixed-dim": "#8ecdfc",
+          "on-tertiary": "#482441",
+          "background": "#101418",
+          "outline-variant": "#45483e",
+          "surface-container-high": "#262a2f",
+          "surface": "#101418",
+          "on-primary-container": "#1e2e06",
+          "inverse-on-surface": "#2d3135",
+          "primary-fixed": "#d4ebb0",
+          "surface-dim": "#101418"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "margin": "1.5rem",
+          "space-xs": "0.25rem",
+          "space-xl": "1.5rem",
+          "gutter": "1.5rem",
+          "space-sm": "0.5rem"
+        },
+        "fontFamily": {
+          "headline-lg": ["IBM Plex Sans"],
+          "body-default": ["IBM Plex Sans"],
+          "headline-xl": ["IBM Plex Sans"],
+          "mono-code": ["IBM Plex Mono"],
+          "label-muted": ["IBM Plex Sans"],
+          "body-strong": ["IBM Plex Sans"],
+          "mono-metric": ["IBM Plex Mono"],
+          "label-default": ["IBM Plex Sans"],
+          "headline-md": ["IBM Plex Sans"]
+        },
+        "fontSize": {
+          "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "headline-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-code": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "label-muted": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "mono-metric": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+          "label-default": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+          "headline-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><span class="font-body-default text-body-default truncate">Command Dashboard</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><span class="font-body-default text-body-default truncate">Engines</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="#"><span class="font-body-default text-body-default truncate">Engine Detail</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><span class="font-body-default text-body-default truncate">3D Digital Twin</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><span class="font-body-default text-body-default truncate">Maintenance Planner</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><span class="font-body-default text-body-default truncate">Fleet Availability</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="font-body-default text-body-default truncate">Reports</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a aria-current="page" class="flex items-center justify-between px-space-sm py-1.5 rounded-lg transition-colors bg-primary-container text-on-primary-container font-body-strong" data-path="settings" href="#"><span class="font-body-default text-body-default truncate">Settings</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><span class="font-body-default text-body-default truncate">Audit Log</span></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-[11px] text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-[13px] text-on-surface">Fleet Commander</span><span class="font-mono-code text-[11px] text-on-surface-variant">(Fleet Commander)</span></div><img alt="Fleet Commander Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background flex flex-col"><div class="flex flex-col w-full">
+<!-- Interactive Audit Log Script for active item selection in App Shell navigation and filter interactions -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Sync active state in sidebar shell for Audit Log
+      const navLinks = document.querySelectorAll("aside nav a");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("data-path") === "audit-log") {
+          link.classList.remove("text-on-surface-variant", "hover:bg-surface-container-high");
+          link.classList.add("bg-primary-container", "text-on-primary-container", "font-body-strong");
+        } else {
+          link.classList.remove("bg-primary-container", "text-on-primary-container", "font-body-strong");
+          link.classList.add("text-on-surface-variant");
+        }
+      });
+    });
+
+    function toggleVerificationDrawer(hash, user, action, target) {
+      const modal = document.getElementById("hash-modal");
+      if (!modal) return;
+      document.getElementById("modal-hash-val").innerText = hash;
+      document.getElementById("modal-user-val").innerText = user;
+      document.getElementById("modal-action-val").innerText = action;
+      document.getElementById("modal-target-val").innerText = target;
+      modal.classList.remove("hidden");
+    }
+
+    function closeVerificationDrawer() {
+      const modal = document.getElementById("hash-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    async function triggerIntegrityCheck(btn) {
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[15px] animate-spin">refresh</span> Verifying SHA-256 Chain...`;
+      btn.disabled = true;
+      try {
+        let token = localStorage.getItem('vajra_jwt') || localStorage.getItem('vajra_token') || sessionStorage.getItem('vajra_jwt') || sessionStorage.getItem('vajra_token');
+        const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+        const res = await fetch('/api/audit/verify', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.verified) {
+            btn.innerHTML = `<span class="material-symbols-outlined text-[15px] text-primary">verified</span> Verified: ${data.total_records} Records Intact`;
+          } else {
+            btn.innerHTML = `<span class="material-symbols-outlined text-[15px] text-error">error</span> Tamper Alert: Broken at #${data.failed_at_id}`;
+          }
+        } else {
+          btn.innerHTML = `<span class="material-symbols-outlined text-[15px] text-error">error</span> Verification Failed`;
+        }
+      } catch (err) {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[15px] text-error">error</span> Connection Error`;
+      }
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
+      }, 3500);
+    }
+  </script>
+<!-- Context Sub-header Bar -->
+<div class="px-gutter py-space-sm bg-surface-container-lowest flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-mono-code text-[11px] text-on-surface-variant">
+<span>CONFIGURATION</span>
+<span class="text-outline">/</span>
+<span class="text-on-surface font-body-strong">AUDIT LOG</span>
+<span class="text-outline">·</span>
+<span class="text-secondary font-mono-code">SYS-CFG: AUD-904-SEC</span>
+</div>
+<div class="hidden xl:flex items-center gap-2 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono-code text-[11px]">
+<span>FLEET: 42 ENGINES</span>
+<span class="text-outline">·</span>
+<span>24 AIRCRAFT</span>
+<span class="text-outline">·</span>
+<span>5 BASES (01–05)</span>
+<span class="text-outline">·</span>
+<span class="text-primary font-mono-code">27 Healthy</span>
+<span class="text-outline">·</span>
+<span class="text-tertiary font-mono-code">12 Watch</span>
+<span class="text-outline">·</span>
+<span class="text-error font-mono-code">3 Critical</span>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-mono-code text-[11px]">
+<span class="material-symbols-outlined text-[14px] text-primary">security</span>
+<span>Cryptographic audit log · SHA-256 tamper-evident hash chain · Retention: 90d local edge</span>
+</div>
+</div>
+<div class="px-gutter py-space-md space-y-space-md flex-1">
+<!-- Header & Quick Metrics Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-xs">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-2">
+<span>Audit Log &amp; Event Verification</span>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono-code text-[11px] tracking-wide">AIR-HQ SYNCED</span>
+</h1>
+<p class="font-body-default text-body-default text-on-surface-variant mt-0.5">
+          Cryptographically verified record of system events, operator actions, model parameter overrides, and mission dispatch authorizations.
+        </p>
+</div>
+<!-- Quick Metrics Chips Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full lg:w-auto shrink-0">
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between min-w-[140px]">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Total Events (24h)</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-mono-metric text-headline-md text-on-surface font-semibold">1,482</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">logged</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between min-w-[140px]">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">High-Privilege</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-mono-metric text-headline-md text-secondary font-semibold">14</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">admin evts</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between min-w-[140px]">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Integrity State</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span class="font-mono-metric text-body-strong text-primary">Verified</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">(0 dev)</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between min-w-[140px]">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Datalink Export</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-mono-metric text-headline-md text-on-surface font-semibold">06:00</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">IST (Fleet Command HQ)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter & Controls Toolbar -->
+<div class="p-3 bg-surface-container rounded flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
+<!-- Search & Filters Left Group -->
+<div class="flex flex-wrap items-center gap-2 flex-1">
+<!-- Search Field -->
+<div class="relative min-w-[240px] flex-1 max-w-sm">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span>
+<input class="w-full h-8 pl-8 pr-3 bg-surface-container-low rounded font-body-default text-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-high transition-colors" id="audit-search" placeholder="Filter records, users, actions, or hash..." type="search"/>
+</div>
+<!-- User Filter -->
+<div class="relative shrink-0">
+<select class="h-8 px-2.5 bg-surface-container-low rounded font-body-default text-body-default text-on-surface focus:outline-none cursor-pointer pr-7 appearance-none">
+<option value="all">All Users &amp; Daemons</option>
+<option value="commander">Fleet Commander [Commander]</option>
+<option value="analyst">Analyst [Maint Off]</option>
+<option value="nair">Flt Lt Nair [Data Analyst]</option>
+<option value="auto">Auto Rule-Engine</option>
+<option value="system">System Edge Daemon</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Action Type Filter -->
+<div class="relative shrink-0">
+<select class="h-8 px-2.5 bg-surface-container-low rounded font-body-default text-body-default text-on-surface focus:outline-none cursor-pointer pr-7 appearance-none">
+<option value="all">All Action Types</option>
+<option value="ack">Acknowledged alert</option>
+<option value="plan">Approved plan</option>
+<option value="thresh">Changed threshold</option>
+<option value="upload">Uploaded data</option>
+<option value="report">Exported report</option>
+<option value="req">Fast-track requisition</option>
+<option value="sim">Sim fault injected</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Status Filter -->
+<div class="relative shrink-0">
+<select class="h-8 px-2.5 bg-surface-container-low rounded font-body-default text-body-default text-on-surface focus:outline-none cursor-pointer pr-7 appearance-none">
+<option value="all">All Results (Any)</option>
+<option value="success">Success</option>
+<option value="warning">Warning / Approaching</option>
+<option value="denied">Auth Denied</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<!-- Quick Pill Chips for Time Range -->
+<div class="flex items-center bg-surface-container-low rounded p-0.5 shrink-0">
+<button class="px-2 py-1 font-mono-code text-[11px] text-on-surface-variant hover:text-on-surface rounded transition-colors">24h</button>
+<button class="px-2 py-1 font-mono-code text-[11px] bg-surface-container-high text-primary font-semibold rounded">7d</button>
+<button class="px-2 py-1 font-mono-code text-[11px] text-on-surface-variant hover:text-on-surface rounded transition-colors">30d</button>
+<button class="px-2 py-1 font-mono-code text-[11px] text-on-surface-variant hover:text-on-surface rounded transition-colors">All</button>
+</div>
+</div>
+<!-- Action Buttons Right Group -->
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-8 px-3 rounded bg-surface-container-high text-on-surface font-body-strong text-[13px] hover:bg-surface-variant flex items-center gap-1.5 transition-colors" onclick="triggerIntegrityCheck(this)">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified_user</span>
+<span>Verify Integrity</span>
+</button>
+<button class="h-8 px-3 rounded bg-primary text-on-primary font-body-strong text-[13px] hover:bg-primary-fixed flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Dense Compliance Table Container -->
+<div class="bg-surface-container rounded overflow-hidden">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left whitespace-nowrap text-body-default">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-mono-code text-[11px] uppercase tracking-wider">
+<th class="py-2.5 px-4 font-semibold">Timestamp (IST)</th>
+<th class="py-2.5 px-4 font-semibold">Operator / System Agent</th>
+<th class="py-2.5 px-3 font-semibold">RBAC Role</th>
+<th class="py-2.5 px-3 font-semibold">Event Action</th>
+<th class="py-2.5 px-4 font-semibold">Target / Entity</th>
+<th class="py-2.5 px-3 font-semibold">Audit Status</th>
+<th class="py-2.5 px-4 font-semibold text-right">Entry Hash</th>
+</tr>
+</thead>
+<tbody class="text-[13px] divide-y-0" id="audit-table-body">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 14:08:12</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-primary font-semibold">
+                    WS
+                  </div>
+<span class="font-body-strong text-on-surface">Fleet Commander</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Fleet Commander
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Changed threshold</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  EGT Warning Threshold (+15°C)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('8f4ae30891d4e14b', 'Fleet Commander', 'Changed threshold', 'EGT Warning Threshold (+15°C)')">
+                  8f4a...e14b
+                </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 13:52:04</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-secondary font-semibold">
+                    SV
+                  </div>
+<span class="font-body-strong text-on-surface">Analyst</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Maintenance Officer
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Approved plan</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  W42 Maintenance Planner (Refined)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('b21c4309a0f499a0', 'Analyst', 'Approved plan', 'W42 Maintenance Planner (Refined)')">
+                  b21c...99a0
+                </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 13:48:51</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-tertiary font-semibold">
+                    RE
+                  </div>
+<span class="font-body-strong text-on-surface">Auto Rule-Engine</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-on-surface-variant">
+                  Automated Agent
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Acknowledged alert</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  ENG-019 (VJ-114) Thermocouple Drift (+28°C)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-tertiary-container/20 text-tertiary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Warning (Threshold)
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('4c3d8819001b88f1', 'Auto Rule-Engine', 'Acknowledged alert', 'ENG-019 Thermocouple Drift')">
+                  4c3d...88f1
+                </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 12:30:15</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-secondary font-semibold">
+                    FN
+                  </div>
+<span class="font-body-strong text-on-surface">Flt Lt Nair</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Data Analyst
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Uploaded data</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  BASE01_FLT_LOG_W42.csv (1.48M rows)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('7e1a384f501a23d9', 'Flt Lt Nair', 'Uploaded data', 'BASE01_FLT_LOG_W42.csv')">
+                  7e1a...23d9
+                </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 11:30:40</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-primary font-semibold">
+                    WS
+                  </div>
+<span class="font-body-strong text-on-surface">Fleet Commander</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Fleet Commander
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Exported report</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  DOC-REP-1014-DFH (Daily Brief PDF)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('99d4aa1828cb01ff', 'Fleet Commander', 'Exported report', 'DOC-REP-1014-DFH (PDF)')">
+                  99d4...01ff
+                </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 10:15:22</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-secondary font-semibold">
+                    SV
+                  </div>
+<span class="font-body-strong text-on-surface">Analyst</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Maintenance Officer
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Fast-track requisition</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  TF1-HPT-442 Spares (Base 01 -&gt; 03 TR-9041)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('31aa5610bc1dfe24', 'Analyst', 'Fast-track requisition', 'TF1-HPT-442')">
+                  31aa...fe24
+                </button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 09:44:11</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-tertiary font-semibold">
+                    RE
+                  </div>
+<span class="font-body-strong text-on-surface">Auto Rule-Engine</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-on-surface-variant">
+                  Automated Agent
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Acknowledged alert</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-error px-1.5 py-0.5 rounded bg-surface-container-low">
+                  ENG-003 Grounding Order (RUL &lt;= 8 cyc)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('55bc729112ae10a8', 'Auto Rule-Engine', 'Acknowledged alert', 'ENG-003 Grounding Order')">
+                  55bc...10a8
+                </button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">14 Oct 2026 08:12:00</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-on-surface-variant font-semibold">
+                    ED
+                  </div>
+<span class="font-body-strong text-on-surface">System Edge Daemon</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-on-surface-variant">
+                  Automated Agent
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Changed threshold</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  Dynamic Hysteresis Refresh (IsoForest v2.4)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('11d8209867cce831', 'System Edge Daemon', 'Changed threshold', 'Dynamic Hysteresis Refresh')">
+                  11d8...e831
+                </button>
+</td>
+</tr>
+<!-- Row 9 (Denied Alert Row) -->
+<tr class="bg-error-container/10 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">13 Oct 2026 18:22:45</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center font-mono-code text-[10px] text-error font-semibold">
+                    UH
+                  </div>
+<span class="font-body-strong text-error">Unknown Host (Base 03)</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-error">
+                  Operator Guest
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong text-error">Changed threshold</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-error px-1.5 py-0.5 rounded bg-surface-container-low">
+                  Override RPM Redline Limit (N1: 104.2%)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-error-container/30 text-error">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                  Auth Denied (Invalid Key)
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-error hover:underline transition-colors" onclick="toggleVerificationDrawer('ee41870233ea0012', 'Unknown Host (Base 03)', 'Changed threshold', 'Override RPM Redline Limit')">
+                  ee41...0012
+                </button>
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">13 Oct 2026 16:04:19</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-secondary font-semibold">
+                    FN
+                  </div>
+<span class="font-body-strong text-on-surface">Flt Lt Nair</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Data Analyst
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Exported report</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  W41 Fleet Availability &amp; Downtime (CSV)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('62b8004fcd7877cb', 'Flt Lt Nair', 'Exported report', 'W41 Fleet Availability &amp; Downtime')">
+                  62b8...77cb
+                </button>
+</td>
+</tr>
+<!-- Row 11 -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-high transition-colors group">
+<td class="py-2 px-4 font-mono-code text-[12px] text-on-surface">13 Oct 2026 14:11:08</td>
+<td class="py-2 px-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-mono-code text-[10px] text-secondary font-semibold">
+                    SV
+                  </div>
+<span class="font-body-strong text-on-surface">Analyst</span>
+</div>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container-low font-mono-code text-[11px] text-secondary">
+                  Maintenance Officer
+                </span>
+</td>
+<td class="py-2 px-3 text-on-surface">
+<span class="font-body-strong">Sim fault injected</span>
+</td>
+<td class="py-2 px-4">
+<span class="font-mono-code text-[12px] text-on-surface px-1.5 py-0.5 rounded bg-surface-container-low">
+                  Synthetic Vibration Spike (ENG-003 +3.4σ)
+                </span>
+</td>
+<td class="py-2 px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-mono-code text-[11px] bg-primary/10 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Success
+                </span>
+</td>
+<td class="py-2 px-4 text-right">
+<button class="font-mono-code text-[11px] text-on-surface-variant hover:text-secondary hover:underline transition-colors" onclick="toggleVerificationDrawer('db927701da52514e', 'Analyst', 'Sim fault injected', 'Synthetic Vibration Spike (ENG-003)')">
+                  db92...514e
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Ledger Integrity Footer -->
+<div class="px-4 py-3 bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm select-none">
+<div class="flex items-center gap-3">
+<span class="font-body-default text-[13px] text-on-surface-variant">
+            Showing <strong class="text-on-surface font-mono-code">1–11</strong> of <strong class="text-on-surface font-mono-code">1,482</strong> audit events
+          </span>
+<span class="hidden md:inline text-outline font-mono-code">·</span>
+<span class="hidden md:flex items-center gap-1 font-mono-code text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-primary">tag</span>
+<span>Merkle Root: 0x9AF8-410C-E73B-9811 · Last validated 14:12 IST</span>
+</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant text-[12px] hover:text-on-surface disabled:opacity-40" disabled="">
+            Previous
+          </button>
+<button class="w-7 h-7 rounded bg-primary-container text-on-primary-container font-mono-code text-[12px] font-semibold flex items-center justify-center">
+            1
+          </button>
+<button class="w-7 h-7 rounded bg-surface-container text-on-surface-variant hover:text-on-surface font-mono-code text-[12px] flex items-center justify-center transition-colors">
+            2
+          </button>
+<button class="w-7 h-7 rounded bg-surface-container text-on-surface-variant hover:text-on-surface font-mono-code text-[12px] flex items-center justify-center transition-colors">
+            3
+          </button>
+<span class="px-1 text-on-surface-variant font-mono-code text-[12px]">...</span>
+<button class="px-2 h-7 rounded bg-surface-container text-on-surface-variant hover:text-on-surface font-mono-code text-[12px] flex items-center justify-center transition-colors">
+            135
+          </button>
+<button class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant text-[12px] hover:text-on-surface transition-colors">
+            Next
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Cryptographic Verification Inspection Drawer Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 hidden" id="hash-modal">
+<div class="w-full max-w-xl mx-4 bg-surface-container rounded-lg p-space-lg flex flex-col space-y-space-md shadow-xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Cryptographic Proof &amp; Node Stamp</h2>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeVerificationDrawer()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded space-y-2 font-mono-code text-[12px]">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>EVENT HASH:</span>
+<span class="text-secondary font-semibold" id="modal-hash-val">0x8f4ae30891d4e14b</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>CALL-SIGN / USER:</span>
+<span class="text-on-surface" id="modal-user-val">Fleet Commander</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>ACTION RECORD:</span>
+<span class="text-on-surface" id="modal-action-val">Changed threshold</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>TARGET ENTITY:</span>
+<span class="text-on-surface truncate max-w-[280px]" id="modal-target-val">EGT Warning Threshold (+15°C)</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>PREVIOUS BLOCK HASH:</span>
+<span class="text-on-surface-variant">0x37c891ba77102de9</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>VALIDATING NODE:</span>
+<span class="text-primary">VAJRA-FWD-NODE-01 (Air-gapped)</span>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container-low text-on-surface-variant font-body-default text-[13px] flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5">lock</span>
+<span>This entry is linked via a cryptographic SHA-256 hash incorporating the previous entry's hash. Any modification breaks chain verification.</span>
+</div>
+<div class="flex justify-end gap-2 pt-2">
+<button class="h-8 px-4 rounded bg-surface-container-high text-on-surface font-body-strong text-[13px] hover:bg-surface-variant" onclick="closeVerificationDrawer()">
+          Dismiss
+        </button>
+</div>
+</div>
+</div>
+</div></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none shrink-0"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-[11px]">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px]">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

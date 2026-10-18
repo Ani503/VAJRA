@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+
+
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:#45483e;border-radius:2px;}::-webkit-scrollbar-track{background:transparent;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#690005",
+          "surface-container-highest": "#31353a",
+          "primary-fixed": "#d4ebb0",
+          "on-secondary-fixed-variant": "#004c6e",
+          "on-tertiary-container": "#401d39",
+          "inverse-surface": "#e0e3e8",
+          "on-primary": "#25350c",
+          "primary-container": "#839864",
+          "on-secondary-container": "#92d1ff",
+          "on-primary-fixed-variant": "#3a4c21",
+          "on-primary-fixed": "#111f00",
+          "on-background": "#e0e3e8",
+          "on-secondary": "#00344d",
+          "surface-variant": "#31353a",
+          "tertiary-container": "#b282a4",
+          "tertiary-fixed": "#ffd7f1",
+          "surface-container": "#1c2024",
+          "surface-container-low": "#181c20",
+          "background": "#101418",
+          "outline": "#8f9285",
+          "on-primary-container": "#1e2e06",
+          "on-surface": "#e0e3e8",
+          "secondary": "#8ecdfc",
+          "surface-bright": "#363a3e",
+          "surface-container-lowest": "#0b0f12",
+          "error": "#ffb4ab",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "primary": "#b8ce96",
+          "outline-variant": "#45483e",
+          "surface-container-high": "#262a2f",
+          "on-secondary-fixed": "#001e2f",
+          "surface-tint": "#b8ce96",
+          "on-error-container": "#ffdad6",
+          "secondary-fixed-dim": "#8ecdfc",
+          "secondary-container": "#025a83",
+          "inverse-on-surface": "#2d3135",
+          "on-tertiary-fixed-variant": "#613a58",
+          "secondary-fixed": "#c9e6ff",
+          "surface-dim": "#101418",
+          "tertiary": "#ebb7dc",
+          "on-tertiary": "#482441",
+          "on-tertiary-fixed": "#300e2b",
+          "on-surface-variant": "#c5c8ba",
+          "error-container": "#93000a",
+          "surface": "#101418",
+          "inverse-primary": "#516536",
+          "primary-fixed-dim": "#b8ce96"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-xl": "1.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-md": ["IBM Plex Sans"],
+          "headline-xl": ["IBM Plex Sans"],
+          "mono-code": ["IBM Plex Mono"],
+          "body-default": ["IBM Plex Sans"],
+          "body-strong": ["IBM Plex Sans"],
+          "mono-metric": ["IBM Plex Mono"],
+          "label-muted": ["IBM Plex Sans"],
+          "headline-lg": ["IBM Plex Sans"],
+          "label-default": ["IBM Plex Sans"]
+        },
+        "fontSize": {
+          "headline-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-code": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "mono-metric": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+          "label-muted": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "label-default": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">speed</span><span class="font-body-default text-body-default truncate">Command Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">mode_fan</span><span class="font-body-default text-body-default truncate">Engines</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">troubleshoot</span><span class="font-body-default text-body-default truncate">Engine Detail</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">view_in_ar</span><span class="font-body-default text-body-default truncate">3D Digital Twin</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">event_available</span><span class="font-body-default text-body-default truncate">Maintenance Planner</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">inventory_2</span><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">flight_takeoff</span><span class="font-body-default text-body-default truncate">Fleet Availability</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">lab_profile</span><span class="font-body-default text-body-default truncate">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">tune</span><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></div></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">settings</span><span class="font-body-default text-body-default truncate">Settings</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">history</span><span class="font-body-default text-body-default truncate">Audit Log</span></div></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-[11px] text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-[13px] text-on-surface">Fleet Commander</span><span class="font-mono-code text-[11px] text-on-surface-variant">(Fleet Commander)</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background flex flex-col"><div class="flex flex-col w-full">
+<!-- Interactive Script for VAJRA Shell Alignment & Simulation Micro-Interactions -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Synchronize Sidebar active link state to "Data & Simulator"
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'data-and-simulator') {
+          link.classList.remove('text-on-surface-variant');
+          link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-body-strong');
+        } else {
+          link.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-body-strong');
+          link.classList.add('text-on-surface-variant');
+        }
+      });
+
+      // Update sidebar official logo to provided ../assets/avatar.svg
+      const sidebarLogo = document.querySelector('aside .h-12 img');
+      if (sidebarLogo) {
+        sidebarLogo.src = "../assets/vajra_emblem.png";
+      }
+    });
+
+    function toggleSimState() {
+      const stateBadge = document.getElementById('sim-state-badge');
+      const stateDot = document.getElementById('sim-state-dot');
+      const toggleBtnText = document.getElementById('sim-toggle-btn-text');
+      const toggleIcon = document.getElementById('sim-toggle-icon');
+
+      if (stateBadge.innerText.includes('RUNNING')) {
+        stateBadge.innerText = 'STANDBY';
+        stateBadge.className = 'font-mono-code text-label-default px-2 py-0.5 rounded-lg bg-surface-container-highest text-on-surface-variant inline-flex items-center gap-1.5';
+        stateDot.className = 'w-1.5 h-1.5 rounded-full bg-outline inline-block';
+        toggleBtnText.innerText = 'Resume stream';
+        toggleIcon.innerText = 'play_arrow';
+      } else {
+        stateBadge.innerText = 'RUNNING';
+        stateBadge.className = 'font-mono-code text-label-default px-2 py-0.5 rounded-lg bg-primary/20 text-primary inline-flex items-center gap-1.5';
+        stateDot.className = 'w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block';
+        toggleBtnText.innerText = 'Pause stream';
+        toggleIcon.innerText = 'pause';
+      }
+    }
+
+    function setSpeed(multiplier, btn) {
+      document.querySelectorAll('.speed-pill').forEach(b => {
+        b.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-body-strong');
+        b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-body-strong');
+      btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    }
+
+    function injectAnomaly() {
+      const logBody = document.getElementById('anomaly-log-table');
+      const type = document.getElementById('fault-type-select').value;
+      const engine = document.getElementById('fault-engine-select').value;
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0] + ' IST';
+      
+      const newRow = document.createElement('tr');
+      newRow.className = 'hover:bg-surface-container-high transition-colors text-on-surface text-body-default';
+      newRow.innerHTML = `
+        <td class="px-space-md py-2 font-mono-code text-label-default text-secondary">${timeStr}</td>
+        <td class="px-space-md py-2 font-mono-code text-label-default font-semibold">${engine}</td>
+        <td class="px-space-md py-2 text-on-surface">${type}</td>
+        <td class="px-space-md py-2 font-mono-metric text-error font-semibold">+3.8σ</td>
+        <td class="px-space-md py-2 text-right">
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-primary font-mono-code text-label-default">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+            1.1s (IsoForest)
+          </span>
+        </td>
+      `;
+      logBody.insertBefore(newRow, logBody.firstChild);
+      
+      const toast = document.getElementById('fault-toast');
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+  </script>
+<!-- Notification Toast -->
+<div class="fixed bottom-12 right-6 z-50 transition-opacity duration-300 opacity-0 pointer-events-none bg-surface-container-highest text-on-surface px-space-md py-2.5 rounded-lg flex items-center gap-space-sm shadow-xl" id="fault-toast">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span class="font-mono-code text-label-default">Synthetic anomaly injected. Broadcast dispatched to simulation event queue.</span>
+</div>
+<!-- Operational Context Header Bar -->
+<div class="w-full bg-surface-container-low px-space-lg py-2.5 flex flex-wrap items-center justify-between gap-space-md">
+<!-- Breadcrumb & Title Section -->
+<div class="flex items-center gap-space-md min-w-0">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-label-default">
+<span>Operations</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Data &amp; Simulator</span>
+</div>
+<div class="h-3.5 w-[1px] bg-outline-variant/40 hidden sm:block"></div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-on-surface text-headline-md tracking-tight">Telemetry Synthesizer &amp; Ingestion Terminal</span>
+<span class="font-mono-code text-label-default px-2 py-0.5 rounded bg-surface-container text-secondary">SIM-ENGINE v4.2.0</span>
+</div>
+</div>
+<!-- Quick Ops Actions -->
+<div class="flex items-center gap-space-sm">
+<button id="btn-simulator-reset" class="px-space-md py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-default text-label-default flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">restart_alt</span>
+<span>Reset to nominal</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg bg-secondary-container hover:bg-surface-bright text-on-secondary-container font-label-default text-label-default flex items-center gap-1.5 transition-colors" onclick="alert('Telemetry export started: Streaming live NDJSON dump for Base 01...');">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export telemetry stream</span>
+</button>
+</div>
+</div>
+<!-- Fleet Context & Node Architecture Banner -->
+<div class="w-full bg-surface-container px-space-lg py-2 flex flex-wrap items-center justify-between gap-y-2 gap-x-space-lg">
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">military_tech</span>
+<span class="font-body-strong text-body-strong text-on-surface">Fleet context:</span>
+<span class="font-mono-code text-label-default text-on-surface-variant">42 engines (24 aircraft)</span>
+</div>
+<span class="text-outline-variant/50">•</span>
+<div class="flex items-center gap-space-sm font-mono-code text-label-default">
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-primary/20 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 27 healthy
+        </span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-highest text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 12 watch
+        </span>
+<span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-error-container text-on-error-container">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> 3 critical
+        </span>
+</div>
+<span class="text-outline-variant/50">•</span>
+<span class="font-mono-code text-label-default text-on-surface-variant">Active sectors: 5 bases (Base 01 Forward – Base 05 Rear)</span>
+</div>
+<!-- Node State Pills -->
+<div class="flex items-center gap-space-md font-mono-code text-label-default">
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low text-primary">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span>Offline mode: ON</span>
+<span class="text-on-surface-variant font-mono-code text-[11px]">(Air-gapped)</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-secondary">dns</span>
+<span>SYS-NODE-04</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant">Sim state:</span>
+<div class="font-mono-code text-label-default px-2 py-0.5 rounded bg-primary/20 text-primary inline-flex items-center gap-1.5" id="sim-state-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse inline-block" id="sim-state-dot"></span>
+          RUNNING
+        </div>
+</div>
+</div>
+</div>
+<!-- Main Multi-Panel Operational Workspace Grid -->
+<div class="p-space-lg grid grid-cols-12 gap-space-lg">
+<!-- PANEL 1: Live Telemetry Simulation Controller (Left 7 Cols) -->
+<div class="col-span-12 xl:col-span-7 flex flex-col gap-space-lg">
+<!-- Fault Injection Engine Card -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col gap-space-md">
+<!-- Panel Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">tune</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Fault Injection Engine &amp; Anomaly Synthesizer</h2>
+</div>
+<div class="flex items-center gap-space-xs font-mono-code text-label-default text-on-surface-variant">
+<span>Buffer: 10,000 pts</span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary">Stochastic noise active</span>
+</div>
+</div>
+<!-- Simulation Stream Playback Controls -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-strong text-body-default flex items-center gap-1.5 transition-colors" onclick="toggleSimState()">
+<span class="material-symbols-outlined text-[18px] text-primary" id="sim-toggle-icon">pause</span>
+<span id="toggle-btn-text">Pause stream</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-default text-body-default flex items-center gap-1 transition-colors" onclick="alert('Stepped telemetry clock +100ms. All thermodynamic buffers updated.');">
+<span class="material-symbols-outlined text-[16px]">skip_next</span>
+<span>Step frame</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-error font-body-default text-body-default flex items-center gap-1 transition-colors" onclick="alert('Simulation stream halted completely.');">
+<span class="material-symbols-outlined text-[16px]">stop</span>
+<span>Stop</span>
+</button>
+</div>
+<!-- Rate Multipliers -->
+<div class="flex items-center gap-1.5">
+<span class="font-mono-code text-label-default text-on-surface-variant mr-1">Speed:</span>
+<button class="speed-pill px-2 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-mono-code text-label-default" onclick="setSpeed('0.5', this)">0.5x</button>
+<button class="speed-pill px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-mono-code text-label-default font-body-strong" onclick="setSpeed('1.0', this)">1.0x Real</button>
+<button class="speed-pill px-2 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-mono-code text-label-default" onclick="setSpeed('2.0', this)">2.0x</button>
+<button class="speed-pill px-2 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-mono-code text-label-default" onclick="setSpeed('5.0', this)">5.0x</button>
+<button class="speed-pill px-2 py-1 rounded bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-mono-code text-label-default" onclick="setSpeed('10.0', this)">10x Accel</button>
+</div>
+</div>
+<!-- Parametric Fault Form -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+<!-- Fault Type Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-default text-label-default text-on-surface-variant" for="fault-type-select">Anomaly pattern type</label>
+<select class="w-full h-9 px-space-sm bg-surface-container-low rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary" id="fault-type-select">
+<option value="Vibration spike (Bearing outer race)">Vibration spike (Bearing outer race)</option>
+<option value="EGT thermal runaway (+85°C)">EGT thermal runaway (+85°C)</option>
+<option value="Oil pressure transient collapse">Oil pressure transient collapse</option>
+<option value="Bearing raceway sub-surface spalling">Bearing raceway spalling</option>
+<option value="Fuel nozzle spray pattern clogging">Fuel nozzle spray clogging</option>
+<option value="HPC stator blade clearance rub">HPC stator blade rub</option>
+</select>
+</div>
+<!-- Target Engine Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-default text-label-default text-on-surface-variant" for="fault-engine-select">Target engine asset</label>
+<select class="w-full h-9 px-space-sm bg-surface-container-low rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary" id="fault-engine-select">
+<option value="ENG-003 (Base 01 - Critical)">ENG-003 (Fighter-B / Base 01 - Critical)</option>
+<option value="ENG-007 (Base 03 - Critical)">ENG-007 (Fighter-B / Base 03 - Critical)</option>
+<option value="ENG-019 (Base 02 - Critical)">ENG-019 (Fighter-B / Base 02 - Critical)</option>
+<option value="ENG-022 (Base 01 - Watch)">ENG-022 (Fighter-B / Base 01 - Watch)</option>
+<option value="ENG-031 (Base 04 - Watch)">ENG-031 (Fighter-B / Base 04 - Watch)</option>
+<option value="ALL-FLEET (Stress test)">Broadcast to All Fleet (42 Engines)</option>
+</select>
+</div>
+<!-- Severity / Amplitude slider -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center font-label-default text-label-default">
+<label class="text-on-surface-variant" for="severity-range">Amplitude / Anomaly drift</label>
+<span class="font-mono-metric text-secondary font-semibold" id="drift-val">+3.4σ (+74°C)</span>
+</div>
+<div class="flex items-center gap-space-sm h-9">
+<input class="w-full accent-secondary cursor-pointer h-1.5 bg-surface-container-lowest rounded" id="severity-range" max="6.0" min="1.0" oninput="document.getElementById('drift-val').innerText = '+' + this.value + 'σ (+' + Math.round(this.value * 21.7) + '°C)'" step="0.2" type="range" value="3.4"/>
+</div>
+</div>
+</div>
+<!-- Action Row -->
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-2 text-on-surface-variant font-mono-code text-label-default">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>Local synthetic engine strictly isolated from actual telemetry flight avionics bus</span>
+</div>
+<button class="px-space-lg py-2 rounded-lg bg-primary hover:bg-primary-fixed text-on-primary font-body-strong text-body-strong flex items-center gap-2 transition-colors" onclick="injectAnomaly()">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Inject fault packet</span>
+</button>
+</div>
+<!-- Live Injected Anomalies Log Table -->
+<div class="pt-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-default text-label-default text-on-surface font-semibold uppercase tracking-wider">Synthetic Injection Log &amp; Detection Latency</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Telemetry sync: VAJRA SYS-NODE 4.2</span>
+</div>
+<div class="w-full overflow-x-auto rounded-lg bg-surface-container-lowest">
+<table class="w-full text-left font-body-default text-body-default">
+<thead class="bg-surface-container-high text-on-surface-variant font-mono-code text-label-default uppercase tracking-wider">
+<tr>
+<th class="px-space-md py-2">Timestamp</th>
+<th class="px-space-md py-2">Engine ID</th>
+<th class="px-space-md py-2">Injected Fault Mode</th>
+<th class="px-space-md py-2">Anomaly Delta</th>
+<th class="px-space-md py-2 text-right">Detection Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20" id="anomaly-log-table">
+<tr class="hover:bg-surface-container-high transition-colors text-on-surface text-body-default">
+<td class="px-space-md py-2 font-mono-code text-label-default text-secondary">14:11:08 IST</td>
+<td class="px-space-md py-2 font-mono-code text-label-default font-semibold">ENG-003</td>
+<td class="px-space-md py-2 text-on-surface">Vibration spike (Spur gear mesh)</td>
+<td class="px-space-md py-2 font-mono-metric text-error font-semibold">+3.4σ</td>
+<td class="px-space-md py-2 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                      1.4s (IsoForest)
+                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors text-on-surface text-body-default">
+<td class="px-space-md py-2 font-mono-code text-label-default text-secondary">14:04:22 IST</td>
+<td class="px-space-md py-2 font-mono-code text-label-default font-semibold">ENG-007</td>
+<td class="px-space-md py-2 text-on-surface">EGT thermal drift (+72°C step)</td>
+<td class="px-space-md py-2 font-mono-metric text-error font-semibold">+2.9σ</td>
+<td class="px-space-md py-2 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                      0.8s (XGBoost)
+                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors text-on-surface text-body-default">
+<td class="px-space-md py-2 font-mono-code text-label-default text-secondary">13:48:51 IST</td>
+<td class="px-space-md py-2 font-mono-code text-label-default font-semibold">ENG-019</td>
+<td class="px-space-md py-2 text-on-surface">Oil Scavenge pressure fluctuation</td>
+<td class="px-space-md py-2 font-mono-metric text-secondary font-semibold">+1.8σ</td>
+<td class="px-space-md py-2 text-right">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                      2.2s (IsoForest)
+                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- PANEL 2: Real-Time Synthetic Waveform & Telemetry Monitor -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">show_chart</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Real-Time Synthetic Waveform Telemetry</h2>
+</div>
+<div class="flex items-center gap-space-md font-mono-code text-label-default">
+<span class="text-on-surface-variant">Throughput:</span>
+<span class="text-primary font-semibold">4,200 packets/sec</span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary">0% packet drop</span>
+</div>
+</div>
+<!-- Telemetry Channels Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Channel 1: Vibration RMS -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-default text-label-default text-on-surface-variant">Shaft Vibration RMS</span>
+<span class="font-mono-metric text-label-default text-error font-semibold">7.42 mm/s</span>
+</div>
+<div class="text-mono-code font-mono-code text-[11px] text-on-surface-variant">Baseline threshold: 4.5 mm/s</div>
+<!-- Sparkline SVG -->
+<div class="h-16 w-full flex items-end pt-2">
+<svg class="w-full h-full text-error" preserveaspectratio="none" viewbox="0 0 100 35">
+<path d="M0,25 L10,24 L20,26 L30,22 L40,25 L50,23 L55,18 L60,8 L65,14 L70,5 L80,18 L90,20 L100,22" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+<line stroke="#45483e" stroke-dasharray="2,2" stroke-width="1" x1="0" x2="100" y1="18" y2="18"></line>
+</svg>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant pt-1">
+<span>T-60s</span>
+<span class="text-error font-semibold">+3.8σ Anomaly</span>
+<span>LIVE</span>
+</div>
+</div>
+<!-- Channel 2: EGT -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-default text-label-default text-on-surface-variant">EGT Exhaust Gas Temp</span>
+<span class="font-mono-metric text-label-default text-error font-semibold">748.2 °C</span>
+</div>
+<div class="text-mono-code font-mono-code text-[11px] text-on-surface-variant">Max safe limit: 710.0 °C</div>
+<!-- Sparkline SVG -->
+<div class="h-16 w-full flex items-end pt-2">
+<svg class="w-full h-full text-secondary" preserveaspectratio="none" viewbox="0 0 100 35">
+<path d="M0,28 L15,27 L30,28 L45,26 L60,20 L70,12 L80,9 L90,11 L100,10" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+<line stroke="#45483e" stroke-dasharray="2,2" stroke-width="1" x1="0" x2="100" y1="15" y2="15"></line>
+</svg>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant pt-1">
+<span>T-60s</span>
+<span class="text-secondary font-semibold">+41.2°C Drift</span>
+<span>LIVE</span>
+</div>
+</div>
+<!-- Channel 3: Oil Scavenge Pressure -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-default text-label-default text-on-surface-variant">Oil Scavenge Pressure</span>
+<span class="font-mono-metric text-label-default text-primary font-semibold">41.8 PSI</span>
+</div>
+<div class="text-mono-code font-mono-code text-[11px] text-on-surface-variant">Nominal range: 38 - 52 PSI</div>
+<!-- Sparkline SVG -->
+<div class="h-16 w-full flex items-end pt-2">
+<svg class="w-full h-full text-primary" preserveaspectratio="none" viewbox="0 0 100 35">
+<path d="M0,18 L12,19 L25,17 L38,18 L50,21 L62,17 L75,19 L88,18 L100,18" fill="none" stroke="currentColor" stroke-width="1.8"></path>
+<line stroke="#45483e" stroke-dasharray="2,2" stroke-width="1" x1="0" x2="100" y1="18" y2="18"></line>
+</svg>
+</div>
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant pt-1">
+<span>T-60s</span>
+<span class="text-primary font-semibold">Nominal Band</span>
+<span>LIVE</span>
+</div>
+</div>
+</div>
+<!-- Telemetry Bus Status Footer -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs font-mono-code text-label-default text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span>Local Fleet Synthetic Bus: 42 engines streaming continuously to model inference pipeline</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span>Sampling rate: 50 Hz</span>
+<span>Packet CRC: Validated (0 errors)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- PANEL 3 & 4: Ingestion Dropzone & Infrastructure Status (Right 5 Cols) -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-space-lg">
+<!-- Multi-Dataset CSV Ingestion Dropzone -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">upload_file</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Multi-Dataset CSV / Parquet Ingestion</h2>
+</div>
+<span class="font-mono-code text-label-default px-2 py-0.5 rounded bg-surface-container-high text-on-surface">Auto-Schema Map</span>
+</div>
+<!-- Upload Dropzone -->
+<div class="bg-surface-container-low rounded-lg p-space-lg flex flex-col items-center justify-center text-center gap-space-sm cursor-pointer hover:bg-surface-container-high transition-colors" onclick="document.getElementById('hidden-file-input').click()">
+<input accept=".csv" class="hidden" id="hidden-file-input" type="file"/>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">cloud_upload</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-body-strong text-body-strong text-on-surface">Drag &amp; drop operational dataset files or click to browse</span>
+<span class="font-body-default text-label-default text-on-surface-variant">Accepts raw sensor telemetry, depot logs, or spares manifests</span>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-space-xs font-mono-code text-[11px] text-on-surface-variant pt-1">
+<span class="px-2 py-0.5 rounded bg-surface-container">Telemetry (.csv, 2GB max)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container">Maintenance logs (.csv)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container">Spares manifests (.csv)</span>
+</div>
+</div>
+<!-- Sample Template Links -->
+<div class="flex items-center justify-between font-mono-code text-label-default px-1">
+<span class="text-on-surface-variant">Technician schemas:</span>
+<div class="flex items-center gap-space-md">
+<a class="text-secondary hover:underline flex items-center gap-1 cursor-pointer" id="download-telemetry-template">
+<span class="material-symbols-outlined text-[14px]">download</span> Telemetry template
+            </a>
+<a class="text-secondary hover:underline flex items-center gap-1 cursor-pointer" id="download-spares-template">
+<span class="material-symbols-outlined text-[14px]">download</span> Spares manifest template
+            </a>
+</div>
+</div>
+<!-- Recent Ingestion Batches Table -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-default text-label-default text-on-surface font-semibold uppercase tracking-wider">Recent Ingestion Batches</span>
+<span class="font-mono-code text-label-default text-on-surface-variant">PostgreSQL Partitioned</span>
+</div>
+<div class="overflow-x-auto rounded-lg bg-surface-container-lowest">
+<table class="w-full text-left font-body-default text-body-default">
+<thead class="bg-surface-container-high text-on-surface-variant font-mono-code text-label-default uppercase tracking-wider">
+<tr>
+<th class="px-space-md py-2">Batch / File</th>
+<th class="px-space-md py-2">Rows</th>
+<th class="px-space-md py-2">Validation</th>
+<th class="px-space-md py-2 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-space-md py-2">
+<div class="flex flex-col">
+<span class="font-mono-code text-label-default text-on-surface font-semibold truncate max-w-[140px]">BASE01_FLT_LOG_W42.csv</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">BATCH-88219 · 13:40 IST</span>
+</div>
+</td>
+<td class="px-space-md py-2 font-mono-metric text-label-default text-on-surface">1,480,200</td>
+<td class="px-space-md py-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary/20 text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Validated
+                    </span>
+</td>
+<td class="px-space-md py-2 text-right">
+<button class="text-secondary hover:text-on-surface text-label-default font-mono-code" onclick="alert('Viewing audit logs for BATCH-88219: 0 validation schema errors.');">Inspect log</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-space-md py-2">
+<div class="flex flex-col">
+<span class="font-mono-code text-label-default text-on-surface font-semibold truncate max-w-[140px]">DEPOT_OVH_Q3_RECORDS.parquet</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">BATCH-88214 · 11:15 IST</span>
+</div>
+</td>
+<td class="px-space-md py-2 font-mono-metric text-label-default text-on-surface">32,840</td>
+<td class="px-space-md py-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary/20 text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Validated
+                    </span>
+</td>
+<td class="px-space-md py-2 text-right">
+<button class="text-secondary hover:text-on-surface text-label-default font-mono-code" onclick="alert('Viewing audit logs for BATCH-88214: Overhaul lifecycle logs mapped.');">Inspect log</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-space-md py-2">
+<div class="flex flex-col">
+<span class="font-mono-code text-label-default text-on-surface font-semibold truncate max-w-[140px]">SPARES_INV_OCT26.csv</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">BATCH-88201 · 09:04 IST</span>
+</div>
+</td>
+<td class="px-space-md py-2 font-mono-metric text-label-default text-on-surface">4,512</td>
+<td class="px-space-md py-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-highest text-secondary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span> 2 warnings
+                    </span>
+</td>
+<td class="px-space-md py-2 text-right">
+<button class="text-secondary hover:text-on-surface text-label-default font-mono-code" onclick="alert('BATCH-88201 warnings: Two NSN numbers mapped to legacy depot catalog names.');">Inspect log</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- PANEL 4: Infrastructure & Machine Learning Model Status -->
+<div class="bg-surface-container rounded-lg p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">memory</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Infrastructure &amp; ML Model Registry</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-sm py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-mono-code text-[11px] flex items-center gap-1" onclick="alert('Reloading ML weights into GPU VRAM (NVIDIA A100 node)...');">
+<span class="material-symbols-outlined text-[13px]">sync</span> Reload weights
+            </button>
+</div>
+</div>
+<!-- Infrastructure Connectivity Nodes -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- TimescaleDB -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-body-strong text-label-default text-on-surface">SQLite / Operational DB</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="font-mono-code text-[11px] text-primary">Connected · In-Process</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">42 engines roster active</span>
+</div>
+<!-- Simulation Event Queue -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-body-strong text-label-default text-on-surface">Telemetry Event Queue</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="font-mono-code text-[11px] text-primary">Event loop active</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Bases 01–05 synced</span>
+</div>
+<!-- Air Gap Security -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-body-strong text-label-default text-on-surface">Air-Gapped Node</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="font-mono-code text-[11px] text-primary">Offline mode: ON</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Local Standalone Storage</span>
+</div>
+</div>
+<!-- Active ML Inference Pipeline Models -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<span class="font-label-default text-label-default text-on-surface font-semibold uppercase tracking-wider">Active ML Telemetry Models</span>
+<div class="space-y-2">
+<!-- Model 1: Isolation Forest -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong text-on-surface truncate">Isolation Forest (Anomaly Detection)</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">v2.4.1 · 15-sensor unsupervised baseline (Synthetic C-MAPSS)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary/20 text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Loaded
+                </span>
+</div>
+</div>
+<!-- Model 2: XGBoost RUL -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">model_training</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong text-on-surface truncate">XGBoost Remaining Useful Life (RUL)</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">v3.1.0 · Test RMSE: 17.87 cycles · MAE: 12.12 (Synthetic C-MAPSS)</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary/20 text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Loaded
+                </span>
+</div>
+</div>
+<!-- Model 3: Prophet Spares -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">query_stats</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong text-on-surface truncate">Prophet Spares Demand Forecaster</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">30-day forecast horizon · W43 baseline synced</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-primary/20 text-primary font-mono-code text-label-default">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Loaded
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Model Operations CTA Footer -->
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-mono-code text-label-default text-on-surface-variant">Inference hardware: Local edge GPU cluster</span>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-strong text-body-default flex items-center gap-1.5 transition-colors" onclick="alert('Batch retraining queued for XGBoost RUL on newly ingested W42 dataset.');">
+<span class="material-symbols-outlined text-[16px] text-secondary">psychology</span>
+<span>Retrain models</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none shrink-0"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-[11px]">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px]">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

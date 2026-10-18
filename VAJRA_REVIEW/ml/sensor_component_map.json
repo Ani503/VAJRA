@@ -1,0 +1,31 @@
+{
+  "sensor_to_component": {
+    "T24_lpc_outlet_temp": "Compressor",
+    "T30_hpc_outlet_temp": "Compressor",
+    "T50_lpt_outlet_temp": "Turbine",
+    "P30_hpc_outlet_pressure": "Compressor",
+    "Nf_fan_speed": "Fan",
+    "Nc_core_speed": "Compressor",
+    "Ps30_static_pressure": "Compressor",
+    "phi_fuel_flow_ratio": "Combustion Chamber",
+    "NRf_corr_fan_speed": "Fan",
+    "NRc_corr_core_speed": "Compressor",
+    "BPR_bypass_ratio": "Turbine",
+    "htBleed": "Combustion Chamber",
+    "W31_hpt_coolant_bleed": "Combustion Chamber",
+    "W32_lpt_coolant_bleed": "Turbine",
+    "vibration_mm_s": "Shaft",
+    "temp_c": "Combustion Chamber",
+    "pressure_kpa": "Compressor",
+    "fan_rpm": "Fan",
+    "oil_pressure_psi": "Shaft",
+    "egt_c": "Turbine"
+  },
+  "component_to_sensors": {
+    "Fan": ["Nf_fan_speed", "NRf_corr_fan_speed", "fan_rpm"],
+    "Compressor": ["T24_lpc_outlet_temp", "T30_hpc_outlet_temp", "P30_hpc_outlet_pressure", "Nc_core_speed", "NRc_corr_core_speed", "Ps30_static_pressure", "pressure_kpa"],
+    "Combustion Chamber": ["phi_fuel_flow_ratio", "htBleed", "W31_hpt_coolant_bleed", "temp_c"],
+    "Turbine": ["T50_lpt_outlet_temp", "BPR_bypass_ratio", "W32_lpt_coolant_bleed", "egt_c"],
+    "Shaft": ["vibration_mm_s", "oil_pressure_psi"]
+  }
+}

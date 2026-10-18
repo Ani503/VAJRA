@@ -1,0 +1,25 @@
+aircraft_id,aircraft_type,engine_config,num_engines,base_id,commission_year,total_flight_hours,mission_role,last_inspection_date
+VJ-101,C-17 Globemaster,Twin-turbofan,2,BASE01,2017,7304,Transport,2026-08-17
+VJ-102,Su-30MKI,Twin-turbofan,2,BASE03,2018,8817,Air Superiority,2026-07-11
+VJ-103,Hawk Mk132,Single-turbofan,1,BASE03,2010,4280,Training,2026-06-22
+VJ-104,LCH Prachand,Twin-turboshaft,2,BASE05,2014,5590,Combat,2026-08-16
+VJ-105,C-17 Globemaster,Twin-turbofan,2,BASE05,2016,3575,Transport,2026-09-17
+VJ-106,Su-30MKI,Twin-turbofan,2,BASE05,2018,6584,Combat,2026-07-11
+VJ-107,Hawk Mk132,Single-turbofan,1,BASE01,2017,7075,Training,2026-06-22
+VJ-108,LCH Prachand,Twin-turboshaft,2,BASE03,2020,3943,Combat,2026-08-25
+VJ-109,C-17 Globemaster,Twin-turbofan,2,BASE04,2012,5067,Surveillance,2026-09-10
+VJ-110,Su-30MKI,Twin-turbofan,2,BASE04,2009,6751,Combat,2026-09-01
+VJ-111,Hawk Mk132,Single-turbofan,1,BASE05,2011,3662,Training,2026-07-20
+VJ-112,LCH Prachand,Twin-turboshaft,2,BASE01,2008,7536,Combat,2026-07-07
+VJ-113,C-17 Globemaster,Twin-turbofan,2,BASE04,2014,5667,Transport,2026-08-09
+VJ-114,Su-30MKI,Twin-turbofan,2,BASE04,2014,6408,Combat,2026-06-30
+VJ-115,Hawk Mk132,Single-turbofan,1,BASE03,2015,2179,Training,2026-07-07
+VJ-116,LCH Prachand,Twin-turboshaft,2,BASE02,2021,4775,Combat,2026-09-12
+VJ-117,C-17 Globemaster,Twin-turbofan,2,BASE05,2019,1937,Surveillance,2026-09-04
+VJ-118,Su-30MKI,Twin-turbofan,2,BASE03,2021,7379,Combat,2026-07-22
+VJ-119,Hawk Mk132,Single-turbofan,1,BASE02,2009,1670,Surveillance,2026-09-26
+VJ-120,LCH Prachand,Twin-turboshaft,2,BASE03,2010,6877,Training,2026-06-25
+VJ-121,C-17 Globemaster,Twin-turbofan,2,BASE03,2013,2746,Transport,2026-09-09
+VJ-122,Su-30MKI,Twin-turbofan,2,BASE01,2009,4069,Combat,2026-08-29
+VJ-123,Hawk Mk132,Single-turbofan,1,BASE02,2021,7231,Surveillance,2026-09-06
+VJ-124,LCH Prachand,Twin-turboshaft,2,BASE04,2018,4870,Training,2026-09-05

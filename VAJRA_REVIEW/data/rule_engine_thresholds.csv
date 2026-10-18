@@ -1,0 +1,11 @@
+parameter,operator,threshold,severity,recommended_action
+vibration_mm_s,>,5.0,Critical,Immediate inspection
+vibration_mm_s,>,3.5,Warning,Schedule borescope
+egt_c,>,720.0,Critical,"Reduce thrust, inspect turbine"
+egt_c,>,680.0,Warning,Monitor trend
+oil_pressure_psi,<,40.0,Critical,Ground aircraft
+oil_pressure_psi,<,48.0,Warning,Check oil system
+temp_c,>,560.0,Critical,Inspect combustor
+temp_c,>,530.0,Warning,Monitor
+predicted_rul_cycles,<,15.0,Critical,Plan replacement
+predicted_rul_cycles,<,40.0,Warning,Order spares

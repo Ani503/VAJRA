@@ -1,0 +1,53 @@
+{
+  "models": {
+    "XGBoost": {
+      "test_rmse": 17.872,
+      "test_mae": 12.12,
+      "nasa_asymmetric_score": 134.946,
+      "cv_rmse_mean": 9.769,
+      "hyperparameters": {
+        "max_depth": 3,
+        "learning_rate": 0.08,
+        "n_estimators": 120
+      }
+    },
+    "RandomForest_Baseline": {
+      "test_rmse": 17.67,
+      "test_mae": 12.123,
+      "nasa_asymmetric_score": 140.864,
+      "cv_rmse_mean": 10.138,
+      "hyperparameters": {
+        "max_depth": 12,
+        "n_estimators": 100
+      }
+    }
+  },
+  "target": "rul_capped_125",
+  "num_test_engines": 20,
+  "num_train_engines": 60,
+  "evaluation_methodology": {
+    "training_split": "60 engines across all cycles (early-life through terminal cycles)",
+    "cross_validation": "5-Fold GroupKFold grouped strictly by engine_id to prevent temporal data leakage",
+    "test_evaluation": "20 unseen test engines evaluated strictly on their single last/terminal cycle (rul_true)",
+    "cv_vs_test_gap_explanation": "Cross-validation RMSE (~9.7-10.1 cycles) evaluates across all operational flight cycles, including extensive early linear degradation periods. In contrast, the test set evaluates only the single final truncated cycle of 20 test engines near end-of-life where degradation slopes are non-linear and truncated abruptly, explaining the expected variance gap (~17.6-17.8 cycles)."
+  },
+  "selected_sensors": [
+    "T24_lpc_outlet_temp",
+    "T30_hpc_outlet_temp",
+    "T50_lpt_outlet_temp",
+    "P30_hpc_outlet_pressure",
+    "Nf_fan_speed",
+    "Nc_core_speed",
+    "Ps30_static_pressure",
+    "phi_fuel_flow_ratio",
+    "NRf_corr_fan_speed",
+    "NRc_corr_core_speed",
+    "BPR_bypass_ratio",
+    "htBleed",
+    "W31_hpt_coolant_bleed",
+    "W32_lpt_coolant_bleed",
+    "vibration_mm_s"
+  ],
+  "feature_count": 90,
+  "notes": "Trained on synthetic NASA C-MAPSS style dataset. Accuracy on synthetic data is not representative of real physical aircraft engines."
+}

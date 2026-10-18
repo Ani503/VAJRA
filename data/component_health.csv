@@ -1,0 +1,211 @@
+engine_id,component,health_score,colour,shap_contribution
+ENG-001,Fan,73.6,Green,0.148
+ENG-001,Compressor,80.5,Green,0.215
+ENG-001,Combustion Chamber,76.2,Green,0.246
+ENG-001,Turbine,81.3,Green,0.145
+ENG-001,Shaft,66.0,Yellow,0.407
+ENG-002,Fan,76.9,Green,0.217
+ENG-002,Compressor,63.7,Yellow,0.295
+ENG-002,Combustion Chamber,82.1,Green,0.123
+ENG-002,Turbine,84.1,Green,0.159
+ENG-002,Shaft,71.6,Green,0.186
+ENG-003,Fan,67.9,Yellow,0.261
+ENG-003,Compressor,49.6,Yellow,0.394
+ENG-003,Combustion Chamber,66.7,Yellow,0.317
+ENG-003,Turbine,77.3,Green,0.152
+ENG-003,Shaft,60.4,Yellow,0.199
+ENG-004,Fan,71.9,Green,0.206
+ENG-004,Compressor,64.1,Yellow,0.369
+ENG-004,Combustion Chamber,77.2,Green,0.228
+ENG-004,Turbine,49.3,Yellow,0.412
+ENG-004,Shaft,47.8,Yellow,0.347
+ENG-005,Fan,100.0,Green,0.0
+ENG-005,Compressor,92.9,Green,0.062
+ENG-005,Combustion Chamber,93.5,Green,0.07
+ENG-005,Turbine,94.2,Green,0.041
+ENG-005,Shaft,78.6,Green,0.165
+ENG-006,Fan,85.0,Green,0.116
+ENG-006,Compressor,93.3,Green,0.036
+ENG-006,Combustion Chamber,86.8,Green,0.072
+ENG-006,Turbine,76.7,Green,0.234
+ENG-006,Shaft,96.8,Green,0.031
+ENG-007,Fan,88.7,Green,0.093
+ENG-007,Compressor,97.6,Green,0.015
+ENG-007,Combustion Chamber,91.0,Green,0.09
+ENG-007,Turbine,85.8,Green,0.101
+ENG-007,Shaft,92.5,Green,0.07
+ENG-008,Fan,19.9,Red,0.559
+ENG-008,Compressor,7.8,Red,0.914
+ENG-008,Combustion Chamber,21.8,Red,0.424
+ENG-008,Turbine,24.1,Red,0.648
+ENG-008,Shaft,9.3,Red,0.761
+ENG-009,Fan,63.6,Yellow,0.186
+ENG-009,Compressor,88.8,Green,0.081
+ENG-009,Combustion Chamber,90.9,Green,0.1
+ENG-009,Turbine,91.5,Green,0.068
+ENG-009,Shaft,87.1,Green,0.082
+ENG-010,Fan,60.2,Yellow,0.408
+ENG-010,Compressor,67.2,Yellow,0.217
+ENG-010,Combustion Chamber,64.0,Yellow,0.218
+ENG-010,Turbine,50.3,Yellow,0.352
+ENG-010,Shaft,69.9,Yellow,0.296
+ENG-011,Fan,65.8,Yellow,0.19
+ENG-011,Compressor,93.5,Green,0.041
+ENG-011,Combustion Chamber,99.7,Green,0.002
+ENG-011,Turbine,86.3,Green,0.088
+ENG-011,Shaft,92.9,Green,0.054
+ENG-012,Fan,45.8,Yellow,0.523
+ENG-012,Compressor,50.0,Yellow,0.507
+ENG-012,Combustion Chamber,26.1,Red,0.692
+ENG-012,Turbine,58.5,Yellow,0.288
+ENG-012,Shaft,53.9,Yellow,0.401
+ENG-013,Fan,8.4,Red,1.052
+ENG-013,Compressor,21.2,Red,0.726
+ENG-013,Combustion Chamber,24.8,Red,0.625
+ENG-013,Turbine,17.8,Red,0.942
+ENG-013,Shaft,19.3,Red,0.753
+ENG-014,Fan,97.1,Green,0.026
+ENG-014,Compressor,96.0,Green,0.048
+ENG-014,Combustion Chamber,96.0,Green,0.023
+ENG-014,Turbine,100.0,Green,0.0
+ENG-014,Shaft,63.6,Yellow,0.391
+ENG-015,Fan,54.0,Yellow,0.238
+ENG-015,Compressor,82.8,Green,0.19
+ENG-015,Combustion Chamber,87.3,Green,0.134
+ENG-015,Turbine,73.7,Green,0.157
+ENG-015,Shaft,77.1,Green,0.273
+ENG-016,Fan,26.7,Red,0.449
+ENG-016,Compressor,13.1,Red,0.685
+ENG-016,Combustion Chamber,10.4,Red,0.738
+ENG-016,Turbine,2.0,Red,0.564
+ENG-016,Shaft,15.3,Red,0.967
+ENG-017,Fan,35.4,Red,0.426
+ENG-017,Compressor,52.9,Yellow,0.278
+ENG-017,Combustion Chamber,55.9,Yellow,0.321
+ENG-017,Turbine,46.0,Yellow,0.568
+ENG-017,Shaft,53.1,Yellow,0.375
+ENG-018,Fan,98.7,Green,0.011
+ENG-018,Compressor,79.0,Green,0.154
+ENG-018,Combustion Chamber,100.0,Green,0.0
+ENG-018,Turbine,91.5,Green,0.064
+ENG-018,Shaft,87.0,Green,0.153
+ENG-019,Fan,91.8,Green,0.05
+ENG-019,Compressor,93.0,Green,0.069
+ENG-019,Combustion Chamber,67.8,Yellow,0.263
+ENG-019,Turbine,98.8,Green,0.013
+ENG-019,Shaft,90.6,Green,0.105
+ENG-020,Fan,54.2,Yellow,0.359
+ENG-020,Compressor,37.2,Red,0.506
+ENG-020,Combustion Chamber,61.8,Yellow,0.445
+ENG-020,Turbine,56.1,Yellow,0.297
+ENG-020,Shaft,57.9,Yellow,0.458
+ENG-021,Fan,94.4,Green,0.043
+ENG-021,Compressor,80.0,Green,0.148
+ENG-021,Combustion Chamber,100.0,Green,0.0
+ENG-021,Turbine,94.2,Green,0.058
+ENG-021,Shaft,100.0,Green,0.0
+ENG-022,Fan,64.8,Yellow,0.177
+ENG-022,Compressor,51.6,Yellow,0.389
+ENG-022,Combustion Chamber,55.7,Yellow,0.373
+ENG-022,Turbine,48.2,Yellow,0.526
+ENG-022,Shaft,65.3,Yellow,0.367
+ENG-023,Fan,68.7,Yellow,0.224
+ENG-023,Compressor,55.6,Yellow,0.25
+ENG-023,Combustion Chamber,75.7,Green,0.169
+ENG-023,Turbine,73.8,Green,0.17
+ENG-023,Shaft,79.1,Green,0.218
+ENG-024,Fan,51.3,Yellow,0.34
+ENG-024,Compressor,47.6,Yellow,0.391
+ENG-024,Combustion Chamber,53.7,Yellow,0.51
+ENG-024,Turbine,28.9,Red,0.458
+ENG-024,Shaft,50.9,Yellow,0.388
+ENG-025,Fan,91.7,Green,0.045
+ENG-025,Compressor,75.7,Green,0.133
+ENG-025,Combustion Chamber,79.6,Green,0.216
+ENG-025,Turbine,85.6,Green,0.159
+ENG-025,Shaft,77.2,Green,0.222
+ENG-026,Fan,92.7,Green,0.049
+ENG-026,Compressor,60.8,Yellow,0.405
+ENG-026,Combustion Chamber,86.2,Green,0.083
+ENG-026,Turbine,89.4,Green,0.066
+ENG-026,Shaft,88.1,Green,0.098
+ENG-027,Fan,59.0,Yellow,0.279
+ENG-027,Compressor,50.3,Yellow,0.55
+ENG-027,Combustion Chamber,36.5,Red,0.582
+ENG-027,Turbine,24.2,Red,0.818
+ENG-027,Shaft,48.5,Yellow,0.288
+ENG-028,Fan,62.5,Yellow,0.253
+ENG-028,Compressor,31.0,Red,0.418
+ENG-028,Combustion Chamber,54.8,Yellow,0.523
+ENG-028,Turbine,50.8,Yellow,0.378
+ENG-028,Shaft,58.6,Yellow,0.402
+ENG-029,Fan,94.4,Green,0.064
+ENG-029,Compressor,91.8,Green,0.092
+ENG-029,Combustion Chamber,100.0,Green,0.0
+ENG-029,Turbine,95.3,Green,0.027
+ENG-029,Shaft,80.2,Green,0.182
+ENG-030,Fan,64.3,Yellow,0.388
+ENG-030,Compressor,70.6,Green,0.346
+ENG-030,Combustion Chamber,77.4,Green,0.252
+ENG-030,Turbine,68.9,Yellow,0.371
+ENG-030,Shaft,74.8,Green,0.141
+ENG-031,Fan,58.8,Yellow,0.285
+ENG-031,Compressor,92.2,Green,0.055
+ENG-031,Combustion Chamber,82.6,Green,0.165
+ENG-031,Turbine,85.3,Green,0.101
+ENG-031,Shaft,87.2,Green,0.108
+ENG-032,Fan,51.5,Yellow,0.576
+ENG-032,Compressor,46.8,Yellow,0.49
+ENG-032,Combustion Chamber,42.3,Yellow,0.461
+ENG-032,Turbine,47.7,Yellow,0.469
+ENG-032,Shaft,49.4,Yellow,0.543
+ENG-033,Fan,66.0,Yellow,0.191
+ENG-033,Compressor,91.0,Green,0.079
+ENG-033,Combustion Chamber,87.2,Green,0.111
+ENG-033,Turbine,93.7,Green,0.033
+ENG-033,Shaft,91.8,Green,0.084
+ENG-034,Fan,95.5,Green,0.053
+ENG-034,Compressor,88.6,Green,0.115
+ENG-034,Combustion Chamber,96.9,Green,0.032
+ENG-034,Turbine,91.9,Green,0.064
+ENG-034,Shaft,87.1,Green,0.141
+ENG-035,Fan,91.3,Green,0.054
+ENG-035,Compressor,88.1,Green,0.11
+ENG-035,Combustion Chamber,67.9,Yellow,0.238
+ENG-035,Turbine,86.8,Green,0.123
+ENG-035,Shaft,97.6,Green,0.02
+ENG-036,Fan,95.1,Green,0.046
+ENG-036,Compressor,52.6,Yellow,0.42
+ENG-036,Combustion Chamber,79.0,Green,0.153
+ENG-036,Turbine,90.9,Green,0.05
+ENG-036,Shaft,90.7,Green,0.076
+ENG-037,Fan,76.3,Green,0.165
+ENG-037,Compressor,81.7,Green,0.118
+ENG-037,Combustion Chamber,52.2,Yellow,0.314
+ENG-037,Turbine,82.0,Green,0.15
+ENG-037,Shaft,76.7,Green,0.211
+ENG-038,Fan,60.2,Yellow,0.464
+ENG-038,Compressor,80.9,Green,0.124
+ENG-038,Combustion Chamber,82.7,Green,0.201
+ENG-038,Turbine,74.7,Green,0.2
+ENG-038,Shaft,76.5,Green,0.138
+ENG-039,Fan,71.9,Green,0.212
+ENG-039,Compressor,66.2,Yellow,0.27
+ENG-039,Combustion Chamber,72.9,Green,0.141
+ENG-039,Turbine,75.0,Green,0.192
+ENG-039,Shaft,77.1,Green,0.273
+ENG-040,Fan,80.0,Green,0.167
+ENG-040,Compressor,81.4,Green,0.213
+ENG-040,Combustion Chamber,54.9,Yellow,0.355
+ENG-040,Turbine,76.6,Green,0.247
+ENG-040,Shaft,70.3,Green,0.226
+ENG-041,Fan,43.5,Yellow,0.599
+ENG-041,Compressor,48.5,Yellow,0.44
+ENG-041,Combustion Chamber,52.9,Yellow,0.287
+ENG-041,Turbine,36.6,Red,0.743
+ENG-041,Shaft,56.0,Yellow,0.223
+ENG-042,Fan,37.9,Red,0.378
+ENG-042,Compressor,40.9,Yellow,0.52
+ENG-042,Combustion Chamber,46.2,Yellow,0.399
+ENG-042,Turbine,48.4,Yellow,0.318
+ENG-042,Shaft,49.0,Yellow,0.543

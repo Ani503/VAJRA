@@ -1,0 +1,319 @@
+{
+  "auth_tests": [
+    {
+      "test": "Wrong Password Rejection",
+      "service_id": "IAF-001",
+      "verdict": "PASS",
+      "detail": "Login with invalid credentials rejected. Stayed on auth terminal (http://127.0.0.1:8000/ui/terminal_authentication_vajra/code.html).",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/01_wrong_password_rejected.png"
+    },
+    {
+      "test": "Expired/Invalid Token Rejection",
+      "verdict": "PASS",
+      "detail": "Expired token causes 401 on API calls; UI gracefully falls back without unhandled exceptions.",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/02_expired_token_handling.png"
+    },
+    {
+      "test": "Backend Unavailable Handling",
+      "verdict": "PASS",
+      "detail": "Network timeout and offline conditions caught gracefully by vajra-bridge client.",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/03_backend_unavailable_handling.png"
+    },
+    {
+      "test": "Audit Log Integrity Check",
+      "verdict": "PASS",
+      "detail": "Button triggered GET /api/audit/verify and displayed: verified\nVerified: 25 Records Intact",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/07_audit_log_verified.png"
+    }
+  ],
+  "role_tests": [
+    {
+      "role": "Fleet Commander",
+      "service_id": "IAF-001",
+      "login_successful": true,
+      "landed_url": "http://127.0.0.1:8000/ui/command_dashboard/code.html",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_fleet_commander.png",
+      "verdict": "PASS"
+    },
+    {
+      "role": "Maintenance Officer",
+      "service_id": "IAF-002",
+      "login_successful": true,
+      "landed_url": "http://127.0.0.1:8000/ui/command_dashboard/code.html",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_maintenance_officer.png",
+      "verdict": "PASS"
+    },
+    {
+      "role": "Analyst",
+      "service_id": "IAF-003",
+      "login_successful": true,
+      "landed_url": "http://127.0.0.1:8000/ui/command_dashboard/code.html",
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_analyst.png",
+      "verdict": "PASS"
+    }
+  ],
+  "screen_tests": [
+    {
+      "screen": "Login",
+      "url": "http://127.0.0.1:8000/ui/terminal_authentication_vajra/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_login_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Command Dashboard",
+      "url": "http://127.0.0.1:8000/ui/command_dashboard/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_command_dashboard_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Engines Roster",
+      "url": "http://127.0.0.1:8000/ui/engines_list/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engines_roster_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Engine Detail (ENG-003)",
+      "url": "http://127.0.0.1:8000/ui/3._engine_detail_eng_003/code.html?engine=ENG-003",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engine_detail_eng_003_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "3D Digital Twin",
+      "url": "http://127.0.0.1:8000/ui/4._3d_digital_twin_expansive_view/code.html?engine=ENG-003",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_3d_digital_twin_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Alerts Screen",
+      "url": "http://127.0.0.1:8000/ui/alerts/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_alerts_screen_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Maintenance Planner",
+      "url": "http://127.0.0.1:8000/ui/6._maintenance_planner_refined_alignment/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_maintenance_planner_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Spares & Logistics",
+      "url": "http://127.0.0.1:8000/ui/7._spares_logistics/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_spares_&_logistics_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Fleet Availability",
+      "url": "http://127.0.0.1:8000/ui/8._fleet_availability/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_fleet_availability_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Reports",
+      "url": "http://127.0.0.1:8000/ui/8._reports/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_reports_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Data & Simulator",
+      "url": "http://127.0.0.1:8000/ui/10._data_simulator/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_data_&_simulator_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Settings",
+      "url": "http://127.0.0.1:8000/ui/settings/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_settings_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Audit Log",
+      "url": "http://127.0.0.1:8000/ui/audit_log/code.html",
+      "viewport": "1440x900",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_audit_log_1440x900.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Login",
+      "url": "http://127.0.0.1:8000/ui/terminal_authentication_vajra/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_login_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Command Dashboard",
+      "url": "http://127.0.0.1:8000/ui/command_dashboard/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_command_dashboard_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Engines Roster",
+      "url": "http://127.0.0.1:8000/ui/engines_list/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engines_roster_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Engine Detail (ENG-003)",
+      "url": "http://127.0.0.1:8000/ui/3._engine_detail_eng_003/code.html?engine=ENG-003",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engine_detail_eng_003_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "3D Digital Twin",
+      "url": "http://127.0.0.1:8000/ui/4._3d_digital_twin_expansive_view/code.html?engine=ENG-003",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_3d_digital_twin_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Alerts Screen",
+      "url": "http://127.0.0.1:8000/ui/alerts/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_alerts_screen_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Maintenance Planner",
+      "url": "http://127.0.0.1:8000/ui/6._maintenance_planner_refined_alignment/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_maintenance_planner_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Spares & Logistics",
+      "url": "http://127.0.0.1:8000/ui/7._spares_logistics/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_spares_&_logistics_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Fleet Availability",
+      "url": "http://127.0.0.1:8000/ui/8._fleet_availability/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_fleet_availability_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Reports",
+      "url": "http://127.0.0.1:8000/ui/8._reports/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_reports_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Data & Simulator",
+      "url": "http://127.0.0.1:8000/ui/10._data_simulator/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_data_&_simulator_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Settings",
+      "url": "http://127.0.0.1:8000/ui/settings/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_settings_1920x1080.png",
+      "verdict": "PASS"
+    },
+    {
+      "screen": "Audit Log",
+      "url": "http://127.0.0.1:8000/ui/audit_log/code.html",
+      "viewport": "1920x1080",
+      "has_content": true,
+      "screenshot": "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_audit_log_1920x1080.png",
+      "verdict": "PASS"
+    }
+  ],
+  "ui_api_comparison": [
+    {
+      "metric": "Alerts: Total Active Alerts",
+      "ui_value": "26",
+      "api_value": "26",
+      "match": true,
+      "verdict": "PASS"
+    },
+    {
+      "metric": "Top 5 At-Risk Critical Engines in UI",
+      "ui_value": "['ENG-003', 'ENG-019', 'ENG-007']",
+      "api_value": "['ENG-003', 'ENG-019', 'ENG-007']",
+      "match": true,
+      "verdict": "PASS"
+    }
+  ],
+  "screenshots": [
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/01_wrong_password_rejected.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/02_expired_token_handling.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/03_backend_unavailable_handling.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_fleet_commander.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_maintenance_officer.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/04_role_analyst.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_login_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_command_dashboard_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engines_roster_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engine_detail_eng_003_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_3d_digital_twin_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_alerts_screen_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_maintenance_planner_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_spares_&_logistics_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_fleet_availability_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_reports_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_data_&_simulator_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_settings_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_audit_log_1440x900.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_login_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_command_dashboard_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engines_roster_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_engine_detail_eng_003_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_3d_digital_twin_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_alerts_screen_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_maintenance_planner_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_spares_&_logistics_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_fleet_availability_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_reports_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_data_&_simulator_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_settings_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/screen_audit_log_1920x1080.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/06_alerts_screen_interactive.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/07_audit_log_verified.png",
+    "/Users/suramyamondal/VAJRA Console /QA/screenshots/08_dashboard_ui_api_reconciled.png"
+  ],
+  "defects": []
+}

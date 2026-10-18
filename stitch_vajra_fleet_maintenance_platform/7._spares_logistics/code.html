@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:#45483e;border-radius:2px;}::-webkit-scrollbar-track{background:transparent;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#690005",
+          "surface-container-highest": "#31353a",
+          "primary-fixed": "#d4ebb0",
+          "on-secondary-fixed-variant": "#004c6e",
+          "on-tertiary-container": "#401d39",
+          "inverse-surface": "#e0e3e8",
+          "on-primary": "#25350c",
+          "primary-container": "#839864",
+          "on-secondary-container": "#92d1ff",
+          "on-primary-fixed-variant": "#3a4c21",
+          "on-primary-fixed": "#111f00",
+          "on-background": "#e0e3e8",
+          "on-secondary": "#00344d",
+          "surface-variant": "#31353a",
+          "tertiary-container": "#b282a4",
+          "tertiary-fixed": "#ffd7f1",
+          "surface-container": "#1c2024",
+          "surface-container-low": "#181c20",
+          "background": "#101418",
+          "outline": "#8f9285",
+          "on-primary-container": "#1e2e06",
+          "on-surface": "#e0e3e8",
+          "secondary": "#8ecdfc",
+          "surface-bright": "#363a3e",
+          "surface-container-lowest": "#0b0f12",
+          "error": "#ffb4ab",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "primary": "#b8ce96",
+          "outline-variant": "#45483e",
+          "surface-container-high": "#262a2f",
+          "on-secondary-fixed": "#001e2f",
+          "surface-tint": "#b8ce96",
+          "on-error-container": "#ffdad6",
+          "secondary-fixed-dim": "#8ecdfc",
+          "secondary-container": "#025a83",
+          "inverse-on-surface": "#2d3135",
+          "on-tertiary-fixed-variant": "#613a58",
+          "secondary-fixed": "#c9e6ff",
+          "surface-dim": "#101418",
+          "tertiary": "#ebb7dc",
+          "on-tertiary": "#482441",
+          "on-tertiary-fixed": "#300e2b",
+          "on-surface-variant": "#c5c8ba",
+          "error-container": "#93000a",
+          "surface": "#101418",
+          "inverse-primary": "#516536",
+          "primary-fixed-dim": "#b8ce96"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-xl": "1.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-md": ["IBM Plex Sans"],
+          "headline-xl": ["IBM Plex Sans"],
+          "mono-code": ["IBM Plex Mono"],
+          "body-default": ["IBM Plex Sans"],
+          "body-strong": ["IBM Plex Sans"],
+          "mono-metric": ["IBM Plex Mono"],
+          "label-muted": ["IBM Plex Sans"],
+          "headline-lg": ["IBM Plex Sans"],
+          "label-default": ["IBM Plex Sans"]
+        },
+        "fontSize": {
+          "headline-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-code": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "mono-metric": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+          "label-muted": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "label-default": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">speed</span><span class="font-body-default text-body-default truncate">Command Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">mode_fan</span><span class="font-body-default text-body-default truncate">Engines</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">troubleshoot</span><span class="font-body-default text-body-default truncate">Engine Detail</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">view_in_ar</span><span class="font-body-default text-body-default truncate">3D Digital Twin</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">event_available</span><span class="font-body-default text-body-default truncate">Maintenance Planner</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">inventory_2</span><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">flight_takeoff</span><span class="font-body-default text-body-default truncate">Fleet Availability</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">lab_profile</span><span class="font-body-default text-body-default truncate">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">tune</span><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></div></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">settings</span><span class="font-body-default text-body-default truncate">Settings</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">history</span><span class="font-body-default text-body-default truncate">Audit Log</span></div></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-[11px] text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-[13px] text-on-surface">Fleet Commander</span><span class="font-mono-code text-[11px] text-on-surface-variant">(Fleet Commander)</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background flex flex-col"><div class="flex flex-col w-full">
+<!-- Top Operational Context Strip -->
+<div class="px-space-xl py-space-md bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-space-md border-b border-outline-variant/30">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-label-muted text-on-surface-variant uppercase tracking-wider">Operations</span>
+<span class="text-on-surface-variant font-mono-code text-[11px]">/</span>
+<span class="font-mono-code text-label-muted text-secondary font-medium uppercase tracking-wider">Spares &amp; Logistics</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-surface-container text-on-surface-variant ml-2 border border-outline-variant/30">SYS-REF: LOG-SEC-09</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Spares &amp; Logistics</h1>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-mono-code text-label-default text-on-surface">Fleet telemetry: 42 engines (24 aircraft) • 27 nominal • 12 watch • 3 critical grounded</span>
+</div>
+</div>
+<p class="font-body-default text-label-muted text-on-surface-variant">Inventory telemetry, multi-base stock levels &amp; predictive replenishment pipeline</p>
+</div>
+<!-- Global Screen Actions -->
+<div class="flex items-center gap-space-sm self-start md:self-auto shrink-0">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 hover:bg-surface-container-high text-on-surface font-body-default text-[13px] flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[17px] text-on-surface-variant">download</span>
+        Export inventory CSV
+      </button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-body-strong text-[13px] flex items-center gap-1.5 hover:bg-primary-container/80 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[17px]">bolt</span>
+        Trigger auto-reorder batch
+      </button>
+</div>
+</div>
+<div class="p-space-xl space-y-space-lg">
+<!-- 1. Critical Inventory Alert / Bottleneck Banner -->
+<div class="p-space-md bg-error-container/20 border border-error/40 rounded-lg flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="p-1.5 rounded bg-error-container text-on-error-container flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] font-semibold tracking-wider uppercase px-1.5 py-0.5 rounded bg-error/20 text-error border border-error/30">SUPPLY CHAIN CRITICAL</span>
+<span class="font-mono-code text-label-muted text-on-surface-variant">ID: INC-7749-LOG</span>
+</div>
+<p class="font-body-strong text-on-surface text-[14px] mt-0.5">
+            Turbine Blade Set stock-out at Base 03 (Logistics &amp; Transport) — Grounded <span class="font-mono-metric text-error">ENG-007</span> pending parts. 1 unit in transit from Base 01.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 w-full lg:w-auto justify-end">
+<button class="px-3 py-1 rounded bg-surface-container border border-outline-variant/40 text-on-surface text-label-default hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">local_shipping</span>
+          View transfer manifest
+        </button>
+<button class="px-3 py-1 rounded bg-error-container text-on-error-container text-label-default font-semibold hover:bg-error-container/80 transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">priority_high</span>
+          Fast-track requisition
+        </button>
+</div>
+</div>
+<!-- 2. Top KPI Summary Row (4 distinct cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Card 1 -->
+<div class="p-space-lg bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-default text-label-muted text-on-surface-variant">Parts Below Reorder Level</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-error-container/20 border border-error/30 text-error font-medium">3 URGENT</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="font-mono-metric text-[28px] text-on-surface leading-none font-semibold">7 items</span>
+<span class="font-mono-code text-[12px] text-error flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>+2 vs Q2
+          </span>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-label-muted">
+<span class="text-on-surface-variant truncate">Immediate replenishment required</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">inventory_2</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-default text-label-muted text-on-surface-variant">Stock-Out Impact</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-error-container/20 border border-error/30 text-error font-medium">CRITICAL</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="font-mono-metric text-[28px] text-on-surface leading-none font-semibold">2 Bases Affected</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-label-muted">
+<span class="text-on-surface-variant truncate">Base 03 &amp; Base 05 · Turbine Blades &amp; Shaft BRG</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">hub</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-default text-label-muted text-on-surface-variant">Average Lead Time</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary font-medium">WATCH</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="font-mono-metric text-[28px] text-on-surface leading-none font-semibold">18.4 days</span>
+<span class="font-mono-code text-[12px] text-tertiary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>+3.2d delta
+          </span>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-label-muted">
+<span class="text-on-surface-variant truncate">HAL &amp; Pratt &amp; Whitney supply nodes</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">schedule</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-lg bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-default text-label-muted text-on-surface-variant">Pending Purchase Orders</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-primary-container/20 border border-primary/40 text-primary font-medium">₹384.5L COMMITTED</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="font-mono-metric text-[28px] text-on-surface leading-none font-semibold">14 active POs</span>
+<span class="font-mono-code text-[12px] text-primary">6 arriving &lt; 5d</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-label-muted">
+<span class="text-on-surface-variant truncate">All contracts verified &amp; signed</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">verified</span>
+</div>
+</div>
+</div>
+<!-- 3. Interactive Multi-Base Stock Heatmap Grid (10 Parts × 5 Bases) -->
+<div class="bg-surface-container rounded-lg border border-outline-variant/30 overflow-hidden">
+<div class="p-space-md bg-surface-container-low border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">grid_view</span>
+<span class="font-headline-md text-headline-md text-on-surface">Multi-Base Inventory Matrix &amp; Heatmap</span>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/20">10 CRITICAL LINE ITEMS</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 font-mono-code text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-primary-container/60 border border-primary/50"></span>Nominal</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-tertiary-container/40 border border-tertiary/50"></span>Watch / Low</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-error-container/40 border border-error/50"></span>Stock-out</span>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/30 text-label-default text-on-surface hover:text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">sync_alt</span> Auto-balance fleet
+          </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-[13px]">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant/30 text-label-muted text-on-surface-variant uppercase font-mono-code text-[11px]">
+<th class="py-2.5 px-4 font-medium min-w-[220px]">Part Nomenclature &amp; P/N</th>
+<th class="py-2.5 px-3 font-medium text-center">Base 01<br/><span class="text-[10px] text-on-surface-variant/70 normal-case">Forward Combat</span></th>
+<th class="py-2.5 px-3 font-medium text-center">Base 02<br/><span class="text-[10px] text-on-surface-variant/70 normal-case">Interceptor Sqdn</span></th>
+<th class="py-2.5 px-3 font-medium text-center bg-surface-container-high/40">Base 03<br/><span class="text-[10px] text-on-surface-variant/70 normal-case">Logistics Depot</span></th>
+<th class="py-2.5 px-3 font-medium text-center">Base 04<br/><span class="text-[10px] text-on-surface-variant/70 normal-case">Training Base</span></th>
+<th class="py-2.5 px-3 font-medium text-center">Base 05<br/><span class="text-[10px] text-on-surface-variant/70 normal-case">Strategic Reserve</span></th>
+<th class="py-2.5 px-4 font-medium text-right">Fleet Total</th>
+<th class="py-2.5 px-4 font-medium text-right">Safety Threshold</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-mono-code text-[12px]">
+<!-- Row 1: Turbine Blade Set (ALERT ITEM) -->
+<tr class="bg-error-container/5 hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Turbine Blade Set (HPT)</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N TF1-HPT-442</span>
+</div>
+</div>
+</td>
+<!-- Base 01 -->
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary font-medium">1 (Low)</span>
+</td>
+<!-- Base 02 -->
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-error-container/40 border border-error/50 text-error font-medium">0 DEP</span>
+</td>
+<!-- Base 03 (CRITICAL CALLOUT) -->
+<td class="py-2.5 px-3 text-center bg-error-container/20">
+<span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded bg-error text-on-error font-semibold shadow-sm animate-pulse">0 ALERT</span>
+</td>
+<!-- Base 04 -->
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary font-medium">3 units</span>
+</td>
+<!-- Base 05 -->
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-error-container/40 border border-error/50 text-error font-medium">0 DEP</span>
+</td>
+<!-- Total -->
+<td class="py-2.5 px-4 text-right font-semibold text-error">4 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant font-mono-code">Min 8 units</td>
+</tr>
+<!-- Row 2: Main Shaft Bearing -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Main Shaft Bearing #3</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N BRG-6208-MS</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-error-container/40 border border-error/50 text-error font-medium">0 DEP</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-error-container/40 border border-error/50 text-error">0 DEP</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-error">6 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 10 units</td>
+</tr>
+<!-- Row 3: Fan Blade Set -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Fan Blade Set</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N FAN-BLD-01</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">8 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-primary">19 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 12 units</td>
+</tr>
+<!-- Row 4: Compressor Rotor -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Compressor Rotor (Stg 2-4)</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N CMP-ROT-12</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">5 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-tertiary">11 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 10 units</td>
+</tr>
+<!-- Row 5: Combustor Liner -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Combustor Liner Assembly</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N CMB-LNR-88</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">6 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-on-surface">14 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 12 units</td>
+</tr>
+<!-- Row 6: Vibration Sensor -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Vibration Telemetry Sensor</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N SEN-VIB-34</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">6 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">12 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-primary">27 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 15 units</td>
+</tr>
+<!-- Row 7: EGT Thermocouple Sensor -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">EGT Thermocouple Sensor</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N SEN-EGT-09</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">7 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-tertiary">14 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 14 units</td>
+</tr>
+<!-- Row 8: Fuel Nozzle Assembly -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Fuel Nozzle Assembly</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N NZL-FL-104</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">8 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">6 units</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">16 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-primary">37 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 20 units</td>
+</tr>
+<!-- Row 9: Oil Scavenge Pump -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Oil Scavenge Pump</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N PMP-OIL-55</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">1 (Low)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-tertiary">10 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 10 units</td>
+</tr>
+<!-- Row 10: Hot-Section Seal Kit -->
+<tr class="hover:bg-surface-container-high/60 transition-colors">
+<td class="py-2.5 px-4 font-body-strong text-on-surface">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="text-[13px] font-semibold text-on-surface">Hot-Section Seal Kit</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">P/N SL-KIT-92</span>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">5 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">4 units</span>
+</td>
+<td class="py-2.5 px-3 text-center bg-surface-container-high/20">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">3 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary">10 units</span>
+</td>
+<td class="py-2.5 px-3 text-center">
+<span class="inline-flex items-center justify-center px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary">2 (Watch)</span>
+</td>
+<td class="py-2.5 px-4 text-right font-semibold text-primary">24 units</td>
+<td class="py-2.5 px-4 text-right text-on-surface-variant">Min 18 units</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 4. Side-by-Side Lower Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left / Main Area (65% width approx -> 8 cols of 12) - Detailed Inventory & Procurement Telemetry Table -->
+<div class="lg:col-span-8 bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col">
+<div class="p-space-md border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-center justify-between gap-space-md bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface">tune</span>
+<span class="font-headline-md text-headline-md text-on-surface">Procurement &amp; Telemetry Log</span>
+</div>
+<!-- Filter Controls -->
+<div class="flex items-center gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-[14px] text-on-surface-variant">search</span>
+<input class="h-7 pl-7 pr-2.5 bg-surface-container-high border border-outline-variant/40 rounded text-[12px] text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-secondary w-44 md:w-56" placeholder="Filter component or supplier..." type="text"/>
+</div>
+<select class="h-7 px-2 bg-surface-container-high border border-outline-variant/40 rounded text-[12px] text-on-surface focus:outline-none focus:border-secondary">
+<option>All Statuses</option>
+<option>Critical Stock-Out</option>
+<option>Below Reorder</option>
+<option>Nominal</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-[13px]">
+<thead>
+<tr class="bg-surface-container-lowest border-b border-outline-variant/30 text-label-muted text-on-surface-variant uppercase font-mono-code text-[11px]">
+<th class="py-2 px-3 font-medium">Part Name &amp; Code</th>
+<th class="py-2 px-3 font-medium">Criticality</th>
+<th class="py-2 px-2.5 font-medium text-center">Stock / Min</th>
+<th class="py-2 px-2.5 font-medium text-center">Lead Time</th>
+<th class="py-2 px-3 font-medium">Primary Supplier</th>
+<th class="py-2 px-2.5 font-medium text-right">Unit Cost</th>
+<th class="py-2 px-3 font-medium text-center">Status</th>
+<th class="py-2 px-3 font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-default text-[13px]">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">Turbine Blade Set</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N TF1-HPT-442</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-error font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Tier-1 Flight
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-error font-semibold">4</span> <span class="text-on-surface-variant">/ 8</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">28 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">Pratt &amp; Whitney</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹48.5L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-error-container/30 border border-error/50 text-error font-semibold">CRITICAL</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary-container hover:bg-primary-container/80 text-[11px] font-mono-code font-semibold">Reorder</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">Main Shaft Bearing #3</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N BRG-6208-MS</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-error font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Tier-1 Flight
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-error font-semibold">6</span> <span class="text-on-surface-variant">/ 10</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">14 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">HAL Aerospace</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹12.4L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-error-container/30 border border-error/50 text-error font-semibold">CRITICAL</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary-container hover:bg-primary-container/80 text-[11px] font-mono-code font-semibold">Reorder</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">Compressor Rotor Stg 2</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N CMP-ROT-12</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-tertiary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Structural Core
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-tertiary font-semibold">11</span> <span class="text-on-surface-variant">/ 10</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">35 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">HAL Aerospace</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹85.0L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary font-medium">LOW BUFFER</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-on-surface">Reorder</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">EGT Thermocouple</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N SEN-EGT-09</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Avionics/Sensor
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-tertiary font-semibold">14</span> <span class="text-on-surface-variant">/ 14</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">7 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">Bharat Dynamics</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹4.2L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-tertiary-container/30 border border-tertiary/40 text-tertiary font-medium">REORDER LVL</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary-container hover:bg-primary-container/80 text-[11px] font-mono-code font-semibold">Reorder</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">Fuel Nozzle Assembly</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N NZL-FL-104</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-primary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Sub-System
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-primary font-semibold">37</span> <span class="text-on-surface-variant">/ 20</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">12 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">BHEL Auxiliary</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹8.9L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary font-medium">OPTIMAL</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-on-surface">Details</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-high/40 transition-colors">
+<td class="py-2.5 px-3">
+<div class="font-body-strong text-on-surface">Hot-Section Seal Kit</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">P/N SL-KIT-92</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-primary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Consumable Set
+                  </span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric">
+<span class="text-primary font-semibold">24</span> <span class="text-on-surface-variant">/ 18</span>
+</td>
+<td class="py-2.5 px-2.5 text-center font-mono-metric text-on-surface-variant">10 days</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface">HAL Aerospace</td>
+<td class="py-2.5 px-2.5 text-right font-mono-metric font-semibold text-on-surface">₹3.1L</td>
+<td class="py-2.5 px-3 text-center">
+<span class="font-mono-code text-[10px] px-2 py-0.5 rounded bg-primary-container/30 border border-primary/40 text-primary font-medium">NOMINAL</span>
+</td>
+<td class="py-2.5 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-secondary">Transfer</button>
+<button class="px-2 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-on-surface">Details</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Area (35% width -> 4 cols of 12) - Predicted Demand Forecast & Active Transfer Pipeline -->
+<div class="lg:col-span-4 space-y-space-lg flex flex-col">
+<!-- ML Demand Forecast Card -->
+<div class="p-space-md bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">30-Day Demand Forecast</div>
+<div class="font-mono-code text-[11px] text-on-surface-variant">XGBoost + Prophet RUL Model</div>
+</div>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-primary-container/20 border border-primary/30 text-primary font-semibold">C-MAPSS MODEL</span>
+</div>
+<!-- Forecast Chart (Inline SVG) -->
+<div class="my-3">
+<div class="flex items-center justify-between font-mono-code text-[11px] text-on-surface-variant mb-1">
+<span>Weekly Unit Consumption Projection</span>
+<span class="text-secondary font-medium">Peak: W43 (Teardown)</span>
+</div>
+<div class="h-32 w-full bg-surface-container-low rounded border border-outline-variant/20 p-2 relative flex flex-col justify-end">
+<svg class="w-full h-24 overflow-visible" preserveaspectratio="none" viewbox="0 0 280 80">
+<!-- Background Grid Lines -->
+<line class="text-outline-variant/30" stroke="currentColor" stroke-dasharray="2 2" x1="0" x2="280" y1="20" y2="20"></line>
+<line class="text-outline-variant/30" stroke="currentColor" stroke-dasharray="2 2" x1="0" x2="280" y1="50" y2="50"></line>
+<!-- Projection Area -->
+<polygon class="text-secondary/15" fill="currentColor" points="20,60 90,20 180,45 250,68 250,78 20,78"></polygon>
+<!-- Projection Line -->
+<polyline class="text-secondary" fill="none" points="20,60 90,20 180,45 250,68" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline>
+<!-- Critical Peak Marker on Week 43 -->
+<circle class="text-error" cx="90" cy="20" fill="currentColor" r="4"></circle>
+<circle class="text-secondary" cx="20" cy="60" fill="currentColor" r="3"></circle>
+<circle class="text-secondary" cx="180" cy="45" fill="currentColor" r="3"></circle>
+<circle class="text-secondary" cx="250" cy="68" fill="currentColor" r="3"></circle>
+<!-- Data Labels -->
+<text class="text-on-surface-variant font-mono" fill="currentColor" font-size="9" text-anchor="middle" x="20" y="53">6u</text>
+<text class="text-error font-mono font-bold" fill="currentColor" font-size="9" text-anchor="middle" x="90" y="12">11u (Peak)</text>
+<text class="text-on-surface-variant font-mono" fill="currentColor" font-size="9" text-anchor="middle" x="180" y="38">8u</text>
+<text class="text-on-surface-variant font-mono" fill="currentColor" font-size="9" text-anchor="middle" x="250" y="62">5u</text>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between items-center text-[10px] font-mono-code text-on-surface-variant mt-1 border-t border-outline-variant/20 pt-1">
+<span>W42 (Current)</span>
+<span class="text-error font-semibold">W43 (ENG-003/007)</span>
+<span>W44</span>
+<span>W45</span>
+</div>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-container-high/50 border border-outline-variant/30 text-[12px] font-body-default text-on-surface-variant flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary shrink-0 mt-0.5">analytics</span>
+<span><strong class="text-on-surface">Wear Pattern Notice:</strong> Turbine Blade Sets &amp; Bearings account for 68% of 30-day projected consumable wear replacements.</span>
+</div>
+</div>
+<!-- Active Base-to-Base Transfers Card -->
+<div class="p-space-md bg-surface-container rounded-lg border border-outline-variant/30 flex flex-col flex-1">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">flight_takeoff</span>
+<span class="font-headline-md text-headline-md text-on-surface">Active Inter-Base Transfers</span>
+</div>
+<span class="font-mono-code text-[11px] text-on-surface-variant">2 IN TRANSIT</span>
+</div>
+<div class="space-y-3 mt-3">
+<!-- Transfer 1 -->
+<div class="p-2.5 rounded bg-surface-container-low border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-[12px] font-semibold text-secondary">TR-9041</span>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-primary-container/20 text-primary border border-primary/30">IN TRANSIT</span>
+</div>
+<div class="font-body-strong text-[13px] text-on-surface">1× Turbine Blade Set (P/N TF1-HPT-442)</div>
+<div class="flex items-center justify-between text-[11px] font-mono-code text-on-surface-variant">
+<span>Base 01 → Base 03</span>
+<span class="text-on-surface font-semibold">ETA: Today 18:30 IST</span>
+</div>
+<div class="flex items-center gap-1.5 text-[11px] font-mono-code text-on-surface-variant/80 pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[13px]">airlines</span>
+                Transport-A Tactical Air Transport (Sortie VJ-442)
+              </div>
+</div>
+<!-- Transfer 2 -->
+<div class="p-2.5 rounded bg-surface-container-low border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono-code text-[12px] font-semibold text-secondary">TR-9038</span>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/40">DISPATCHED</span>
+</div>
+<div class="font-body-strong text-[13px] text-on-surface">2× EGT Sensor (P/N SEN-EGT-09)</div>
+<div class="flex items-center justify-between text-[11px] font-mono-code text-on-surface-variant">
+<span>Base 04 → Base 02</span>
+<span class="text-on-surface font-semibold">ETA: Tomorrow 09:00 IST</span>
+</div>
+<div class="flex items-center gap-1.5 text-[11px] font-mono-code text-on-surface-variant/80 pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[13px]">local_shipping</span>
+                Ground Convoy Secure Route N-8
+              </div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
+<button class="text-[12px] font-mono-code text-secondary hover:underline flex items-center gap-1">
+<span>View full logistics log</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-high border border-outline-variant/40 hover:bg-surface-bright text-[11px] font-mono-code text-on-surface">
+              + New dispatch
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Ensure the sidebar marks "Spares & Logistics" as active
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('aside nav a');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('data-path') || link.getAttribute('href');
+      if (href && (href.includes('spares') || href.includes('logistics'))) {
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-body-strong');
+      }
+    });
+  });
+</script></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none shrink-0"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-[11px]">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px]">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

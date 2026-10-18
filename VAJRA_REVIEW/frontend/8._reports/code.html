@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+
+
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:#45483e;border-radius:2px;}::-webkit-scrollbar-track{background:transparent;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#690005",
+          "surface-container-highest": "#31353a",
+          "primary-fixed": "#d4ebb0",
+          "on-secondary-fixed-variant": "#004c6e",
+          "on-tertiary-container": "#401d39",
+          "inverse-surface": "#e0e3e8",
+          "on-primary": "#25350c",
+          "primary-container": "#839864",
+          "on-secondary-container": "#92d1ff",
+          "on-primary-fixed-variant": "#3a4c21",
+          "on-primary-fixed": "#111f00",
+          "on-background": "#e0e3e8",
+          "on-secondary": "#00344d",
+          "surface-variant": "#31353a",
+          "tertiary-container": "#b282a4",
+          "tertiary-fixed": "#ffd7f1",
+          "surface-container": "#1c2024",
+          "surface-container-low": "#181c20",
+          "background": "#101418",
+          "outline": "#8f9285",
+          "on-primary-container": "#1e2e06",
+          "on-surface": "#e0e3e8",
+          "secondary": "#8ecdfc",
+          "surface-bright": "#363a3e",
+          "surface-container-lowest": "#0b0f12",
+          "error": "#ffb4ab",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "primary": "#b8ce96",
+          "outline-variant": "#45483e",
+          "surface-container-high": "#262a2f",
+          "on-secondary-fixed": "#001e2f",
+          "surface-tint": "#b8ce96",
+          "on-error-container": "#ffdad6",
+          "secondary-fixed-dim": "#8ecdfc",
+          "secondary-container": "#025a83",
+          "inverse-on-surface": "#2d3135",
+          "on-tertiary-fixed-variant": "#613a58",
+          "secondary-fixed": "#c9e6ff",
+          "surface-dim": "#101418",
+          "tertiary": "#ebb7dc",
+          "on-tertiary": "#482441",
+          "on-tertiary-fixed": "#300e2b",
+          "on-surface-variant": "#c5c8ba",
+          "error-container": "#93000a",
+          "surface": "#101418",
+          "inverse-primary": "#516536",
+          "primary-fixed-dim": "#b8ce96"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-xl": "1.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-md": ["IBM Plex Sans"],
+          "headline-xl": ["IBM Plex Sans"],
+          "mono-code": ["IBM Plex Mono"],
+          "body-default": ["IBM Plex Sans"],
+          "body-strong": ["IBM Plex Sans"],
+          "mono-metric": ["IBM Plex Mono"],
+          "label-muted": ["IBM Plex Sans"],
+          "headline-lg": ["IBM Plex Sans"],
+          "label-default": ["IBM Plex Sans"]
+        },
+        "fontSize": {
+          "headline-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-code": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "mono-metric": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+          "label-muted": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "label-default": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">speed</span><span class="font-body-default text-body-default truncate">Command Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">mode_fan</span><span class="font-body-default text-body-default truncate">Engines</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">troubleshoot</span><span class="font-body-default text-body-default truncate">Engine Detail</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">view_in_ar</span><span class="font-body-default text-body-default truncate">3D Digital Twin</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">event_available</span><span class="font-body-default text-body-default truncate">Maintenance Planner</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">inventory_2</span><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">flight_takeoff</span><span class="font-body-default text-body-default truncate">Fleet Availability</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">lab_profile</span><span class="font-body-default text-body-default truncate">Reports</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">tune</span><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></div></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">settings</span><span class="font-body-default text-body-default truncate">Settings</span></div></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><div class="flex items-center gap-space-sm min-w-0"><span class="material-symbols-outlined text-[18px] shrink-0">history</span><span class="font-body-default text-body-default truncate">Audit Log</span></div></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-[11px] text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-[13px] text-on-surface">Fleet Commander</span><span class="font-mono-code text-[11px] text-on-surface-variant">(Fleet Commander)</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background flex flex-col"><div class="flex flex-col w-full">
+<!-- Dynamic Sidebar Active State Injector for Reports -->
+<script>
+    (function() {
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'reports') {
+          link.className = 'flex items-center justify-between px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary-container font-body-strong transition-colors';
+          const icon = link.querySelector('.material-symbols-outlined');
+          if (icon) icon.className = 'material-symbols-outlined text-[18px] shrink-0 text-on-primary-container';
+        } else {
+          link.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-body-strong');
+        }
+      });
+    })();
+  </script>
+<!-- Page Command Context Banner -->
+<div class="w-full bg-surface-container-low px-space-xl py-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider">
+<span>Operations</span>
+<span class="text-outline">/</span>
+<span class="text-secondary font-semibold">Reports</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[10px]">SYS-REF: REP-GEN-04</span>
+</div>
+<div class="flex items-baseline gap-space-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Reports &amp; Analytics</h1>
+<span class="font-body-default text-body-default text-on-surface-variant hidden md:inline">
+          Fleet readiness compliance exports, scheduled automated briefs, and telemetry audits
+        </span>
+</div>
+</div>
+<!-- Quick Global Actions -->
+<div class="flex items-center gap-space-sm">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-strong text-[13px] transition-colors">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span>Schedule automated report</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-strong text-[13px] transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">archive</span>
+<span>Export audit packet</span>
+</button>
+</div>
+</div>
+<!-- Operational Status Sub-Bar -->
+<div class="w-full bg-surface-container px-space-xl py-2 flex flex-wrap items-center justify-between text-on-surface-variant text-[13px] font-mono-code gap-y-1">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span class="font-semibold text-primary">Fleet Monitor:</span>
+<span class="text-on-surface">42 engines (27 healthy, 12 watch, 3 critical)</span>
+</div>
+<span class="text-outline-variant">•</span>
+<span>24 aircraft</span>
+<span class="text-outline-variant">•</span>
+<span>5 bases (Base 01–05)</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 text-[12px]">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Healthy 70–100</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#d9a21b]"></span> Watch 40–69</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-error"></span> Critical 0–39</span>
+</div>
+</div>
+</div>
+<!-- Main View Area -->
+<div class="w-full p-space-xl flex flex-col gap-space-lg">
+<!-- 1. Report Template Selector Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Active -->
+<div class="bg-surface-container-high rounded-lg p-space-md flex flex-col justify-between gap-space-sm relative cursor-pointer hover:bg-surface-bright transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">assessment</span>
+<span class="font-body-strong text-body-strong text-on-surface">Daily fleet health</span>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-primary/20 text-primary font-semibold">Most requested</span>
+</div>
+<p class="font-body-default text-[13px] text-on-surface-variant line-clamp-2">
+          Operational readiness, engine health score distributions, and immediate flight clearance status across all squadrons.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-mono-code text-[12px] text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">autorenew</span> Auto 06:00 IST
+          </span>
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between gap-space-sm cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">build_circle</span>
+<span class="font-body-strong text-body-strong text-on-surface">Weekly maintenance summary</span>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Weekly Mon</span>
+</div>
+<p class="font-body-default text-[13px] text-on-surface-variant line-clamp-2">
+          Completed hangar tasks, backlog trends, technician utilization, and critical component swaps (ENG-003, ENG-007).
+        </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant">Scheduled: Mon 00:00</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">radio_button_unchecked</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between gap-space-sm cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">warning</span>
+<span class="font-body-strong text-body-strong text-on-surface">Alert log &amp; anomalies</span>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Rule engine + ML</span>
+</div>
+<p class="font-body-default text-[13px] text-on-surface-variant line-clamp-2">
+          Comprehensive audit of unacknowledged alerts, telemetry thresholds breaches, sensor drift events, and grounding actions.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant">Trigger: Event-driven</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">radio_button_unchecked</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col justify-between gap-space-sm cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">inventory</span>
+<span class="font-body-strong text-body-strong text-on-surface">Spares risk &amp; supply chain</span>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-error-container text-on-error-container">Critical path</span>
+</div>
+<p class="font-body-default text-[13px] text-on-surface-variant line-clamp-2">
+          Stock-out exposure analysis, 30-day forecast demand, lead-time variances, and inter-base logistics transit log.
+        </p>
+<div class="flex items-center justify-between pt-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant">Coverage: 5 bases</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">radio_button_unchecked</span>
+</div>
+</div>
+</div>
+<!-- 2. Tactical Report Parameter Controls Bar -->
+<div class="w-full bg-surface-container-low rounded-lg p-space-md flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<!-- Date Range -->
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant uppercase">Period:</span>
+<div class="flex items-center bg-surface-container rounded-lg px-2.5 py-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] mr-1.5 text-secondary">calendar_today</span>
+<span class="font-mono-code text-[13px]">Last 7 days (08 Oct – 14 Oct 2026)</span>
+<span class="material-symbols-outlined text-[16px] ml-1 text-on-surface-variant">expand_more</span>
+</div>
+<!-- Presets -->
+<div class="hidden lg:flex items-center bg-surface-container rounded-lg p-0.5 font-mono-code text-[12px]">
+<button class="px-2 py-1 rounded hover:bg-surface-container-high text-on-surface-variant">24h</button>
+<button class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-semibold">7d</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container-high text-on-surface-variant">30d</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container-high text-on-surface-variant">QTD</button>
+</div>
+</div>
+<!-- Base Selector -->
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant uppercase">Base:</span>
+<select class="bg-surface-container text-on-surface font-body-default text-[13px] rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-secondary">
+<option value="all">All bases (Base 01–05)</option>
+<option value="b1">Base 01 (Forward Combat)</option>
+<option value="b2">Base 02 (Interceptor Squadron)</option>
+<option value="b3">Base 03 (Logistics Depot)</option>
+<option value="b4">Base 04 (Air Defense Command)</option>
+<option value="b5">Base 05 (Strategic Reserve)</option>
+</select>
+</div>
+<!-- Format Segmented Picker -->
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-on-surface-variant uppercase">Format:</span>
+<div class="flex items-center bg-surface-container rounded-lg p-0.5">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-high text-on-surface text-[13px] font-body-strong">
+<span class="material-symbols-outlined text-[16px] text-secondary">picture_as_pdf</span>
+<span>PDF</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface text-[13px]">
+<span class="material-symbols-outlined text-[16px]">table_view</span>
+<span>CSV</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right CTAs & Classification -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-surface-container font-mono-code text-[11px] text-secondary">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+<span>OFFICIAL USE ONLY</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-body-default text-[13px] transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Preview print</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-body-strong text-[13px] shadow-sm hover:opacity-95 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Generate report</span>
+</button>
+</div>
+</div>
+<!-- 3. Dual-Pane Split Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT PREVIEW PANE: 65% (8 columns) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Document Pane Container -->
+<div class="w-full bg-surface-container rounded-lg p-space-xl flex flex-col gap-space-lg relative overflow-hidden">
+<!-- Background Subtle Emblem Watermark -->
+<div class="absolute right-4 top-4 pointer-events-none opacity-5 w-48 h-48 flex items-center justify-center">
+<span class="material-symbols-outlined text-[160px]">military_tech</span>
+</div>
+<!-- Document Header -->
+<div class="flex flex-wrap items-start justify-between pb-space-md gap-4">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[28px]">shield</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">VAJRA FLEET COMMAND — OPERATIONS REPORT</span>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container">OFFICIAL</span>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface-variant">DOC-REP-2026-1014-DFH • OPERATIONAL BRIEFING</span>
+<span class="font-body-default text-[13px] text-on-surface-variant">Daily Fleet Health &amp; Flight Readiness Compliance Audit</span>
+</div>
+</div>
+<!-- Doc Metadata Box -->
+<div class="bg-surface-container-high rounded p-2.5 font-mono-code text-[12px] flex flex-col gap-0.5 min-w-[210px]">
+<div class="flex justify-between text-on-surface-variant">
+<span>TIMESTAMP:</span>
+<span class="text-on-surface">14 Oct 2026, 14:12 IST</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>AUTHOR:</span>
+<span class="text-on-surface">Fleet Commander (Fleet Cmdr)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>CYCLE:</span>
+<span class="text-secondary">W42-DAY-03</span>
+</div>
+</div>
+</div>
+<!-- Executive Summary KPI Badges -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Monitored Fleet</span>
+<span class="font-mono-metric text-[18px] text-on-surface font-semibold">24 / 24 <span class="text-[12px] text-on-surface-variant">AC</span></span>
+<span class="font-mono-code text-[11px] text-primary">100% telemetry online</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Mission Capable</span>
+<span class="font-mono-metric text-[18px] text-primary font-semibold">92.4%</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">+1.2% vs target (90%)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Critical Grounded</span>
+<span class="font-mono-metric text-[18px] text-error font-semibold">3 Engines</span>
+<span class="font-mono-code text-[11px] text-error">ENG-003, ENG-019, ENG-007</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase">Supply Bottleneck</span>
+<span class="font-mono-metric text-[18px] text-[#d9a21b] font-semibold">1 Stockout</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">Turbine Blade Stg 2</span>
+</div>
+</div>
+<!-- Embedded Chart: Fleet Health Distribution by Base -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-strong text-body-strong text-on-surface">Fleet Health Distribution by Base</span>
+<div class="flex items-center gap-3 font-mono-code text-[11px]">
+<span class="flex items-center gap-1 text-primary"><span class="w-2.5 h-2.5 rounded-sm bg-primary"></span> Healthy</span>
+<span class="flex items-center gap-1 text-[#d9a21b]"><span class="w-2.5 h-2.5 rounded-sm bg-[#d9a21b]"></span> Watch</span>
+<span class="flex items-center gap-1 text-error"><span class="w-2.5 h-2.5 rounded-sm bg-error"></span> Critical</span>
+</div>
+</div>
+<!-- Crisp SVG Stacked Distribution Chart -->
+<div class="w-full h-32 flex flex-col justify-end pt-2">
+<div class="grid grid-cols-5 gap-4 h-full items-end">
+<!-- Base 01 -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-full flex flex-col-reverse rounded overflow-hidden max-w-[56px] h-[90%]">
+<div class="bg-primary w-full" style="height: 55%;" title="Base 01 Healthy: 6"></div>
+<div class="bg-[#d9a21b] w-full" style="height: 30%;" title="Base 01 Watch: 3"></div>
+<div class="bg-error w-full" style="height: 15%;" title="Base 01 Critical: 1"></div>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface">Base 01</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">10 Eng</span>
+</div>
+<!-- Base 02 -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-full flex flex-col-reverse rounded overflow-hidden max-w-[56px] h-[75%]">
+<div class="bg-primary w-full" style="height: 60%;" title="Base 02 Healthy: 5"></div>
+<div class="bg-[#d9a21b] w-full" style="height: 25%;" title="Base 02 Watch: 2"></div>
+<div class="bg-error w-full" style="height: 15%;" title="Base 02 Critical: 1"></div>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface">Base 02</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">8 Eng</span>
+</div>
+<!-- Base 03 -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-full flex flex-col-reverse rounded overflow-hidden max-w-[56px] h-[85%]">
+<div class="bg-primary w-full" style="height: 50%;" title="Base 03 Healthy: 5"></div>
+<div class="bg-[#d9a21b] w-full" style="height: 40%;" title="Base 03 Watch: 3"></div>
+<div class="bg-error w-full" style="height: 10%;" title="Base 03 Critical: 1"></div>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface">Base 03</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">9 Eng</span>
+</div>
+<!-- Base 04 -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-full flex flex-col-reverse rounded overflow-hidden max-w-[56px] h-[70%]">
+<div class="bg-primary w-full" style="height: 75%;" title="Base 04 Healthy: 6"></div>
+<div class="bg-[#d9a21b] w-full" style="height: 25%;" title="Base 04 Watch: 2"></div>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface">Base 04</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">8 Eng</span>
+</div>
+<!-- Base 05 -->
+<div class="flex flex-col items-center gap-1 h-full justify-end">
+<div class="w-full flex flex-col-reverse rounded overflow-hidden max-w-[56px] h-[65%]">
+<div class="bg-primary w-full" style="height: 70%;" title="Base 05 Healthy: 5"></div>
+<div class="bg-[#d9a21b] w-full" style="height: 30%;" title="Base 05 Watch: 2"></div>
+</div>
+<span class="font-mono-code text-[12px] text-on-surface">Base 05</span>
+<span class="font-mono-code text-[10px] text-on-surface-variant">7 Eng</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Embedded Telemetry Roll-Up Table -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-body-strong text-body-strong text-on-surface">Critical &amp; Watch Assets Roll-up</span>
+<span class="font-mono-code text-[12px] text-on-surface-variant">5 priority items requiring operational sign-off</span>
+</div>
+<div class="w-full overflow-x-auto rounded-lg bg-surface-container-low">
+<table class="w-full text-left font-body-default text-[13px] border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant font-mono-code text-[11px] uppercase">
+<th class="py-2.5 px-3 font-semibold">Engine ID</th>
+<th class="py-2.5 px-2 font-semibold">Tail</th>
+<th class="py-2.5 px-2 font-semibold">Base</th>
+<th class="py-2.5 px-3 font-semibold">Subsystem Risk</th>
+<th class="py-2.5 px-2 font-semibold text-center">Score</th>
+<th class="py-2.5 px-2 font-semibold">RUL</th>
+<th class="py-2.5 px-2 font-semibold">Status</th>
+<th class="py-2.5 px-3 font-semibold">Recommended Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-mono-code text-[13px]">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2.5 px-3 text-secondary font-semibold">ENG-003</td>
+<td class="py-2.5 px-2 text-on-surface">VJ-102</td>
+<td class="py-2.5 px-2 text-on-surface-variant">Base 01</td>
+<td class="py-2.5 px-3 text-on-surface font-body-default text-[13px]">HP Turbine Stg 2 &amp; Brg #3</td>
+<td class="py-2.5 px-2 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error/15 text-error font-semibold text-[12px]">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> 18
+                      </span>
+</td>
+<td class="py-2.5 px-2 text-error font-semibold">8 cyc</td>
+<td class="py-2.5 px-2">
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container text-[11px] font-semibold">Grounded</span>
+</td>
+<td class="py-2.5 px-3 text-on-surface-variant font-body-default text-[12px]">Teardown Bay 01-A</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2.5 px-3 text-secondary font-semibold">ENG-019</td>
+<td class="py-2.5 px-2 text-on-surface">VJ-114</td>
+<td class="py-2.5 px-2 text-on-surface-variant">Base 02</td>
+<td class="py-2.5 px-3 text-on-surface font-body-default text-[13px]">T48 Thermocouple &amp; Liner</td>
+<td class="py-2.5 px-2 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error/15 text-error font-semibold text-[12px]">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> 24
+                      </span>
+</td>
+<td class="py-2.5 px-2 text-error font-semibold">12 cyc</td>
+<td class="py-2.5 px-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface text-[11px] font-semibold">Scheduled</span>
+</td>
+<td class="py-2.5 px-3 text-on-surface-variant font-body-default text-[12px]">Borescope inspection</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2.5 px-3 text-secondary font-semibold">ENG-007</td>
+<td class="py-2.5 px-2 text-on-surface">VJ-105</td>
+<td class="py-2.5 px-2 text-on-surface-variant">Base 03</td>
+<td class="py-2.5 px-3 text-on-surface font-body-default text-[13px]">HPC Stage 4 Stator Shroud</td>
+<td class="py-2.5 px-2 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error/15 text-error font-semibold text-[12px]">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> 31
+                      </span>
+</td>
+<td class="py-2.5 px-2 text-error font-semibold">19 cyc</td>
+<td class="py-2.5 px-2">
+<span class="px-1.5 py-0.5 rounded bg-[#d9a21b]/20 text-[#d9a21b] text-[11px] font-semibold">Part Delay</span>
+</td>
+<td class="py-2.5 px-3 text-on-surface-variant font-body-default text-[12px]">Awaiting Base 01 blade transfer</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2.5 px-3 text-secondary font-semibold">ENG-022</td>
+<td class="py-2.5 px-2 text-on-surface">VJ-108</td>
+<td class="py-2.5 px-2 text-on-surface-variant">Base 02</td>
+<td class="py-2.5 px-3 text-on-surface font-body-default text-[13px]">Fuel flow controller</td>
+<td class="py-2.5 px-2 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#d9a21b]/15 text-[#d9a21b] font-semibold text-[12px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#d9a21b]"></span> 58
+                      </span>
+</td>
+<td class="py-2.5 px-2 text-on-surface">44 cyc</td>
+<td class="py-2.5 px-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">Watch</span>
+</td>
+<td class="py-2.5 px-3 text-on-surface-variant font-body-default text-[12px]">Calibrate valve actuator</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-2.5 px-3 text-secondary font-semibold">ENG-031</td>
+<td class="py-2.5 px-2 text-on-surface">VJ-121</td>
+<td class="py-2.5 px-2 text-on-surface-variant">Base 03</td>
+<td class="py-2.5 px-3 text-on-surface font-body-default text-[13px]">Scavenge pump pressure</td>
+<td class="py-2.5 px-2 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#d9a21b]/15 text-[#d9a21b] font-semibold text-[12px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#d9a21b]"></span> 62
+                      </span>
+</td>
+<td class="py-2.5 px-2 text-on-surface">52 cyc</td>
+<td class="py-2.5 px-2">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">Watch</span>
+</td>
+<td class="py-2.5 px-3 text-on-surface-variant font-body-default text-[12px]">Monitor vibration drift</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Document Footer / Verification Certificate -->
+<div class="flex flex-wrap items-center justify-between pt-space-md text-[12px] font-mono-code text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>Verification certificate: VAJRA-CERT-4091</span>
+</div>
+<div class="flex items-center gap-3">
+<span>Security hash: 8f4a-9c02-e14b</span>
+<span>•</span>
+<span class="text-primary font-medium">Automated copy dispatched to Fleet Command HQ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT ARCHIVES & DOWNLOADS PANE: 35% (4 columns) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container rounded-lg p-space-md flex flex-col gap-space-md">
+<!-- Archives Header -->
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">folder_open</span>
+<span class="font-body-strong text-body-strong text-on-surface">Recent reports &amp; archives</span>
+</div>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">6 Available</span>
+</div>
+<!-- Mini Search Filter -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span>
+<input class="w-full h-8 pl-8 pr-2.5 bg-surface-container-low rounded text-[13px] font-body-default text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="Search archive files..." type="text"/>
+</div>
+<!-- List of Recent Reports -->
+<div class="flex flex-col gap-2">
+<!-- File Item 1 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">picture_as_pdf</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">Daily fleet health brief — 14 Oct 2026</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">Today 06:00 IST • 2.4 MB • Auto</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download PDF">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- File Item 2 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">table_view</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">Spares risk &amp; critical stockout matrix</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">Today 11:30 IST • 840 KB • Logistics Off.</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download CSV">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- File Item 3 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">picture_as_pdf</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">W41 Fleet availability &amp; downtime review</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">13 Oct 2026 • 4.8 MB • Fleet Commander</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download PDF">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- File Item 4 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">table_view</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">Turbine blade thermal degradation telemetry</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">12 Oct 2026 • 12.1 MB • Propulsion Eng.</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download CSV">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- File Item 5 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">picture_as_pdf</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">Alerts &amp; unacknowledged anomalies audit</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">11 Oct 2026 • 1.6 MB • Chief Insp.</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download PDF">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- File Item 6 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm hover:bg-surface-container-high transition-colors flex flex-col gap-1.5">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2 min-w-0">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">picture_as_pdf</span>
+<div class="min-w-0">
+<span class="font-body-strong text-[13px] text-on-surface block truncate">Monthly engine cycle &amp; RUL projection — Sep</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant block">01 Oct 2026 • 6.2 MB • Fleet Command HQ Liaison</span>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0">
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-primary transition-colors" title="Download PDF">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-secondary transition-colors" title="Share report">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Batch Action Shelf -->
+<div class="flex items-center justify-between pt-2">
+<button class="font-mono-code text-[12px] text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_delete</span> Archive &gt; 30d
+            </button>
+<button class="font-mono-code text-[12px] text-secondary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">cloud_download</span> Download selected
+            </button>
+</div>
+</div>
+<!-- Telemetry Compliance & Policy Notice Card -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-2">
+<div class="flex items-center gap-2 text-on-surface font-body-strong text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-primary">policy</span>
+<span>Automated Dispatch Rules</span>
+</div>
+<p class="font-body-default text-[12px] text-on-surface-variant leading-relaxed">
+            All groundings and Class-A critical engine events automatically generate an encrypted telemetry digest logged locally and mirrored to Base 01–05 edge nodes.
+          </p>
+<div class="flex items-center justify-between pt-1 font-mono-code text-[11px] text-on-surface-variant">
+<span>Next cycle: 15 Oct 06:00 IST</span>
+<span class="text-primary">Policy: ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none shrink-0"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-[11px]">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px]">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

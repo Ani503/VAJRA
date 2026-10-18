@@ -1,0 +1,4172 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "VAJRA: Predictive Maintenance & Fleet Availability Platform",
+    "description": "Smart India Hackathon 2026 \u2014 Problem Statement 26249 (Ministry of Defence)",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login",
+        "operationId": "login_api_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get Me",
+        "operationId": "get_me_api_auth_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/dashboard/summary": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "summary": "Get Dashboard Summary",
+        "operationId": "get_dashboard_summary_api_dashboard_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummaryResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/engines": {
+      "get": {
+        "tags": [
+          "Engines"
+        ],
+        "summary": "List Engines",
+        "operationId": "list_engines_api_engines_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by status: Healthy, Watch, Critical",
+              "title": "Status"
+            },
+            "description": "Filter by status: Healthy, Watch, Critical"
+          },
+          {
+            "name": "base_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by Base ID",
+              "title": "Base Id"
+            },
+            "description": "Filter by Base ID"
+          },
+          {
+            "name": "aircraft_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by Aircraft Type",
+              "title": "Aircraft Type"
+            },
+            "description": "Filter by Aircraft Type"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Search engine ID or aircraft tail",
+              "title": "Q"
+            },
+            "description": "Search engine ID or aircraft tail"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Sort by field",
+              "default": "health_score",
+              "title": "Sort By"
+            },
+            "description": "Sort by field"
+          },
+          {
+            "name": "sort_order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "asc or desc",
+              "default": "asc",
+              "title": "Sort Order"
+            },
+            "description": "asc or desc"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Page Size"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response List Engines Api Engines Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/engines/{engine_id}": {
+      "get": {
+        "tags": [
+          "Engines"
+        ],
+        "summary": "Get Engine Detail",
+        "operationId": "get_engine_detail_api_engines__engine_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "engine_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Engine Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EngineDetailResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/engines/{engine_id}/components": {
+      "get": {
+        "tags": [
+          "Engines"
+        ],
+        "summary": "Get Engine Components",
+        "operationId": "get_engine_components_api_engines__engine_id__components_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "engine_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Engine Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ComponentHealthItem"
+                  },
+                  "title": "Response Get Engine Components Api Engines  Engine Id  Components Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alerts": {
+      "get": {
+        "tags": [
+          "Alerts"
+        ],
+        "summary": "List Alerts",
+        "operationId": "list_alerts_api_alerts_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "severity",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "High, Medium, Low",
+              "title": "Severity"
+            },
+            "description": "High, Medium, Low"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Unacknowledged, Acknowledged, In Progress, Resolved",
+              "title": "Status"
+            },
+            "description": "Unacknowledged, Acknowledged, In Progress, Resolved"
+          },
+          {
+            "name": "engine_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by engine",
+              "title": "Engine Id"
+            },
+            "description": "Filter by engine"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 25,
+              "title": "Page Size"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alerts/{alert_id}": {
+      "get": {
+        "tags": [
+          "Alerts"
+        ],
+        "summary": "Get Alert",
+        "operationId": "get_alert_api_alerts__alert_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "alert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Alert Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Alerts"
+        ],
+        "summary": "Update Alert",
+        "operationId": "update_alert_api_alerts__alert_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "alert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Alert Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlertUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlertResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/alerts/{alert_id}/work-order": {
+      "post": {
+        "tags": [
+          "Alerts"
+        ],
+        "summary": "Create Work Order From Alert",
+        "operationId": "create_work_order_from_alert_api_alerts__alert_id__work_order_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "alert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Alert Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkOrderFromAlertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintenance/tasks": {
+      "get": {
+        "tags": [
+          "Maintenance"
+        ],
+        "summary": "List Tasks",
+        "operationId": "list_tasks_api_maintenance_tasks_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Suggested, Scheduled, In Progress, Completed",
+              "title": "Status"
+            },
+            "description": "Suggested, Scheduled, In Progress, Completed"
+          },
+          {
+            "name": "urgency",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Immediate, Within 7 Days, Within 14 Days, Routine",
+              "title": "Urgency"
+            },
+            "description": "Immediate, Within 7 Days, Within 14 Days, Routine"
+          },
+          {
+            "name": "base_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by Base ID",
+              "title": "Base Id"
+            },
+            "description": "Filter by Base ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaintenanceTaskResponse"
+                  },
+                  "title": "Response List Tasks Api Maintenance Tasks Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Maintenance"
+        ],
+        "summary": "Create Task",
+        "operationId": "create_task_api_maintenance_tasks_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMaintenanceTaskRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaintenanceTaskResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintenance/schedule": {
+      "get": {
+        "tags": [
+          "Maintenance"
+        ],
+        "summary": "Get Maintenance Schedule",
+        "operationId": "get_maintenance_schedule_api_maintenance_schedule_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Start date YYYY-MM-DD",
+              "title": "Start Date"
+            },
+            "description": "Start date YYYY-MM-DD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaintenanceScheduleResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintenance/optimise": {
+      "post": {
+        "tags": [
+          "Maintenance"
+        ],
+        "summary": "Optimise Maintenance Schedule",
+        "description": "AI-driven Maintenance Optimizer:\n1. Ranks pending maintenance tasks by engine risk (low RUL, high anomaly score).\n2. Maps required spare parts and checks base inventory.\n3. Allocates tasks to bases honoring daily_maintenance_slots and hangar_bays.\n4. Detects stockouts or capacity bottlenecks and flags actionable conflicts.",
+        "operationId": "optimise_maintenance_schedule_api_maintenance_optimise_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaintenanceOptimiseResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/maintenance/approve": {
+      "post": {
+        "tags": [
+          "Maintenance"
+        ],
+        "summary": "Approve Maintenance Tasks",
+        "operationId": "approve_maintenance_tasks_api_maintenance_approve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApproveMaintenanceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/spares": {
+      "get": {
+        "tags": [
+          "Spares & Logistics"
+        ],
+        "summary": "Get Spares Overview",
+        "operationId": "get_spares_overview_api_spares_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SparesOverviewResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/spares/reorder": {
+      "post": {
+        "tags": [
+          "Spares & Logistics"
+        ],
+        "summary": "Reorder Spares",
+        "operationId": "reorder_spares_api_spares_reorder_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReorderSparesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/spares/transfer": {
+      "post": {
+        "tags": [
+          "Spares & Logistics"
+        ],
+        "summary": "Transfer Spares",
+        "operationId": "transfer_spares_api_spares_transfer_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferSparesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/spares/demand-forecast": {
+      "get": {
+        "tags": [
+          "Spares & Logistics"
+        ],
+        "summary": "Get Spares Demand Forecast",
+        "description": "30-Day Spares Demand Forecast:\nPredicts required spare parts driven by current predicted RUL, degradation rates,\nand component mapping of engines deployed across bases.",
+        "operationId": "get_spares_demand_forecast_api_spares_demand_forecast_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "horizon_days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 90,
+              "minimum": 7,
+              "default": 30,
+              "title": "Horizon Days"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SparesDemandForecastResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/fleet/availability": {
+      "get": {
+        "tags": [
+          "Fleet Availability"
+        ],
+        "summary": "Get Fleet Availability",
+        "operationId": "get_fleet_availability_api_fleet_availability_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "horizon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Horizon in days: 7 or 14",
+              "default": 14,
+              "title": "Horizon"
+            },
+            "description": "Horizon in days: 7 or 14"
+          },
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "baseline, predictive, reactive",
+              "default": "predictive",
+              "title": "Scenario"
+            },
+            "description": "baseline, predictive, reactive"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FleetAvailabilityResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reports": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "List Reports",
+        "operationId": "list_reports_api_reports_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ReportResponse"
+                  },
+                  "type": "array",
+                  "title": "Response List Reports Api Reports Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Create Report",
+        "operationId": "create_report_api_reports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/reports/{report_id}/download": {
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Download Report",
+        "operationId": "download_report_api_reports__report_id__download_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/data/upload": {
+      "post": {
+        "tags": [
+          "Data Ingestion"
+        ],
+        "summary": "Upload Csv Data",
+        "operationId": "upload_csv_data_api_data_upload_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_csv_data_api_data_upload_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/system/status": {
+      "get": {
+        "tags": [
+          "System Status"
+        ],
+        "summary": "Get System Status",
+        "operationId": "get_system_status_api_system_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SystemStatusResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/simulator/start": {
+      "post": {
+        "tags": [
+          "Simulator"
+        ],
+        "summary": "Start Simulator",
+        "operationId": "start_simulator_api_simulator_start_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/simulator/stop": {
+      "post": {
+        "tags": [
+          "Simulator"
+        ],
+        "summary": "Stop Simulator",
+        "operationId": "stop_simulator_api_simulator_stop_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/simulator/speed": {
+      "post": {
+        "tags": [
+          "Simulator"
+        ],
+        "summary": "Set Simulator Speed",
+        "operationId": "set_simulator_speed_api_simulator_speed_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulatorSpeedRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/simulator/inject-fault": {
+      "post": {
+        "tags": [
+          "Simulator"
+        ],
+        "summary": "Inject Fault",
+        "operationId": "inject_fault_api_simulator_inject_fault_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InjectFaultRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/simulator/state": {
+      "get": {
+        "tags": [
+          "Simulator"
+        ],
+        "summary": "Get Simulator State",
+        "operationId": "get_simulator_state_api_simulator_state_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulatorStateResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/thresholds": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Get Thresholds",
+        "operationId": "get_thresholds_api_settings_thresholds_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RuleThresholdItem"
+                  },
+                  "type": "array",
+                  "title": "Response Get Thresholds Api Settings Thresholds Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update Thresholds",
+        "operationId": "update_thresholds_api_settings_thresholds_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/RuleThresholdItem"
+                },
+                "type": "array",
+                "title": "Thresholds"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/health-bands": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Get Health Bands",
+        "operationId": "get_health_bands_api_settings_health_bands_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update Health Bands",
+        "operationId": "update_health_bands_api_settings_health_bands_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "type": "object",
+                "title": "Bands"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/notifications": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Get Notifications Setting",
+        "operationId": "get_notifications_setting_api_settings_notifications_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update Notifications Setting",
+        "operationId": "update_notifications_setting_api_settings_notifications_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Cfg"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/users": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "List Users",
+        "operationId": "list_users_api_settings_users_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Create User",
+        "operationId": "create_user_api_settings_users_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": true,
+                "type": "object",
+                "title": "Data"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/users/{user_id}": {
+      "patch": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update User",
+        "operationId": "update_user_api_settings_users__user_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "User Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Data"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/settings/bases": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "List Bases",
+        "operationId": "list_bases_api_settings_bases_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update Bases",
+        "operationId": "update_bases_api_settings_bases_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array",
+                "title": "Bases Data"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/settings/data-retention": {
+      "get": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Get Data Retention",
+        "operationId": "get_data_retention_api_settings_data_retention_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Settings & Administration"
+        ],
+        "summary": "Update Data Retention",
+        "operationId": "update_data_retention_api_settings_data_retention_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": {
+                  "type": "integer"
+                },
+                "type": "object",
+                "title": "Data"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/audit-log": {
+      "get": {
+        "tags": [
+          "Audit Log"
+        ],
+        "summary": "Get Audit Log",
+        "operationId": "get_audit_log_api_audit_log_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by user service ID",
+              "title": "User Id"
+            },
+            "description": "Filter by user service ID"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Filter by action",
+              "title": "Action"
+            },
+            "description": "Filter by action"
+          },
+          {
+            "name": "export",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Set to 'csv' for CSV download",
+              "title": "Export"
+            },
+            "description": "Set to 'csv' for CSV download"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Page Size"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health Check",
+        "operationId": "health_check_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AircraftAtRiskItem": {
+        "properties": {
+          "aircraft_id": {
+            "type": "string",
+            "title": "Aircraft Id"
+          },
+          "aircraft_type": {
+            "type": "string",
+            "title": "Aircraft Type"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "critical_engine_id": {
+            "type": "string",
+            "title": "Critical Engine Id"
+          },
+          "engine_health": {
+            "type": "number",
+            "title": "Engine Health"
+          },
+          "engine_rul": {
+            "type": "integer",
+            "title": "Engine Rul"
+          },
+          "days_to_unavailable": {
+            "type": "integer",
+            "title": "Days To Unavailable"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "recommended_action": {
+            "type": "string",
+            "title": "Recommended Action"
+          }
+        },
+        "type": "object",
+        "required": [
+          "aircraft_id",
+          "aircraft_type",
+          "base_id",
+          "critical_engine_id",
+          "engine_health",
+          "engine_rul",
+          "days_to_unavailable",
+          "reason",
+          "recommended_action"
+        ],
+        "title": "AircraftAtRiskItem"
+      },
+      "AlertCounts": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "unacknowledged": {
+            "type": "integer",
+            "title": "Unacknowledged"
+          },
+          "in_progress": {
+            "type": "integer",
+            "title": "In Progress"
+          },
+          "resolved": {
+            "type": "integer",
+            "title": "Resolved"
+          },
+          "high_critical": {
+            "type": "integer",
+            "title": "High Critical"
+          },
+          "medium_warning": {
+            "type": "integer",
+            "title": "Medium Warning"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "unacknowledged",
+          "in_progress",
+          "resolved",
+          "high_critical",
+          "medium_warning"
+        ],
+        "title": "AlertCounts"
+      },
+      "AlertListResponse": {
+        "properties": {
+          "alerts": {
+            "items": {
+              "$ref": "#/components/schemas/AlertResponse"
+            },
+            "type": "array",
+            "title": "Alerts"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "page_size": {
+            "type": "integer",
+            "title": "Page Size"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/AlertSummary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "alerts",
+          "total",
+          "page",
+          "page_size",
+          "summary"
+        ],
+        "title": "AlertListResponse"
+      },
+      "AlertResponse": {
+        "properties": {
+          "alert_id": {
+            "type": "string",
+            "title": "Alert Id"
+          },
+          "timestamp": {
+            "type": "string",
+            "title": "Timestamp"
+          },
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "aircraft_id": {
+            "type": "string",
+            "title": "Aircraft Id"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity"
+          },
+          "trigger": {
+            "type": "string",
+            "title": "Trigger"
+          },
+          "anomaly_score": {
+            "type": "number",
+            "title": "Anomaly Score"
+          },
+          "rul_cycles": {
+            "type": "integer",
+            "title": "Rul Cycles"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
+          },
+          "work_order_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Work Order Id"
+          },
+          "recommended_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommended Action"
+          }
+        },
+        "type": "object",
+        "required": [
+          "alert_id",
+          "timestamp",
+          "engine_id",
+          "aircraft_id",
+          "severity",
+          "trigger",
+          "anomaly_score",
+          "rul_cycles",
+          "status",
+          "source"
+        ],
+        "title": "AlertResponse"
+      },
+      "AlertSummary": {
+        "properties": {
+          "unacknowledged": {
+            "type": "integer",
+            "title": "Unacknowledged"
+          },
+          "in_progress": {
+            "type": "integer",
+            "title": "In Progress"
+          },
+          "resolved": {
+            "type": "integer",
+            "title": "Resolved"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "high_severity": {
+            "type": "integer",
+            "title": "High Severity"
+          },
+          "medium_severity": {
+            "type": "integer",
+            "title": "Medium Severity"
+          }
+        },
+        "type": "object",
+        "required": [
+          "unacknowledged",
+          "in_progress",
+          "resolved",
+          "total",
+          "high_severity",
+          "medium_severity"
+        ],
+        "title": "AlertSummary"
+      },
+      "AlertUpdateRequest": {
+        "properties": {
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "assigned_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned To"
+          }
+        },
+        "type": "object",
+        "title": "AlertUpdateRequest"
+      },
+      "ApproveMaintenanceRequest": {
+        "properties": {
+          "task_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Task Ids"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_ids"
+        ],
+        "title": "ApproveMaintenanceRequest"
+      },
+      "AvailabilityDaySeries": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "mission_demand": {
+            "type": "integer",
+            "title": "Mission Demand"
+          },
+          "mission_ready": {
+            "type": "integer",
+            "title": "Mission Ready"
+          },
+          "scheduled_maintenance": {
+            "type": "integer",
+            "title": "Scheduled Maintenance"
+          },
+          "unscheduled_maintenance": {
+            "type": "integer",
+            "title": "Unscheduled Maintenance"
+          },
+          "availability_pct": {
+            "type": "number",
+            "title": "Availability Pct"
+          },
+          "surplus_deficit": {
+            "type": "integer",
+            "title": "Surplus Deficit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "mission_demand",
+          "mission_ready",
+          "scheduled_maintenance",
+          "unscheduled_maintenance",
+          "availability_pct",
+          "surplus_deficit"
+        ],
+        "title": "AvailabilityDaySeries"
+      },
+      "BaseAvailabilityItem": {
+        "properties": {
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "base_name": {
+            "type": "string",
+            "title": "Base Name"
+          },
+          "total_aircraft": {
+            "type": "integer",
+            "title": "Total Aircraft"
+          },
+          "mission_ready_count": {
+            "type": "integer",
+            "title": "Mission Ready Count"
+          },
+          "scheduled_maintenance_count": {
+            "type": "integer",
+            "title": "Scheduled Maintenance Count"
+          },
+          "unscheduled_maintenance_count": {
+            "type": "integer",
+            "title": "Unscheduled Maintenance Count"
+          },
+          "availability_pct": {
+            "type": "number",
+            "title": "Availability Pct"
+          }
+        },
+        "type": "object",
+        "required": [
+          "base_id",
+          "base_name",
+          "total_aircraft",
+          "mission_ready_count",
+          "scheduled_maintenance_count",
+          "unscheduled_maintenance_count",
+          "availability_pct"
+        ],
+        "title": "BaseAvailabilityItem"
+      },
+      "BaseScheduleDay": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "daily_slots_total": {
+            "type": "integer",
+            "title": "Daily Slots Total"
+          },
+          "daily_slots_used": {
+            "type": "integer",
+            "title": "Daily Slots Used"
+          },
+          "hangar_bays_total": {
+            "type": "integer",
+            "title": "Hangar Bays Total"
+          },
+          "hangar_bays_used": {
+            "type": "integer",
+            "title": "Hangar Bays Used"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/MaintenanceTaskResponse"
+            },
+            "type": "array",
+            "title": "Tasks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "daily_slots_total",
+          "daily_slots_used",
+          "hangar_bays_total",
+          "hangar_bays_used",
+          "tasks"
+        ],
+        "title": "BaseScheduleDay"
+      },
+      "BaseScheduleView": {
+        "properties": {
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "base_name": {
+            "type": "string",
+            "title": "Base Name"
+          },
+          "days": {
+            "items": {
+              "$ref": "#/components/schemas/BaseScheduleDay"
+            },
+            "type": "array",
+            "title": "Days"
+          }
+        },
+        "type": "object",
+        "required": [
+          "base_id",
+          "base_name",
+          "days"
+        ],
+        "title": "BaseScheduleView"
+      },
+      "Body_upload_csv_data_api_data_upload_post": {
+        "properties": {
+          "data_type": {
+            "type": "string",
+            "title": "Data Type",
+            "description": "maintenance, spares, or sensors"
+          },
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data_type",
+          "file"
+        ],
+        "title": "Body_upload_csv_data_api_data_upload_post"
+      },
+      "ComponentHealthItem": {
+        "properties": {
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "health_score": {
+            "type": "number",
+            "title": "Health Score"
+          },
+          "colour": {
+            "type": "string",
+            "title": "Colour"
+          },
+          "shap_contribution": {
+            "type": "number",
+            "title": "Shap Contribution"
+          },
+          "spare_part_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spare Part Id"
+          },
+          "spare_part_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Spare Part Name"
+          },
+          "qty_in_stock_at_base": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qty In Stock At Base",
+            "default": 0
+          },
+          "lead_time_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Time Days",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "component",
+          "health_score",
+          "colour",
+          "shap_contribution"
+        ],
+        "title": "ComponentHealthItem"
+      },
+      "CreateMaintenanceTaskRequest": {
+        "properties": {
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "maintenance_type": {
+            "type": "string",
+            "title": "Maintenance Type"
+          },
+          "urgency": {
+            "type": "string",
+            "title": "Urgency"
+          },
+          "required_part_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Required Part Id"
+          },
+          "scheduled_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scheduled Date"
+          },
+          "estimated_downtime_hours": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Downtime Hours",
+            "default": 12
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine_id",
+          "component",
+          "maintenance_type",
+          "urgency"
+        ],
+        "title": "CreateMaintenanceTaskRequest"
+      },
+      "CreateReportRequest": {
+        "properties": {
+          "report_type": {
+            "type": "string",
+            "title": "Report Type"
+          },
+          "format": {
+            "type": "string",
+            "title": "Format",
+            "default": "pdf"
+          },
+          "base_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Id"
+          },
+          "date_range_start": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date Range Start"
+          },
+          "date_range_end": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Date Range End"
+          }
+        },
+        "type": "object",
+        "required": [
+          "report_type"
+        ],
+        "title": "CreateReportRequest"
+      },
+      "CreateWorkOrderFromAlertRequest": {
+        "properties": {
+          "task_description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Task Description"
+          },
+          "assigned_technician": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned Technician"
+          },
+          "estimated_downtime_hours": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimated Downtime Hours",
+            "default": 24
+          },
+          "priority": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Priority"
+          }
+        },
+        "type": "object",
+        "title": "CreateWorkOrderFromAlertRequest"
+      },
+      "DashboardSummaryResponse": {
+        "properties": {
+          "total_engines": {
+            "type": "integer",
+            "title": "Total Engines"
+          },
+          "healthy_engines": {
+            "type": "integer",
+            "title": "Healthy Engines"
+          },
+          "watch_engines": {
+            "type": "integer",
+            "title": "Watch Engines"
+          },
+          "critical_engines": {
+            "type": "integer",
+            "title": "Critical Engines"
+          },
+          "total_aircraft": {
+            "type": "integer",
+            "title": "Total Aircraft"
+          },
+          "total_bases": {
+            "type": "integer",
+            "title": "Total Bases"
+          },
+          "fleet_readiness_pct": {
+            "type": "number",
+            "title": "Fleet Readiness Pct"
+          },
+          "mean_health": {
+            "type": "number",
+            "title": "Mean Health"
+          },
+          "mean_rul": {
+            "type": "number",
+            "title": "Mean Rul"
+          },
+          "top_5_engines_at_risk": {
+            "items": {
+              "$ref": "#/components/schemas/EngineRiskSummary"
+            },
+            "type": "array",
+            "title": "Top 5 Engines At Risk"
+          },
+          "active_alert_counts": {
+            "$ref": "#/components/schemas/AlertCounts"
+          },
+          "mission_ready_14d_projection": {
+            "items": {
+              "$ref": "#/components/schemas/MissionReadyDay"
+            },
+            "type": "array",
+            "title": "Mission Ready 14D Projection"
+          },
+          "telemetry_60m_aggregates": {
+            "items": {
+              "$ref": "#/components/schemas/TelemetryAggregate"
+            },
+            "type": "array",
+            "title": "Telemetry 60M Aggregates"
+          },
+          "digital_twin_preview": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Digital Twin Preview"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_engines",
+          "healthy_engines",
+          "watch_engines",
+          "critical_engines",
+          "total_aircraft",
+          "total_bases",
+          "fleet_readiness_pct",
+          "mean_health",
+          "mean_rul",
+          "top_5_engines_at_risk",
+          "active_alert_counts",
+          "mission_ready_14d_projection",
+          "telemetry_60m_aggregates",
+          "digital_twin_preview"
+        ],
+        "title": "DashboardSummaryResponse"
+      },
+      "EngineDetailResponse": {
+        "properties": {
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "aircraft_id": {
+            "type": "string",
+            "title": "Aircraft Id"
+          },
+          "aircraft_type": {
+            "type": "string",
+            "title": "Aircraft Type"
+          },
+          "engine_config": {
+            "type": "string",
+            "title": "Engine Config"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "base_name": {
+            "type": "string",
+            "title": "Base Name"
+          },
+          "position": {
+            "type": "integer",
+            "title": "Position"
+          },
+          "engine_model": {
+            "type": "string",
+            "title": "Engine Model"
+          },
+          "install_date": {
+            "type": "string",
+            "title": "Install Date"
+          },
+          "cycles_since_new": {
+            "type": "integer",
+            "title": "Cycles Since New"
+          },
+          "hours_since_overhaul": {
+            "type": "integer",
+            "title": "Hours Since Overhaul"
+          },
+          "health_score": {
+            "type": "number",
+            "title": "Health Score"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "predicted_rul_cycles": {
+            "type": "integer",
+            "title": "Predicted Rul Cycles"
+          },
+          "anomaly_score": {
+            "type": "number",
+            "title": "Anomaly Score"
+          },
+          "failure_risk_7d": {
+            "type": "number",
+            "title": "Failure Risk 7D"
+          },
+          "last_updated": {
+            "type": "string",
+            "title": "Last Updated"
+          },
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ComponentHealthItem"
+            },
+            "type": "array",
+            "title": "Components"
+          },
+          "shap_top_features": {
+            "items": {
+              "$ref": "#/components/schemas/ShapFeatureItem"
+            },
+            "type": "array",
+            "title": "Shap Top Features"
+          },
+          "rul_trend": {
+            "items": {
+              "$ref": "#/components/schemas/RulTrendPoint"
+            },
+            "type": "array",
+            "title": "Rul Trend"
+          },
+          "recent_sensor_history": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Recent Sensor History"
+          },
+          "maintenance_history": {
+            "items": {
+              "$ref": "#/components/schemas/MaintenanceRecordItem"
+            },
+            "type": "array",
+            "title": "Maintenance History"
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine_id",
+          "aircraft_id",
+          "aircraft_type",
+          "engine_config",
+          "base_id",
+          "base_name",
+          "position",
+          "engine_model",
+          "install_date",
+          "cycles_since_new",
+          "hours_since_overhaul",
+          "health_score",
+          "status",
+          "predicted_rul_cycles",
+          "anomaly_score",
+          "failure_risk_7d",
+          "last_updated",
+          "components",
+          "shap_top_features",
+          "rul_trend",
+          "recent_sensor_history",
+          "maintenance_history"
+        ],
+        "title": "EngineDetailResponse"
+      },
+      "EngineRiskSummary": {
+        "properties": {
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "aircraft_id": {
+            "type": "string",
+            "title": "Aircraft Id"
+          },
+          "aircraft_type": {
+            "type": "string",
+            "title": "Aircraft Type"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "health_score": {
+            "type": "number",
+            "title": "Health Score"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "predicted_rul_cycles": {
+            "type": "integer",
+            "title": "Predicted Rul Cycles"
+          },
+          "anomaly_score": {
+            "type": "number",
+            "title": "Anomaly Score"
+          },
+          "failure_risk_7d": {
+            "type": "number",
+            "title": "Failure Risk 7D"
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine_id",
+          "aircraft_id",
+          "aircraft_type",
+          "base_id",
+          "health_score",
+          "status",
+          "predicted_rul_cycles",
+          "anomaly_score",
+          "failure_risk_7d"
+        ],
+        "title": "EngineRiskSummary"
+      },
+      "FleetAvailabilityResponse": {
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "title": "Scenario"
+          },
+          "horizon_days": {
+            "type": "integer",
+            "title": "Horizon Days"
+          },
+          "overall_availability_pct": {
+            "type": "number",
+            "title": "Overall Availability Pct"
+          },
+          "bases": {
+            "items": {
+              "$ref": "#/components/schemas/BaseAvailabilityItem"
+            },
+            "type": "array",
+            "title": "Bases"
+          },
+          "daily_timeline": {
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityDaySeries"
+            },
+            "type": "array",
+            "title": "Daily Timeline"
+          },
+          "at_risk_aircraft": {
+            "items": {
+              "$ref": "#/components/schemas/AircraftAtRiskItem"
+            },
+            "type": "array",
+            "title": "At Risk Aircraft"
+          },
+          "scenario_explanation": {
+            "type": "string",
+            "title": "Scenario Explanation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "scenario",
+          "horizon_days",
+          "overall_availability_pct",
+          "bases",
+          "daily_timeline",
+          "at_risk_aircraft",
+          "scenario_explanation"
+        ],
+        "title": "FleetAvailabilityResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "InjectFaultRequest": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity",
+            "default": "critical"
+          }
+        },
+        "type": "object",
+        "required": [
+          "type",
+          "engine_id"
+        ],
+        "title": "InjectFaultRequest"
+      },
+      "LoginRequest": {
+        "properties": {
+          "service_id": {
+            "type": "string",
+            "title": "Service Id"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": [
+          "service_id",
+          "password"
+        ],
+        "title": "LoginRequest"
+      },
+      "MaintenanceOptimiseResponse": {
+        "properties": {
+          "assignments": {
+            "items": {
+              "$ref": "#/components/schemas/TaskAssignment"
+            },
+            "type": "array",
+            "title": "Assignments"
+          },
+          "conflicts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Conflicts"
+          },
+          "capacity_utilization_pct": {
+            "type": "number",
+            "title": "Capacity Utilization Pct"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "assignments",
+          "conflicts",
+          "capacity_utilization_pct",
+          "summary"
+        ],
+        "title": "MaintenanceOptimiseResponse"
+      },
+      "MaintenanceRecordItem": {
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "title": "Record Id"
+          },
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "maintenance_type": {
+            "type": "string",
+            "title": "Maintenance Type"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "downtime_hours": {
+            "type": "integer",
+            "title": "Downtime Hours"
+          },
+          "fault_found": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fault Found"
+          },
+          "cost_inr_lakh": {
+            "type": "number",
+            "title": "Cost Inr Lakh"
+          },
+          "technician_id": {
+            "type": "string",
+            "title": "Technician Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "record_id",
+          "date",
+          "maintenance_type",
+          "category",
+          "downtime_hours",
+          "cost_inr_lakh",
+          "technician_id"
+        ],
+        "title": "MaintenanceRecordItem"
+      },
+      "MaintenanceScheduleResponse": {
+        "properties": {
+          "week_start": {
+            "type": "string",
+            "title": "Week Start"
+          },
+          "week_end": {
+            "type": "string",
+            "title": "Week End"
+          },
+          "bases": {
+            "items": {
+              "$ref": "#/components/schemas/BaseScheduleView"
+            },
+            "type": "array",
+            "title": "Bases"
+          }
+        },
+        "type": "object",
+        "required": [
+          "week_start",
+          "week_end",
+          "bases"
+        ],
+        "title": "MaintenanceScheduleResponse"
+      },
+      "MaintenanceTaskResponse": {
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "aircraft_id": {
+            "type": "string",
+            "title": "Aircraft Id"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "required_part_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Required Part Id"
+          },
+          "maintenance_type": {
+            "type": "string",
+            "title": "Maintenance Type"
+          },
+          "urgency": {
+            "type": "string",
+            "title": "Urgency"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "scheduled_date": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scheduled Date"
+          },
+          "estimated_downtime_hours": {
+            "type": "integer",
+            "title": "Estimated Downtime Hours"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_id",
+          "engine_id",
+          "aircraft_id",
+          "base_id",
+          "component",
+          "maintenance_type",
+          "urgency",
+          "status",
+          "estimated_downtime_hours",
+          "created_at"
+        ],
+        "title": "MaintenanceTaskResponse"
+      },
+      "MissionReadyDay": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "title": "Date"
+          },
+          "required": {
+            "type": "integer",
+            "title": "Required"
+          },
+          "predicted_ready": {
+            "type": "integer",
+            "title": "Predicted Ready"
+          },
+          "deficit": {
+            "type": "integer",
+            "title": "Deficit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "required",
+          "predicted_ready",
+          "deficit"
+        ],
+        "title": "MissionReadyDay"
+      },
+      "ReorderSparesRequest": {
+        "properties": {
+          "part_id": {
+            "type": "string",
+            "title": "Part Id"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          },
+          "supplier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Supplier"
+          }
+        },
+        "type": "object",
+        "required": [
+          "part_id",
+          "base_id",
+          "quantity"
+        ],
+        "title": "ReorderSparesRequest"
+      },
+      "ReportResponse": {
+        "properties": {
+          "report_id": {
+            "type": "string",
+            "title": "Report Id"
+          },
+          "report_type": {
+            "type": "string",
+            "title": "Report Type"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "format": {
+            "type": "string",
+            "title": "Format"
+          },
+          "base_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Id"
+          },
+          "date_range_start": {
+            "type": "string",
+            "title": "Date Range Start"
+          },
+          "date_range_end": {
+            "type": "string",
+            "title": "Date Range End"
+          },
+          "generated_by": {
+            "type": "string",
+            "title": "Generated By"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "file_path": {
+            "type": "string",
+            "title": "File Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "report_id",
+          "report_type",
+          "title",
+          "format",
+          "date_range_start",
+          "date_range_end",
+          "generated_by",
+          "created_at",
+          "file_path"
+        ],
+        "title": "ReportResponse"
+      },
+      "RulTrendPoint": {
+        "properties": {
+          "cycle": {
+            "type": "integer",
+            "title": "Cycle"
+          },
+          "predicted_rul": {
+            "type": "integer",
+            "title": "Predicted Rul"
+          },
+          "critical_threshold": {
+            "type": "integer",
+            "title": "Critical Threshold",
+            "default": 15
+          },
+          "warning_threshold": {
+            "type": "integer",
+            "title": "Warning Threshold",
+            "default": 40
+          }
+        },
+        "type": "object",
+        "required": [
+          "cycle",
+          "predicted_rul"
+        ],
+        "title": "RulTrendPoint"
+      },
+      "RuleThresholdItem": {
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "parameter": {
+            "type": "string",
+            "title": "Parameter"
+          },
+          "operator": {
+            "type": "string",
+            "title": "Operator"
+          },
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          },
+          "severity": {
+            "type": "string",
+            "title": "Severity"
+          },
+          "recommended_action": {
+            "type": "string",
+            "title": "Recommended Action"
+          }
+        },
+        "type": "object",
+        "required": [
+          "parameter",
+          "operator",
+          "threshold",
+          "severity",
+          "recommended_action"
+        ],
+        "title": "RuleThresholdItem"
+      },
+      "ShapFeatureItem": {
+        "properties": {
+          "sensor": {
+            "type": "string",
+            "title": "Sensor"
+          },
+          "contribution": {
+            "type": "number",
+            "title": "Contribution"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sensor",
+          "contribution",
+          "component"
+        ],
+        "title": "ShapFeatureItem"
+      },
+      "SimulatorSpeedRequest": {
+        "properties": {
+          "speed": {
+            "type": "number",
+            "title": "Speed",
+            "default": 1.0
+          }
+        },
+        "type": "object",
+        "title": "SimulatorSpeedRequest"
+      },
+      "SimulatorStateResponse": {
+        "properties": {
+          "is_running": {
+            "type": "boolean",
+            "title": "Is Running"
+          },
+          "speed": {
+            "type": "number",
+            "title": "Speed"
+          },
+          "current_step": {
+            "type": "integer",
+            "title": "Current Step"
+          },
+          "total_steps": {
+            "type": "integer",
+            "title": "Total Steps"
+          },
+          "active_faults": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Active Faults"
+          },
+          "last_updated": {
+            "type": "string",
+            "title": "Last Updated"
+          }
+        },
+        "type": "object",
+        "required": [
+          "is_running",
+          "speed",
+          "current_step",
+          "total_steps",
+          "active_faults",
+          "last_updated"
+        ],
+        "title": "SimulatorStateResponse"
+      },
+      "SparePartItem": {
+        "properties": {
+          "part_id": {
+            "type": "string",
+            "title": "Part Id"
+          },
+          "part_name": {
+            "type": "string",
+            "title": "Part Name"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "base_name": {
+            "type": "string",
+            "title": "Base Name"
+          },
+          "qty_in_stock": {
+            "type": "integer",
+            "title": "Qty In Stock"
+          },
+          "reorder_level": {
+            "type": "integer",
+            "title": "Reorder Level"
+          },
+          "lead_time_days": {
+            "type": "integer",
+            "title": "Lead Time Days"
+          },
+          "unit_cost_inr_lakh": {
+            "type": "number",
+            "title": "Unit Cost Inr Lakh"
+          },
+          "supplier": {
+            "type": "string",
+            "title": "Supplier"
+          },
+          "stock_status": {
+            "type": "string",
+            "title": "Stock Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "part_id",
+          "part_name",
+          "component",
+          "base_id",
+          "base_name",
+          "qty_in_stock",
+          "reorder_level",
+          "lead_time_days",
+          "unit_cost_inr_lakh",
+          "supplier",
+          "stock_status"
+        ],
+        "title": "SparePartItem"
+      },
+      "SparesDemandForecastItem": {
+        "properties": {
+          "part_id": {
+            "type": "string",
+            "title": "Part Id"
+          },
+          "part_name": {
+            "type": "string",
+            "title": "Part Name"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "current_stock": {
+            "type": "integer",
+            "title": "Current Stock"
+          },
+          "projected_failures_30d": {
+            "type": "integer",
+            "title": "Projected Failures 30D"
+          },
+          "recommended_order_qty": {
+            "type": "integer",
+            "title": "Recommended Order Qty"
+          },
+          "urgency": {
+            "type": "string",
+            "title": "Urgency"
+          },
+          "estimated_cost_inr_lakh": {
+            "type": "number",
+            "title": "Estimated Cost Inr Lakh"
+          }
+        },
+        "type": "object",
+        "required": [
+          "part_id",
+          "part_name",
+          "component",
+          "base_id",
+          "current_stock",
+          "projected_failures_30d",
+          "recommended_order_qty",
+          "urgency",
+          "estimated_cost_inr_lakh"
+        ],
+        "title": "SparesDemandForecastItem"
+      },
+      "SparesDemandForecastResponse": {
+        "properties": {
+          "horizon_days": {
+            "type": "integer",
+            "title": "Horizon Days",
+            "default": 30
+          },
+          "total_projected_demand": {
+            "type": "integer",
+            "title": "Total Projected Demand"
+          },
+          "total_estimated_cost_inr_lakh": {
+            "type": "number",
+            "title": "Total Estimated Cost Inr Lakh"
+          },
+          "forecast": {
+            "items": {
+              "$ref": "#/components/schemas/SparesDemandForecastItem"
+            },
+            "type": "array",
+            "title": "Forecast"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_projected_demand",
+          "total_estimated_cost_inr_lakh",
+          "forecast"
+        ],
+        "title": "SparesDemandForecastResponse"
+      },
+      "SparesKPIs": {
+        "properties": {
+          "total_parts": {
+            "type": "integer",
+            "title": "Total Parts"
+          },
+          "below_reorder_level": {
+            "type": "integer",
+            "title": "Below Reorder Level"
+          },
+          "stockouts": {
+            "type": "integer",
+            "title": "Stockouts"
+          },
+          "avg_lead_time_days": {
+            "type": "number",
+            "title": "Avg Lead Time Days"
+          },
+          "pending_orders": {
+            "type": "integer",
+            "title": "Pending Orders"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_parts",
+          "below_reorder_level",
+          "stockouts",
+          "avg_lead_time_days",
+          "pending_orders"
+        ],
+        "title": "SparesKPIs"
+      },
+      "SparesOverviewResponse": {
+        "properties": {
+          "matrix": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object"
+            },
+            "type": "object",
+            "title": "Matrix"
+          },
+          "parts": {
+            "items": {
+              "$ref": "#/components/schemas/SparePartItem"
+            },
+            "type": "array",
+            "title": "Parts"
+          },
+          "kpis": {
+            "$ref": "#/components/schemas/SparesKPIs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matrix",
+          "parts",
+          "kpis"
+        ],
+        "title": "SparesOverviewResponse"
+      },
+      "SystemStatusResponse": {
+        "properties": {
+          "database_connected": {
+            "type": "boolean",
+            "title": "Database Connected"
+          },
+          "live_feed_status": {
+            "type": "string",
+            "title": "Live Feed Status"
+          },
+          "models_loaded": {
+            "type": "boolean",
+            "title": "Models Loaded"
+          },
+          "ml_enabled": {
+            "type": "boolean",
+            "title": "Ml Enabled"
+          },
+          "offline_mode": {
+            "type": "boolean",
+            "title": "Offline Mode"
+          },
+          "last_sync": {
+            "type": "string",
+            "title": "Last Sync"
+          },
+          "total_engines": {
+            "type": "integer",
+            "title": "Total Engines"
+          },
+          "total_aircraft": {
+            "type": "integer",
+            "title": "Total Aircraft"
+          },
+          "active_alerts": {
+            "type": "integer",
+            "title": "Active Alerts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "database_connected",
+          "live_feed_status",
+          "models_loaded",
+          "ml_enabled",
+          "offline_mode",
+          "last_sync",
+          "total_engines",
+          "total_aircraft",
+          "active_alerts"
+        ],
+        "title": "SystemStatusResponse"
+      },
+      "TaskAssignment": {
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "engine_id": {
+            "type": "string",
+            "title": "Engine Id"
+          },
+          "base_id": {
+            "type": "string",
+            "title": "Base Id"
+          },
+          "component": {
+            "type": "string",
+            "title": "Component"
+          },
+          "scheduled_date": {
+            "type": "string",
+            "title": "Scheduled Date"
+          },
+          "part_available": {
+            "type": "boolean",
+            "title": "Part Available"
+          },
+          "part_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Part Id"
+          },
+          "urgency": {
+            "type": "string",
+            "title": "Urgency"
+          },
+          "priority_score": {
+            "type": "number",
+            "title": "Priority Score"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_id",
+          "engine_id",
+          "base_id",
+          "component",
+          "scheduled_date",
+          "part_available",
+          "urgency",
+          "priority_score"
+        ],
+        "title": "TaskAssignment"
+      },
+      "TelemetryAggregate": {
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "title": "Parameter"
+          },
+          "current_avg": {
+            "type": "number",
+            "title": "Current Avg"
+          },
+          "min": {
+            "type": "number",
+            "title": "Min"
+          },
+          "max": {
+            "type": "number",
+            "title": "Max"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "parameter",
+          "current_avg",
+          "min",
+          "max",
+          "unit",
+          "status"
+        ],
+        "title": "TelemetryAggregate"
+      },
+      "TokenResponse": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserResponse"
+          }
+        },
+        "type": "object",
+        "required": [
+          "access_token",
+          "user"
+        ],
+        "title": "TokenResponse"
+      },
+      "TransferSparesRequest": {
+        "properties": {
+          "part_id": {
+            "type": "string",
+            "title": "Part Id"
+          },
+          "source_base_id": {
+            "type": "string",
+            "title": "Source Base Id"
+          },
+          "destination_base_id": {
+            "type": "string",
+            "title": "Destination Base Id"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "Quantity"
+          }
+        },
+        "type": "object",
+        "required": [
+          "part_id",
+          "source_base_id",
+          "destination_base_id",
+          "quantity"
+        ],
+        "title": "TransferSparesRequest"
+      },
+      "UserResponse": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "service_id": {
+            "type": "string",
+            "title": "Service Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "role": {
+            "type": "string",
+            "title": "Role"
+          },
+          "base_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "service_id",
+          "name",
+          "role"
+        ],
+        "title": "UserResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8ce96"/>
+      <stop offset="100%" stop-color="#839864"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="32" fill="url(#bg)"/>
+  <circle cx="32" cy="32" r="30.5" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.6"/>
+  <!-- Head & Shoulders Silhouette -->
+  <path d="M32 14 A10 10 0 1 0 32 34 A10 10 0 1 0 32 14 Z" fill="#94a3b8"/>
+  <path d="M14 54 C14 42 22 38 32 38 C42 38 50 42 50 54 Z" fill="#64748b"/>
+  <!-- Officer insignia -->
+  <circle cx="32" cy="24" r="3" fill="#cbd5e1"/>
+  <polygon points="32,42 35,47 29,47" fill="url(#accent)"/>
+</svg>

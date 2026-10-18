@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-thumb{background:#45483e;border-radius:2px;}::-webkit-scrollbar-track{background:transparent;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#690005",
+          "surface-container-highest": "#31353a",
+          "primary-fixed": "#d4ebb0",
+          "on-secondary-fixed-variant": "#004c6e",
+          "on-tertiary-container": "#401d39",
+          "inverse-surface": "#e0e3e8",
+          "on-primary": "#25350c",
+          "primary-container": "#839864",
+          "on-secondary-container": "#92d1ff",
+          "on-primary-fixed-variant": "#3a4c21",
+          "on-primary-fixed": "#111f00",
+          "on-background": "#e0e3e8",
+          "on-secondary": "#00344d",
+          "surface-variant": "#31353a",
+          "tertiary-container": "#b282a4",
+          "tertiary-fixed": "#ffd7f1",
+          "surface-container": "#1c2024",
+          "surface-container-low": "#181c20",
+          "background": "#101418",
+          "outline": "#8f9285",
+          "on-primary-container": "#1e2e06",
+          "on-surface": "#e0e3e8",
+          "secondary": "#8ecdfc",
+          "surface-bright": "#363a3e",
+          "surface-container-lowest": "#0b0f12",
+          "error": "#ffb4ab",
+          "tertiary-fixed-dim": "#ebb7dc",
+          "primary": "#b8ce96",
+          "outline-variant": "#45483e",
+          "surface-container-high": "#262a2f",
+          "on-secondary-fixed": "#001e2f",
+          "surface-tint": "#b8ce96",
+          "on-error-container": "#ffdad6",
+          "secondary-fixed-dim": "#8ecdfc",
+          "secondary-container": "#025a83",
+          "inverse-on-surface": "#2d3135",
+          "on-tertiary-fixed-variant": "#613a58",
+          "secondary-fixed": "#c9e6ff",
+          "surface-dim": "#101418",
+          "tertiary": "#ebb7dc",
+          "on-tertiary": "#482441",
+          "on-tertiary-fixed": "#300e2b",
+          "on-surface-variant": "#c5c8ba",
+          "error-container": "#93000a",
+          "surface": "#101418",
+          "inverse-primary": "#516536",
+          "primary-fixed-dim": "#b8ce96"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "margin": "1.5rem",
+          "space-xl": "1.5rem",
+          "space-lg": "1rem",
+          "space-md": "0.75rem",
+          "space-xs": "0.25rem",
+          "space-sm": "0.5rem",
+          "gutter": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-md": ["IBM Plex Sans"],
+          "headline-xl": ["IBM Plex Sans"],
+          "mono-code": ["IBM Plex Mono"],
+          "body-default": ["IBM Plex Sans"],
+          "body-strong": ["IBM Plex Sans"],
+          "mono-metric": ["IBM Plex Mono"],
+          "label-muted": ["IBM Plex Sans"],
+          "headline-lg": ["IBM Plex Sans"],
+          "label-default": ["IBM Plex Sans"]
+        },
+        "fontSize": {
+          "headline-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "headline-xl": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "mono-code": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "body-default": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "body-strong": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+          "mono-metric": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+          "label-muted": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+          "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "label-default": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased overflow-x-hidden"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-md border-b border-outline-variant/30 flex items-center gap-space-sm bg-surface-container-low"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col justify-center min-w-0 leading-none"><span class="font-headline-md text-[15px] text-on-surface tracking-wider font-semibold truncate">VAJRA</span><span class="font-mono-code text-[11px] text-on-surface-variant truncate uppercase tracking-tight">Predict · Prevent · Ready</span></div></div><div class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-space-md"><div class="px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Operations</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="command-dashboard" href="#"><span class="font-body-default text-body-default truncate">Command Dashboard</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engines" href="#"><span class="font-body-default text-body-default truncate">Engines</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="engine-detail" href="#"><span class="font-body-default text-body-default truncate">Engine Detail</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="3d-digital-twin" href="#"><span class="font-body-default text-body-default truncate">3D Digital Twin</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="maintenance-planner" href="#"><span class="font-body-default text-body-default truncate">Maintenance Planner</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="spares-and-logistics" href="#"><span class="font-body-default text-body-default truncate">Spares &amp; Logistics</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="fleet-availability" href="#"><span class="font-body-default text-body-default truncate">Fleet Availability</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="reports" href="#"><span class="font-body-default text-body-default truncate">Reports</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="data-and-simulator" href="#"><span class="font-body-default text-body-default truncate">Data &amp; Simulator</span></a></nav><div class="pt-space-sm border-t border-outline-variant/30 px-space-sm"><span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Configuration</span></div><nav class="space-y-0.5" data-active-classes="bg-primary-container text-on-primary-container font-body-strong"><a aria-current="page" class="flex items-center justify-between px-space-sm py-1.5 rounded-lg transition-colors bg-primary-container text-on-primary-container font-body-strong" data-path="settings" href="#"><span class="font-body-default text-body-default truncate">Settings</span></a><a class="flex items-center justify-between px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="audit-log" href="#"><span class="font-body-default text-body-default truncate">Audit Log</span></a></nav></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg select-none"><div class="flex items-center gap-space-md flex-1 max-w-2xl"><div class="relative flex-1"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-on-surface-variant">search</span><input class="w-full h-8 pl-8 pr-3 bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-secondary transition-colors" placeholder="Search engines, components, or tasks..." type="search"/></div><div class="relative shrink-0"><select class="h-8 px-space-sm bg-surface-container-low border border-outline-variant/40 rounded-lg text-body-default font-body-default text-on-surface focus:outline-none focus:border-secondary cursor-pointer"><option value="base-01">Base 01 (Forward)</option><option value="all-bases">All Bases (5 Bases)</option></select></div></div><div class="flex items-center gap-space-lg shrink-0"><div class="flex items-center gap-1.5 px-2 py-1 bg-surface-container-low border border-outline-variant/30 rounded-lg"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span><span class="font-mono-code text-[11px] text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 font-mono-code text-[10px] leading-none px-1 py-0.5 bg-error-container text-on-error-container font-semibold rounded-lg">3</span></button><div class="flex items-center gap-space-sm pl-space-sm border-l border-outline-variant/30"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-[13px] text-on-surface">Fleet Commander</span><span class="font-mono-code text-[11px] text-on-surface-variant">(Fleet Commander)</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0 border border-outline-variant/40" src="../assets/avatar.svg"/></div></div></header><main class="w-full pt-12 flex-1 bg-background flex flex-col"><div class="flex flex-col w-full text-on-surface">
+<!-- Operational Context Header Bar -->
+<section class="bg-surface-container-low px-space-lg py-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm text-body-default">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-mono-code text-[11px] uppercase tracking-wider text-outline px-1.5 py-0.5 rounded bg-surface-container-highest">Fleet Context</span>
+<span class="font-body-strong text-on-surface">42 engines (24 aircraft)</span>
+<span class="text-outline">·</span>
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-primary">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+<span class="font-mono-code text-[12px]">27 healthy</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+<span class="font-mono-code text-[12px]">12 watch</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container text-error">
+<span class="w-2 h-2 rounded-full bg-error inline-block"></span>
+<span class="font-mono-code text-[12px]">3 critical</span>
+</div>
+<span class="text-outline">·</span>
+<span class="font-mono-code text-on-surface-variant text-[12px]">5 operational bases (Base 01–05)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[11px] text-on-surface-variant">NODE CLUSTER</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high font-mono-code text-[12px] text-secondary">IAF-EDGE-STABLE</span>
+</div>
+</div>
+</section>
+<!-- Title & Action Clearance Notification -->
+<header class="bg-surface-container px-space-lg py-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">System settings &amp; parameter configuration</h1>
+<span class="font-mono-code text-[11px] px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">SYS-REF: CFG-SET-01</span>
+</div>
+<p class="font-body-default text-body-default text-on-surface-variant mt-0.5">High-reliability telemetry boundaries, edge sensor governors, and autonomous grounding directives.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified_user</span>
+<div class="flex flex-col text-left">
+<span class="font-mono-code text-[11px] text-on-surface-variant uppercase tracking-wider">Auth Clearance</span>
+<span class="font-body-strong text-body-strong text-on-surface">Maintenance Officer (Level 4)</span>
+</div>
+</div>
+</div>
+<!-- Security propagation notice banner -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container-high flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5 shrink-0">info</span>
+<p class="font-body-default text-body-default text-on-surface-variant">
+        Threshold edits require <span class="font-body-strong text-on-surface">Maintenance Officer authorization level</span>. Applied changes will propagate to edge nodes across Base 01–05 within <span class="font-mono-code text-on-surface font-semibold">120s</span> via internal node synchronization.
+      </p>
+</div>
+</header>
+<!-- Two-Column Architecture Workspace -->
+<div class="flex-1 flex flex-col lg:flex-row w-full min-h-[calc(100vh-160px)]">
+<!-- Left Column: Settings Navigation Sub-menu (approx 250px) -->
+<aside class="w-full lg:w-64 bg-surface-container shrink-0 flex flex-col justify-between p-space-sm">
+<nav aria-label="Settings categories" class="space-y-1">
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-highest text-on-surface shadow-sm" href="#thresholds">
+<span class="material-symbols-outlined text-[20px] text-primary shrink-0 mt-0.5">tune</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate flex items-center gap-1.5">
+              Thresholds
+              <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">Telemetry &amp; RUL limits</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#health-bands">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">vital_signs</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Health bands</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">70-100 / 40-69 / 0-39</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#notifications">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">notifications_active</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Notifications</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">Operational alert routing</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#rbac">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">shield_person</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Users &amp; roles</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">Fleet RBAC access control</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#hangars">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">warehouse</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Bases &amp; hangars</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">Base 01–05 configuration</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#retention">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">database</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Data retention</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">TimescaleDB edge archive</span>
+</div>
+</a>
+<a class="flex items-start gap-space-sm p-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#appearance">
+<span class="material-symbols-outlined text-[20px] shrink-0 mt-0.5">settings_ethernet</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-strong text-body-strong truncate">Appearance &amp; nodes</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant truncate">Tactical contrast &amp; sync</span>
+</div>
+</a>
+</nav>
+<!-- Sub-nav Config Metadata Box -->
+<div class="p-space-sm rounded-lg bg-surface-container-low mt-space-lg text-left">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-[16px] text-primary">token</span>
+<span class="font-mono-code text-[11px] text-on-surface font-semibold tracking-wider uppercase">Active Signature</span>
+</div>
+<p class="font-mono-code text-[11px] text-on-surface-variant leading-snug">Config version: <span class="text-on-surface">v4.8.2-iaf</span></p>
+<p class="font-mono-code text-[11px] text-on-surface-variant leading-snug">Signed by Fleet Commander (Fleet Commander)</p>
+<div class="mt-2 pt-2 flex items-center justify-between text-[11px] font-mono-code text-outline">
+<span>CRC32: 9A0F-BC32</span>
+<span class="text-primary font-medium">VALID</span>
+</div>
+</div>
+</aside>
+<!-- Right Column: Main Settings Pane (Thresholds View) -->
+<main class="flex-1 bg-background flex flex-col min-w-0">
+<!-- Content Top Header & Filters -->
+<div class="p-space-lg bg-surface-container-low">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="max-w-2xl">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface">Telemetry &amp; RUL alert thresholds</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high font-mono-code text-[11px] text-primary font-medium">PROFILE MODE: ACTIVE</span>
+</div>
+<p class="font-body-default text-body-default text-on-surface-variant mt-1">
+              Define sensory parameter boundary limits for real-time anomaly detection, early warning watch triggers, and automatic flight grounding recommendations.
+            </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap shrink-0">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface font-body-default text-body-default hover:bg-surface-container-highest transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">restore</span>
+              Reset to default
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-body-strong text-body-strong hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+              Save &amp; deploy changes
+            </button>
+</div>
+</div>
+<!-- Filter and profile selector bar -->
+<div class="mt-space-lg flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm">
+<div class="flex-1 max-w-md relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-lg bg-surface-container text-body-default font-body-default text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-high transition-colors" id="parameter-search" placeholder="Filter parameters by name, sensor tag, or subsystem..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-mono-code text-[12px] text-on-surface-variant shrink-0">Preset Selector:</span>
+<div class="relative">
+<select class="h-9 px-space-md rounded-lg bg-surface-container text-body-default font-body-strong text-on-surface focus:outline-none cursor-pointer">
+<option selected="">Fleet Standard Combat (Mach 1.8+ / Hot &amp; High)</option>
+<option>High-Altitude Intercept Profile (Leh-Ladakh)</option>
+<option>Ferry &amp; Endurance Loiter Protocol</option>
+<option>Depot Post-Overhaul Acceptance Test (POAT)</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Preset / Profile Quick Bar -->
+<section class="px-space-lg py-space-sm bg-surface-container flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-sm text-body-default">
+<div class="px-2.5 py-1 rounded bg-surface-container-high font-mono-code text-[12px] text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">memory</span>
+            Profile: FLEET-STD-2026
+          </div>
+<div class="px-2.5 py-1 rounded bg-surface-container-high font-mono-code text-[12px] text-on-surface-variant">
+            Last committed: 11 Oct 2026, 09:30 IST by Fleet Commander
+          </div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-high text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block animate-pulse"></span>
+<span class="font-mono-code text-[12px] font-medium">Pending changes: 2 uncommitted fields</span>
+</div>
+</section>
+<!-- Main Editable Parameters Table -->
+<div class="flex-1 overflow-x-auto p-space-lg">
+<table class="w-full text-left font-body-default text-body-default select-none border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-mono-code text-[11px] uppercase tracking-wider">
+<th class="py-2.5 px-space-md font-medium" scope="col">Parameter &amp; Sensor Tag</th>
+<th class="py-2.5 px-space-md font-medium" scope="col">Baseline</th>
+<th class="py-2.5 px-space-md font-medium" scope="col">Unit</th>
+<th class="py-2.5 px-space-md font-medium text-secondary" scope="col">Warning Threshold (Watch)</th>
+<th class="py-2.5 px-space-md font-medium text-error" scope="col">Critical (Grounding)</th>
+<th class="py-2.5 px-space-md font-medium" scope="col">Hysteresis</th>
+<th class="py-2.5 px-space-md font-medium" scope="col">Action on Breach</th>
+<th class="py-2.5 px-space-md font-medium text-right" scope="col">Status</th>
+</tr>
+</thead>
+<tbody class="space-y-1">
+<!-- Row 1: Modified -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Shaft vibration RMS (Bearing #3)</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">HP Turbine &amp; Bearings</span>
+<span>·</span>
+<span class="text-secondary font-semibold">SEN-VIB-34</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">2.1</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">mm/s</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="4.5"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<!-- Modified input highlighting -->
+<input class="w-20 h-8 px-2 rounded bg-surface-container-highest text-error font-mono-metric text-[13px] font-semibold focus:outline-none" title="Modified parameter" type="text" value="7.0"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">3 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Trigger Level 2 alert &amp; schedule inspection</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+                  Modified
+                </span>
+</td>
+</tr>
+<!-- Row 2: Active -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Exhaust gas temperature (EGT - T48)</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">Turbine Exit</span>
+<span>·</span>
+<span class="text-secondary font-semibold">SEN-EGT-09</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">640</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">°C</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="710"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="820"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">5 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">In-cockpit warning &amp; auto-ground post-flight</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  Active
+                </span>
+</td>
+</tr>
+<!-- Row 3: Active Low -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Oil scavenge line pressure</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">Lubrication System</span>
+<span>·</span>
+<span class="text-secondary font-semibold">PMP-OIL-55</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">45</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">PSI</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<div class="flex items-center gap-1 bg-surface-container-low rounded px-2">
+<span class="font-mono-code text-[10px] text-secondary">LOW</span>
+<input class="w-12 h-8 bg-transparent text-on-surface font-mono-metric text-[13px] focus:outline-none" type="text" value="36"/>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<div class="flex items-center gap-1 bg-surface-container-low rounded px-2">
+<span class="font-mono-code text-[10px] text-error">LOW</span>
+<input class="w-12 h-8 bg-transparent text-on-surface font-mono-metric text-[13px] focus:outline-none" type="text" value="28"/>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">2 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Immediate engine throttle advisory</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  Active
+                </span>
+</td>
+</tr>
+<!-- Row 4: Modified -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Bearing #3 cavity temperature</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">Main Shaft</span>
+<span>·</span>
+<span class="text-secondary font-semibold">SEN-TMP-41</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">125</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">°C</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<!-- Modified input highlighting -->
+<input class="w-20 h-8 px-2 rounded bg-surface-container-highest text-secondary font-mono-metric text-[13px] font-semibold focus:outline-none" title="Modified parameter" type="text" value="155"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="180"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">8 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Schedule borescope check within 48h</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-secondary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+                  Modified
+                </span>
+</td>
+</tr>
+<!-- Row 5: ML Prognostics RUL -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Remaining useful life (RUL projection)</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">ML Prognostics Model</span>
+<span>·</span>
+<span class="text-secondary font-semibold">MOD-XGB-RUL</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">&gt;50 cyc</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">Flight cyc</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="40"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="15"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">3 flight sorties</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Automatic spares allocation &amp; bay reservation</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  Active
+                </span>
+</td>
+</tr>
+<!-- Row 6: Fuel flow -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Fuel flow differential rate</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">Fuel Control Unit</span>
+<span>·</span>
+<span class="text-secondary font-semibold">NZL-FL-104</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">1.2</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">kg/s</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="2.4"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="3.5"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">4 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Telemetry logging &amp; filter inspect flag</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  Active
+                </span>
+</td>
+</tr>
+<!-- Row 7: Compressor Stage 4 -->
+<tr class="bg-surface-container hover:bg-surface-container-high transition-colors">
+<td class="py-space-sm px-space-md">
+<div class="font-body-strong text-body-strong text-on-surface">Compressor stage 4 stator differential pressure</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-mono-code text-[11px] mt-0.5">
+<span class="text-outline">High-Pressure Compressor</span>
+<span>·</span>
+<span class="text-secondary font-semibold">CMP-ROT-12</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-metric text-on-surface">3.2</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">bar</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="4.8"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error shrink-0"></span>
+<input class="w-20 h-8 px-2 rounded bg-surface-container-low text-on-surface font-mono-metric text-[13px] focus:outline-none focus:bg-surface-container-highest" type="text" value="6.0"/>
+</div>
+</td>
+<td class="py-space-sm px-space-md font-mono-code text-[12px] text-on-surface-variant">5 sec continuous</td>
+<td class="py-space-sm px-space-md font-body-default text-[13px] text-on-surface">Generate depot work order</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary font-mono-code text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                  Active
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Sticky Anchored Bottom Action & Audit Control Bar -->
+<footer class="mt-auto sticky bottom-0 bg-surface-container-low p-space-md shadow-xl z-20">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">security</span>
+<div class="flex flex-col min-w-0">
+<span class="font-mono-code text-[11px] text-on-surface-variant">Security stamp: <strong class="text-on-surface">IAF-AUTH-NODE-01</strong></span>
+<span class="font-body-default text-[13px] text-secondary truncate">2 pending unsaved modifications in Bearing #3 cavity temp &amp; Shaft vibration RMS</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-1.5 rounded-lg bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-default text-body-default transition-colors" type="button">
+              Reset defaults
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-body-default text-body-default transition-colors" type="button">
+              Discard changes
+            </button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-body-strong text-body-strong hover:bg-primary-fixed transition-colors flex items-center gap-1.5 shadow-md" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+              Save and deploy to edge nodes
+            </button>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</div>
+<script>
+  // Simple instant filter for aerospace sensor parameters
+  const searchInput = document.getElementById('parameter-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      const rows = document.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(term) ? '' : 'none';
+      });
+    });
+  }
+</script></main><footer class="h-7 border-t border-outline-variant/30 bg-surface-container-low px-space-lg flex items-center justify-between text-on-surface-variant select-none shrink-0"><div class="flex items-center gap-space-sm"><span class="font-mono-code text-[11px]">Offline mode · Last sync 14:12 IST</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px]">VAJRA SYS-NODE 4.2</span></div></footer></div><script src="../vajra-bridge.js"></script>
+</body></html>

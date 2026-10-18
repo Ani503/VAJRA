@@ -1,0 +1,43 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment Variables & Local Secrets
+.env
+.env.local
+
+# Large Archives & Review Bundles
+*.zip
+*.tar.gz
+VAJRA_REVIEW.zip
+
+# Operating System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+
+# Generated Reports (preserve directory structure with .gitkeep)
+backend/generated_reports/*.pdf
+backend/generated_reports/*.csv
+!backend/generated_reports/.gitkeep
+generated_reports/*.pdf
+generated_reports/*.csv
+!generated_reports/.gitkeep
+VAJRA_REVIEW/backend/generated_reports/*.pdf
+VAJRA_REVIEW/backend/generated_reports/*.csv
+
+# Blender Backup Files
+*.blend1

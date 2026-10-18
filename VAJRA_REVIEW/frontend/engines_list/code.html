@@ -1,0 +1,600 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link rel="stylesheet" href="../assets/vendor/fonts/ibm_plex.css"/><link rel="stylesheet" href="../assets/vendor/fonts/material_symbols.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="../assets/vendor/tailwindcss.js"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container": "#1c2024", "on-tertiary-fixed-variant": "#613a58", "on-secondary-container": "#92d1ff", "primary": "#b8ce96", "on-error": "#690005", "tertiary": "#ebb7dc", "background": "#101418", "surface-container-low": "#181c20", "inverse-surface": "#e0e3e8", "on-primary-container": "#1e2e06", "outline": "#8f9285", "on-secondary-fixed": "#001e2f", "on-secondary": "#00344d", "secondary": "#8ecdfc", "error": "#ffb4ab", "secondary-fixed-dim": "#8ecdfc", "surface-container-highest": "#31353a", "surface-bright": "#363a3e", "error-container": "#93000a", "primary-container": "#839864", "tertiary-fixed-dim": "#ebb7dc", "surface-variant": "#31353a", "on-background": "#e0e3e8", "surface-dim": "#101418", "outline-variant": "#45483e", "primary-fixed": "#d4ebb0", "primary-fixed-dim": "#b8ce96", "tertiary-container": "#b282a4", "tertiary-fixed": "#ffd7f1", "on-tertiary-fixed": "#300e2b", "surface-container-lowest": "#0b0f12", "on-surface-variant": "#c5c8ba", "secondary-fixed": "#c9e6ff", "on-primary-fixed": "#111f00", "on-primary": "#25350c", "inverse-primary": "#516536", "surface": "#101418", "on-tertiary-container": "#401d39", "surface-tint": "#b8ce96", "inverse-on-surface": "#2d3135", "surface-container-high": "#262a2f", "on-secondary-fixed-variant": "#004c6e", "secondary-container": "#025a83", "on-error-container": "#ffdad6", "on-primary-fixed-variant": "#3a4c21", "on-surface": "#e0e3e8", "on-tertiary": "#482441" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1.5rem", "space-xl": "1.5rem", "space-md": "0.75rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "1.5rem" }, "fontFamily": { "label-default": [ "IBM Plex Sans" ], "label-muted": [ "IBM Plex Sans" ], "mono-code": [ "IBM Plex Mono" ], "body-strong": [ "IBM Plex Sans" ], "headline-md": [ "IBM Plex Sans" ], "mono-metric": [ "IBM Plex Mono" ], "body-default": [ "IBM Plex Sans" ], "headline-lg": [ "IBM Plex Sans" ], "headline-xl": [ "IBM Plex Sans" ] }, "fontSize": { "label-default": [ "12px", { "lineHeight": "16px", "fontWeight": "500" } ], "label-muted": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "mono-code": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "body-strong": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "headline-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "mono-metric": [ "14px", { "lineHeight": "20px", "fontWeight": "500" } ], "body-default": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-lg": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "headline-xl": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-default text-body-default text-on-surface antialiased select-none"><aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-low border-r border-outline-variant z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 min-h-0"><div class="h-12 px-space-lg flex items-center gap-space-sm border-b border-outline-variant shrink-0"><img src="../assets/vajra_emblem.png" alt="VAJRA Emblem" class="w-8 h-8 rounded-full object-contain shrink-0 drop-shadow"><div class="flex flex-col min-w-0 leading-none"><span class="font-headline-md text-headline-md tracking-wider uppercase text-on-surface truncate font-semibold">VAJRA</span><span class="font-label-muted text-[10px] text-on-surface-variant tracking-tight truncate mt-0.5">Predict · Prevent · Ready</span></div></div><div class="px-space-md py-space-sm border-b border-outline-variant shrink-0 bg-surface-container-lowest/40"><div class="font-label-muted text-label-muted text-outline uppercase tracking-wider">Mission Operations</div><div class="font-mono-code text-mono-code text-on-surface-variant truncate mt-0.5">SEC-AIR / FLT-409</div></div><nav class="flex-1 overflow-y-auto px-space-xs py-space-sm space-y-0.5" data-active-classes="bg-surface-container-high text-on-surface font-body-strong border-l-2 border-primary"><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="command-dashboard" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">speed</span><span class="truncate">Command Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none transition-colors bg-surface-container-high text-on-surface font-body-strong border-l-2 border-primary" data-path="engines" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">mode_fan</span><span class="truncate">Engines</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="engine-detail" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">query_stats</span><span class="truncate">Engine Detail</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="3d-digital-twin" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">view_in_ar</span><span class="truncate">3D Digital Twin</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="maintenance-planner" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">calendar_month</span><span class="truncate">Maintenance Planner</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="spares-and-logistics" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">inventory_2</span><span class="truncate">Spares &amp; Logistics</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="fleet-availability" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">flight_takeoff</span><span class="truncate">Fleet Availability</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="reports" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">summarize</span><span class="truncate">Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="data-and-simulator" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">simulation</span><span class="truncate">Data &amp; Simulator</span></a><div class="pt-space-sm pb-space-xs px-space-sm"><div class="font-label-muted text-[10px] text-outline uppercase tracking-wider">System Configuration</div></div><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">settings</span><span class="truncate">Settings</span></a><a class="flex items-center gap-space-sm px-space-sm py-1.5 rounded-none text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-default text-body-default" data-path="audit-log" href="#"><span class="material-symbols-outlined text-[18px] shrink-0">rule</span><span class="truncate">Audit Log</span></a></nav></div><div class="p-space-sm border-t border-outline-variant bg-surface-container-lowest/60 shrink-0"><div class="flex items-center justify-between text-on-surface-variant"><div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-primary"></div><span class="font-mono-code text-[11px]">NODE: IN-DEL-01</span></div><span class="font-mono-code text-[11px] text-outline">v4.22.9</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen bg-background"><header class="fixed top-0 left-64 right-0 h-12 bg-surface-container-low border-b border-outline-variant z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-outline pointer-events-none">search</span><input class="w-full h-8 pl-8 pr-space-md bg-surface border border-outline-variant rounded-lg font-body-default text-body-default text-on-surface placeholder:text-outline focus:border-secondary focus:outline-none transition-colors" placeholder="Search engines, components, or tasks..." type="text"></div><div class="h-4 w-[1px] bg-outline-variant shrink-0"></div><div class="flex items-center gap-1.5 shrink-0 px-2 py-1 bg-surface border border-outline-variant rounded-lg cursor-pointer hover:border-outline transition-colors"><span class="material-symbols-outlined text-[16px] text-outline">location_on</span><span class="font-body-default text-label-default text-on-surface">All Bases (5 Forward Hubs)</span><span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span></div></div><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-2 px-2 py-0.5 bg-surface-container rounded-lg border border-outline-variant"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-mono-code text-label-muted text-on-surface-variant">Live sync · 14:12 IST</span></div><button class="relative p-1 text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-error rounded-full"></span></button><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-2"><div class="flex flex-col text-right leading-none"><span class="font-body-strong text-body-default text-on-surface">Fleet Commander</span><span class="font-label-muted text-[11px] text-on-surface-variant">Fleet Commander</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 pt-12 pb-7 w-full px-space-xl bg-background"><div class="flex flex-col w-full space-y-4 py-4">
+<!-- TOP HEADER / CONTEXT BAR -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 pb-1 border-b border-outline-variant">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Engines</h1>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant rounded">42 ACTIVE UNITS</span>
+</div>
+<p class="font-body-default text-label-muted text-on-surface-variant mt-0.5">Directory of 42 monitored Turbofan-TF1 turbofan (Fighter-B) engines across 5 forward air bases</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="h-8 px-3 rounded-lg bg-surface-container border border-outline-variant text-on-surface hover:bg-surface-container-high transition-colors font-body-strong text-label-default flex items-center gap-1.5 focus:outline-none focus:border-secondary">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">download</span>
+<span class="">Export CSV</span>
+</button>
+<button class="h-8 px-3 rounded-lg bg-surface-container border border-secondary text-secondary hover:bg-surface-container-high transition-colors font-body-strong text-label-default flex items-center gap-1.5 focus:outline-none">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+<span class="">Batch Diagnostics</span>
+</button>
+</div>
+</div>
+<!-- SUMMARY KPI STRIP -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+<!-- Total Monitored -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Monitored Units</span>
+<span class="material-symbols-outlined text-[16px] text-outline">tune</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-mono-metric text-headline-lg text-on-surface">42</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">100% telemetry</span>
+</div>
+</div>
+<!-- Healthy Status -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Healthy</span>
+<span class="w-2 h-2 rounded-full bg-[#3FA34D]"></span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-mono-metric text-headline-lg text-[#3FA34D]">27</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">64.3% fleet</span>
+</div>
+</div>
+<!-- Watch Status -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Watch</span>
+<span class="w-2 h-2 rounded-full bg-[#D9A21B]"></span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-mono-metric text-headline-lg text-[#D9A21B]">12</span>
+<span class="font-mono-code text-[11px] text-on-surface-variant">28.5% fleet</span>
+</div>
+</div>
+<!-- Critical Status -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Critical</span>
+<span class="w-2 h-2 rounded-full bg-[#D64545]"></span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-mono-metric text-headline-lg text-[#D64545]">03</span>
+<span class="font-mono-code text-[11px] text-[#D64545]">Action Req.</span>
+</div>
+</div>
+<!-- Fleet Mean Health -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Mean Health</span>
+<span class="material-symbols-outlined text-[16px] text-outline">speed</span>
+</div>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-mono-metric text-headline-lg text-on-surface">79.4</span>
+<span class="font-mono-code text-[11px] text-outline">/ 100</span>
+</div>
+</div>
+<!-- Fleet Mean RUL -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-label-muted text-[11px] uppercase tracking-wider">Mean RUL</span>
+<span class="material-symbols-outlined text-[16px] text-outline">autorenew</span>
+</div>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-mono-metric text-headline-lg text-on-surface">218</span>
+<span class="font-mono-code text-[11px] text-outline">cycles</span>
+</div>
+</div>
+</div>
+<!-- FILTERS & CONTROLS TOOLBAR -->
+<div class="bg-surface-container border border-outline-variant rounded-lg p-2 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5">
+<!-- Search and Status Pills -->
+<div class="flex flex-wrap items-center gap-2 flex-1 min-w-0">
+<!-- Search Input -->
+<div class="relative w-full sm:w-64 shrink-0">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-outline pointer-events-none">search</span>
+<input class="w-full h-8 pl-8 pr-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-default text-body-default text-on-surface placeholder:text-outline focus:border-secondary focus:outline-none transition-colors" id="engineSearch" placeholder="Filter by Engine ID, tail number, base..." type="text">
+</div>
+<!-- Divider -->
+<div class="hidden sm:block h-5 w-[1px] bg-outline-variant shrink-0"></div>
+<!-- Status Filter Tabs -->
+<div class="inline-flex rounded-lg bg-surface-container-lowest p-0.5 border border-outline-variant shrink-0" role="group">
+<button class="status-tab px-2.5 py-1 text-label-default font-body-strong rounded bg-surface-container-high text-on-surface border-b-2 border-primary transition-colors" data-status="all">
+          All <span class="font-mono-code text-[11px] ml-1 opacity-75">42</span>
+</button>
+<button class="status-tab px-2.5 py-1 text-label-default font-body-default text-on-surface-variant hover:text-on-surface transition-colors" data-status="healthy">
+          Healthy <span class="font-mono-code text-[11px] ml-1 opacity-75">27</span>
+</button>
+<button class="status-tab px-2.5 py-1 text-label-default font-body-default text-on-surface-variant hover:text-on-surface transition-colors" data-status="watch">
+          Watch <span class="font-mono-code text-[11px] ml-1 opacity-75">12</span>
+</button>
+<button class="status-tab px-2.5 py-1 text-label-default font-body-default text-on-surface-variant hover:text-on-surface transition-colors" data-status="critical">
+          Critical <span class="font-mono-code text-[11px] ml-1 text-error">3</span>
+</button>
+</div>
+</div>
+<!-- Dropdown Selectors -->
+<div class="flex items-center gap-2 shrink-0">
+<div class="relative">
+<select class="appearance-none h-8 pl-2.5 pr-7 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-default text-label-default text-on-surface focus:border-secondary focus:outline-none cursor-pointer">
+<option>All Bases (5 Bases)</option>
+<option>Base 01 (North Airfield)</option>
+<option>Base 02 (Eastern Sector)</option>
+<option>Base 03 (Central Hub)</option>
+<option>Base 04 (Southern Ridge)</option>
+<option>Base 05 (Maritime Forward)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[16px] text-outline">arrow_drop_down</span>
+</div>
+<div class="relative">
+<select class="appearance-none h-8 pl-2.5 pr-7 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-default text-label-default text-on-surface focus:border-secondary focus:outline-none cursor-pointer">
+<option>All Types (4 Platforms)</option>
+<option>Fighter-B (Air Dominance)</option>
+<option>Transport-A (Heavy Lift)</option>
+<option>Trainer-C (Lead-In)</option>
+<option>Heli-D (Multi-Role)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[16px] text-outline">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- PRIMARY DATA TABLE -->
+<div class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="enginesTable">
+<thead>
+<tr class="bg-surface-container-lowest/80 border-b border-outline-variant font-label-muted text-[11px] text-outline tracking-wider uppercase select-none">
+<th class="py-2.5 px-3 font-semibold">ENGINE ID</th>
+<th class="py-2.5 px-3 font-semibold">AIRCRAFT / TAIL</th>
+<th class="py-2.5 px-3 font-semibold">BASE</th>
+<th class="py-2.5 px-3 font-semibold min-w-[150px]">HEALTH SCORE</th>
+<th class="py-2.5 px-3 font-semibold">STATUS</th>
+<th class="py-2.5 px-3 font-semibold">PREDICTED RUL</th>
+<th class="py-2.5 px-3 font-semibold">ANOMALY</th>
+<th class="py-2.5 px-3 font-semibold">7-DAY RISK</th>
+<th class="py-2.5 px-3 font-semibold text-right">LAST UPDATED</th>
+<th class="py-2.5 px-2 text-center w-8"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-default text-body-default">
+<!-- Row 1: ENG-003 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-003</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Fighter-B</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#102</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 01</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#D9A21B] font-semibold w-10">54/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#D9A21B]" style="width: 54%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D64545] bg-[#D64545]/10 text-[#D64545]">
+                Critical
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-error font-semibold">42 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.85</td>
+<td class="py-2.5 px-3 font-mono-code text-[#D64545] font-semibold">38.4%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">14:10 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 2: ENG-019 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-019</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Fighter-B</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#114</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 02</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#D9A21B] font-semibold w-10">58/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#D9A21B]" style="width: 58%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D64545] bg-[#D64545]/10 text-[#D64545]">
+                Critical
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-error font-semibold">51 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.81</td>
+<td class="py-2.5 px-3 font-mono-code text-[#D64545] font-semibold">34.1%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">14:08 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 3: ENG-007 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-007</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Fighter-B</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#105</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 01</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#D9A21B] font-semibold w-10">61/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#D9A21B]" style="width: 61%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D64545] bg-[#D64545]/10 text-[#D64545]">
+                Critical
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-error font-semibold">58 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.79</td>
+<td class="py-2.5 px-3 font-mono-code text-[#D64545] font-semibold">29.8%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">14:02 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 4: ENG-031 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-031</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Transport-A</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#129</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 03</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#D9A21B] font-semibold w-10">66/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#D9A21B]" style="width: 66%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D9A21B] bg-[#D9A21B]/10 text-[#D9A21B]">
+                Watch
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-[#D9A21B]">68 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.74</td>
+<td class="py-2.5 px-3 font-mono-code text-[#D9A21B]">21.5%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:55 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 5: ENG-014 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-014</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Trainer-C</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#108</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 04</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">71/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 71%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D9A21B] bg-[#D9A21B]/10 text-[#D9A21B]">
+                Watch
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">85 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.67</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">17.2%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:48 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 6: ENG-022 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-022</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Heli-D</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#119</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 05</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">74/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 74%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D9A21B] bg-[#D9A21B]/10 text-[#D9A21B]">
+                Watch
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">94 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.62</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">14.0%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:42 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 7: ENG-038 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-038</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Transport-A</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#134</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 02</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">76/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 76%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#D9A21B] bg-[#D9A21B]/10 text-[#D9A21B]">
+                Watch
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">102 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">0.58</td>
+<td class="py-2.5 px-3 font-mono-code text-on-surface">11.5%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:30 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 8: ENG-001 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-001</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Fighter-B</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#101</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 01</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">94/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 94%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#3FA34D] bg-[#3FA34D]/10 text-[#3FA34D]">
+                Healthy
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-[#3FA34D]">340 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">0.12</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">1.8%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:20 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 9: ENG-002 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-002</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Fighter-B</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#101</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 01</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">92/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 92%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#3FA34D] bg-[#3FA34D]/10 text-[#3FA34D]">
+                Healthy
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-[#3FA34D]">315 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">0.14</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">2.1%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:15 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+<!-- Row 10: ENG-011 -->
+<tr class="hover:bg-surface-container-high transition-colors group cursor-pointer border-l-2 border-transparent hover:border-l-secondary">
+<td class="py-2.5 px-3 font-mono-code text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-secondary">mode_fan</span>
+<span class="">ENG-011</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="font-body-strong text-on-surface">Transport-A</span>
+<span class="font-mono-code text-on-surface-variant text-[12px] ml-1">#107</span>
+</td>
+<td class="py-2.5 px-3 font-body-default text-on-surface-variant">Base 03</td>
+<td class="py-2.5 px-3">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[12px] text-[#3FA34D] font-semibold w-10">89/100</span>
+<div class="flex-1 max-w-[90px] h-1.5 bg-surface-container-lowest rounded-sm overflow-hidden">
+<div class="h-full bg-[#3FA34D]" style="width: 89%;"></div>
+</div>
+</div>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-mono-code border border-[#3FA34D] bg-[#3FA34D]/10 text-[#3FA34D]">
+                Healthy
+              </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-[#3FA34D]">280 cycles</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">0.18</td>
+<td class="py-2.5 px-3 font-mono-code text-outline">2.9%</td>
+<td class="py-2.5 px-3 font-mono-code text-right text-on-surface-variant text-[12px]">13:10 IST</td>
+<td class="py-2.5 px-2 text-center text-outline group-hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION & FOOTER TOOLBAR -->
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-3 text-label-default">
+<div class="flex items-center gap-3">
+<span class="font-mono-code text-on-surface-variant text-[12px]">Showing 1–10 of 42 engines</span>
+<div class="h-3.5 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-1.5">
+<span class="font-body-default text-on-surface-variant text-[12px]">Display:</span>
+<select class="h-6 px-1.5 bg-surface-container border border-outline-variant rounded font-mono-code text-[11px] text-on-surface focus:outline-none focus:border-secondary">
+<option>10 per page</option>
+<option>25 per page</option>
+<option>50 per page</option>
+</select>
+</div>
+</div>
+<!-- Pagination Buttons -->
+<div class="flex items-center gap-1 font-mono-code text-[12px]">
+<button class="h-7 px-2 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">chevron_left</span>
+<span class="text-[11px] ml-0.5">Prev</span>
+</button>
+<button class="h-7 w-7 border border-secondary rounded bg-surface-container-high text-secondary font-semibold flex items-center justify-center">1</button>
+<button class="h-7 w-7 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center">2</button>
+<button class="h-7 w-7 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center">3</button>
+<button class="h-7 w-7 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center">4</button>
+<button class="h-7 w-7 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center">5</button>
+<button class="h-7 px-2 border border-outline-variant rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center">
+<span class="text-[11px] mr-0.5">Next</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SECONDARY FLEET TELEMETRY TICKER -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">sensors</span>
+<div>
+<div class="font-body-strong text-label-default text-on-surface">Forward Hub Telemetry</div>
+<div class="font-label-muted text-[11px] text-on-surface-variant">All 5 field transceivers responding</div>
+</div>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 bg-[#3FA34D]/10 border border-[#3FA34D] text-[#3FA34D] rounded">NOMINAL</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+<div>
+<div class="font-body-strong text-label-default text-on-surface">Predictive Engine Model</div>
+<div class="font-label-muted text-[11px] text-on-surface-variant">TF1-SURVNET v3.8 inferred at 14:10</div>
+</div>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 bg-surface-container-high text-on-surface-variant border border-outline-variant rounded">SYNCED</span>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#D64545] text-[20px]">notification_important</span>
+<div>
+<div class="font-body-strong text-label-default text-on-surface">Maintenance Staging</div>
+<div class="font-label-muted text-[11px] text-on-surface-variant">3 engines pending immediate borescopic check</div>
+</div>
+</div>
+<span class="font-mono-code text-[11px] px-1.5 py-0.5 bg-[#D64545]/10 border border-[#D64545] text-[#D64545] rounded">CRIT-3</span>
+</div>
+</div>
+</div>
+<script>
+  // Simple functional filtering logic for demo interactions
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('engineSearch');
+    const table = document.getElementById('enginesTable');
+    const rows = table.querySelectorAll('tbody tr');
+    const statusTabs = document.querySelectorAll('.status-tab');
+    let currentStatus = 'all';
+
+    function filterTable() {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const statusBadge = row.querySelector('td:nth-child(5)').innerText.toLowerCase();
+        
+        const matchesSearch = text.includes(searchTerm);
+        const matchesStatus = currentStatus === 'all' || statusBadge.includes(currentStatus);
+
+        if (matchesSearch && matchesStatus) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterTable);
+    }
+
+    statusTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        statusTabs.forEach(t => {
+          t.classList.remove('bg-surface-container-high', 'text-on-surface', 'font-body-strong', 'border-b-2', 'border-primary');
+          t.classList.add('text-on-surface-variant', 'font-body-default');
+        });
+        this.classList.add('bg-surface-container-high', 'text-on-surface', 'font-body-strong', 'border-b-2', 'border-primary');
+        this.classList.remove('text-on-surface-variant', 'font-body-default');
+
+        currentStatus = this.getAttribute('data-status');
+        filterTable();
+      });
+    });
+  });
+</script></main><footer class="fixed bottom-0 left-64 right-0 h-7 bg-surface-container-low border-t border-outline-variant z-30 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px] text-on-surface-variant">Offline mode · Last sync 14:12 IST</span><span class="text-outline-variant">|</span><span class="font-mono-code text-[11px] text-outline">Buffer: Nominal (0 dropped packets)</span></div><div class="flex items-center gap-space-md"><span class="font-mono-code text-[11px] text-outline">UTC 08:42:00</span><span class="text-outline-variant">|</span><span class="font-mono-code text-[11px] text-primary">SEC-TEL: ENCRYPTED-256</span></div></footer></div>
+
+<script src="../vajra-bridge.js"></script>
+</body></html>
