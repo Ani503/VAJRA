@@ -12,10 +12,15 @@
   // 1. CONFIGURATION & STATE
   // =========================================================================
   const isDirectBackend = window.location.port === '8000';
-  const API_BASE = isDirectBackend ? '/api' : 'http://localhost:8000/api';
-  const WS_URL = isDirectBackend
-    ? `ws://${window.location.host}/ws/live`
-    : 'ws://localhost:8000/ws/live';
+  const customBackend = (typeof window !== 'undefined' && (window.VAJRA_BACKEND_URL || localStorage.getItem('vajra_backend_url'))) || null;
+  const API_BASE = customBackend
+    ? `${customBackend.replace(/\/$/, '')}/api`
+    : (isDirectBackend ? '/api' : 'http://localhost:8000/api');
+  const WS_URL = customBackend
+    ? `${customBackend.replace(/^http/, 'ws').replace(/\/$/, '')}/ws/live`
+    : (isDirectBackend
+      ? `ws://${window.location.host}/ws/live`
+      : 'ws://localhost:8000/ws/live');
 
   let currentToken = localStorage.getItem('vajra_jwt') || null;
   let currentUser = JSON.parse(localStorage.getItem('vajra_user') || 'null');

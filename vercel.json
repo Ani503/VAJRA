@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/stitch_vajra_fleet_maintenance_platform/command_dashboard/code.html"
+    },
+    {
+      "source": "/assets/(.*)",
+      "destination": "/Assets/$1"
+    },
+    {
+      "source": "/Assets/(.*)",
+      "destination": "/Assets/$1"
+    },
+    {
+      "source": "/stitch_vajra_fleet_maintenance_platform/assets/(.*)",
+      "destination": "/Assets/$1"
+    },
+    {
+      "source": "/ui/(.*)",
+      "destination": "/stitch_vajra_fleet_maintenance_platform/$1"
+    }
+  ]
+}
